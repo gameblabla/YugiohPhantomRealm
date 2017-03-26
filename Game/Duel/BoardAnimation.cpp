@@ -1,18 +1,18 @@
-#include <Game\Duel\Board.h>
-#include <Game\Duel\BattleUnit.h>
-#include <Game\Duel\PositionUnit.h>
-#include <Game\Cards\CardDisplayUnit.h>
-#include <Game\Animation\Camera.h>
-#include <Game\VectorUnit.h>
-#include <Utility\BlankUnit.h>
-#include <Game\Animation\MovementUnit.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Game\Cards\Trap\TrapUnit.h>
-#include <Game\Duel\Parts\SwordUnit.h>
-#include <Game\Animation\FadeUnit.h>
-#include <Game\Cursor.h>
-#include <Utility\SoundUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Duel/BattleUnit.h>
+#include <Game/Duel/PositionUnit.h>
+#include <Game/Cards/CardDisplayUnit.h>
+#include <Game/Animation/Camera.h>
+#include <Game/VectorUnit.h>
+#include <Utility/BlankUnit.h>
+#include <Game/Animation/MovementUnit.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Game/Cards/Trap/TrapUnit.h>
+#include <Game/Duel/Parts/SwordUnit.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Game/Cursor.h>
+#include <Utility/SoundUnit.h>
 #include <iostream>
 
 

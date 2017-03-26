@@ -1,11 +1,11 @@
-#include <Game\Cards\Magic\ShadowSpell.h>
-#include <Utility\Clock.h>
+#include <Game/Cards/Magic/ShadowSpell.h>
+#include <Utility/Clock.h>
 #define GLM_FORCE_RADIANS
-#include <Game\Animation\ParticlesUnit.h>
-#include <gtc\matrix_transform.hpp>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Utility\SoundUnit.h>
-#include <Game\Duel\Board.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <gtc/matrix_transform.hpp>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Utility/SoundUnit.h>
+#include <Game/Duel/Board.h>
 
 
 #define ZYUG_GO 0

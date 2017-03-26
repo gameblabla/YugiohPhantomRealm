@@ -1,11 +1,11 @@
-#include <Game\Cards\CardRender.h>
-#include <gtc\matrix_transform.hpp>
-#include <gtx\transform.hpp>
+#include <Game/Cards/CardRender.h>
+#include <gtc/matrix_transform.hpp>
+#include <gtx/transform.hpp>
 #include <DefinesAndTypedefs.h>
-#include <Utility\ErrorHandler.h>
-#include <Utility\Clock.h>
+#include <Utility/ErrorHandler.h>
+#include <Utility/Clock.h>
 
-#include <Utility\DebugUnit.h>
+#include <Utility/DebugUnit.h>
 #include <iostream>
 #include <gtc/quaternion.hpp>
 

@@ -28,8 +28,8 @@ namespace Utility{
 
 		void playOnce(const char* filename);
 		void playLoop(const char* filename);
-		//void playIntroThenLoop(const char* intro,			\\will need a partner function that is continually called to work,
-		//	const char* loop, float introLengthInSeconds);		\\or use threading
+		//void playIntroThenLoop(const char* intro,			//will need a partner function that is continually called to work,
+		//	const char* loop, float introLengthInSeconds);		//or use threading
 		void stopAll();
 		void stopThisSound(const char* filename);
 

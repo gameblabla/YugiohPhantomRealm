@@ -1,12 +1,12 @@
 #pragma once
-#include <GL\glew.h>
+#include <GL/glew.h>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
 #include <Game/Duel/Board.h>
 #include <Game/Duel/FusionUnit.h>
 #include <Game/Duel/GamePlayer.h>
 #include <Game/Cards/CardData.h>
-#include <Game\FlickerModelLoader.h>
+#include <Game/FlickerModelLoader.h>
 
 #define YUG_POSITION_CH_IDLE 0
 #define YUG_POSITION_CH_FACE 1

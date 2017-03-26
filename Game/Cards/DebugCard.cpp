@@ -1,11 +1,11 @@
 #include "DebugCard.h"
-#include <Utility\TextureLoader.h>
-#include <Utility\StateUnit.h>
+#include <Utility/TextureLoader.h>
+#include <Utility/StateUnit.h>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
-#include <gtc\matrix_transform.hpp>
-#include <Game\Animation\Camera.h>
-#include <Utility\StateUnit.h>
+#include <gtc/matrix_transform.hpp>
+#include <Game/Animation/Camera.h>
+#include <Utility/StateUnit.h>
 #include <iostream>
 
 namespace{

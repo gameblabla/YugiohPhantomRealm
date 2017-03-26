@@ -1,21 +1,21 @@
-#include <Game\Duel\BattleUnit.h>
-#include <Game\Duel\Board.h>
-#include <Utility\Clock.h>
-#include <Utility\BlankUnit.h>
-#include <Utility\StateUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Game\Cursor.h>
-#include <Game\Cards\CardCreatorUnit.h>
+#include <Game/Duel/BattleUnit.h>
+#include <Game/Duel/Board.h>
+#include <Utility/Clock.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/StateUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Game/Cursor.h>
+#include <Game/Cards/CardCreatorUnit.h>
 #include <iostream>
-#include <Game\VectorUnit.h>
-#include <Game\Animation\FadeUnit.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Game\Animation\MovementUnit.h>
-#include <Utility\TextureLoader.h>
-#include <Utility\Clock.h>
-#include <Game\Duel\EndUnit.h>
-#include <Utility\SoundUnit.h>
-#include <Game\EnemyData.h>
+#include <Game/VectorUnit.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Game/Animation/MovementUnit.h>
+#include <Utility/TextureLoader.h>
+#include <Utility/Clock.h>
+#include <Game/Duel/EndUnit.h>
+#include <Utility/SoundUnit.h>
+#include <Game/EnemyData.h>
 #include <random>
 
 #define ZYUG_SHAKE_DEF 1
@@ -406,9 +406,9 @@ namespace Duel{
 	 }
 
 	 void BattleUnit::prepareBoard(){
-		 //std::cout<<theBoard.aP[0]<<theBoard.aP[1]<<theBoard.cP[0]<<theBoard.cP[1]<<"\n";
+		 //std::cout<<theBoard.aP[0]<<theBoard.aP[1]<<theBoard.cP[0]<<theBoard.cP[1]<<"/n";
 		 if(atkCardDead){
-			// std::cout<<"DDDDDDDDDDDDDDDDDDDDD\n";
+			// std::cout<<"DDDDDDDDDDDDDDDDDDDDD/n";
 			 theBoard.attacker.smallRender.cleanup();
 			 theBoard.attacker.cleanup();
 			 theBoard.attacker = cardCreator.blankCard();

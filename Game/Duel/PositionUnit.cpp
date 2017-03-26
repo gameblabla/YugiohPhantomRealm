@@ -1,18 +1,18 @@
-#include <Game\Duel\PositionUnit.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Utility\Clock.h>
-#include <Utility\InputUnit.h>
-#include <Utility\BlankUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Utility\StateUnit.h>
-#include <Game\Cursor.h>
-#include <Utility\SoundUnit.h>
+#include <Game/Duel/PositionUnit.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/Clock.h>
+#include <Utility/InputUnit.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Utility/StateUnit.h>
+#include <Game/Cursor.h>
+#include <Utility/SoundUnit.h>
 #include <iostream>
-#include <Game\VectorUnit.h>
+#include <Game/VectorUnit.h>
 #include <DefinesAndTypedefs.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Game\Animation\MovementUnit.h>
-#include <Game\Cards\Trap\TrapUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Game/Animation/MovementUnit.h>
+#include <Game/Cards/Trap/TrapUnit.h>
 
 
 #define YUG_POSITION_P_CARD glm::vec3(0.0f,0.0f,0.5f)

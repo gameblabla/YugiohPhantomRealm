@@ -1,5 +1,5 @@
 #pragma once
-#include <Game\Cards\Magic\FieldMagic.h>
+#include <Game/Cards/Magic/FieldMagic.h>
 
 namespace Card{
 

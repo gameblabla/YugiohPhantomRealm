@@ -1,16 +1,16 @@
-#include <Screens\ShopScreen.h>
-#include <Utility\Clock.h>
-#include <Utility\TextPrinter.h>
-#include <Utility\TextureLoader.h>
-#include <Utility\InputUnit.h>
-#include <Game\PlayerData.h>
-#include <Screens\ScreenUnit.h>
-#include <Screens\FreeDuelScreen.h>
-#include <Screens\TempleMapScreen.h>
-#include <Screens\WorldMapScreen.h>
-#include <Screens\OptionsScreen.h>
+#include <Screens/ShopScreen.h>
+#include <Utility/Clock.h>
+#include <Utility/TextPrinter.h>
+#include <Utility/TextureLoader.h>
+#include <Utility/InputUnit.h>
+#include <Game/PlayerData.h>
+#include <Screens/ScreenUnit.h>
+#include <Screens/FreeDuelScreen.h>
+#include <Screens/TempleMapScreen.h>
+#include <Screens/WorldMapScreen.h>
+#include <Screens/OptionsScreen.h>
 #include <DefinesAndTypedefs.h>
-#include <Utility\SoundUnit.h>
+#include <Utility/SoundUnit.h>
 #include <iostream>
 #define ZYUG_CH_START 0
 #define ZYUG_CH_ACTIVE 1

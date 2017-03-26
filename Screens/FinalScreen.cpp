@@ -1,7 +1,7 @@
-#include <Screens\FinalScreen.h>
-#include <Screens\ScreenUnit.h>
-#include <Screens\MainMenu.h>
-#include <Game\PlayerData.h>
+#include <Screens/FinalScreen.h>
+#include <Screens/ScreenUnit.h>
+#include <Screens/MainMenu.h>
+#include <Game/PlayerData.h>
 #include <iostream>
 #include <DefinesAndTypedefs.h>
 namespace Screen{

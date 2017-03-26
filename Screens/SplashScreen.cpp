@@ -1,13 +1,13 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-#include <Screens\ScreenUnit.h>
-#include <Screens\SplashScreen.h>
-#include <Utility\InputUnit.h>
+#include <Screens/ScreenUnit.h>
+#include <Screens/SplashScreen.h>
+#include <Utility/InputUnit.h>
 #include <DefinesAndTypedefs.h>
-#include <Screens\DialogScreen.h>
-#include <Screens\StoryScene.h>
-#include <Screens\MainMenu.h>
+#include <Screens/DialogScreen.h>
+#include <Screens/StoryScene.h>
+#include <Screens/MainMenu.h>
 
 #define YUG_SPLASH_CH_FIRST 3
 #define YUG_SPLASH_CH_SECOND 4

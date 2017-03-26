@@ -1,28 +1,26 @@
-#include "windows.h"
-#include "psapi.h"
 
-#include <Game\Animation\Camera.h>//contains GL_FORCE_RADIANS ,glm.hpp
-#include <gtc\matrix_transform.hpp>
-#include <gtx\transform.hpp>
-#include <Utility\Clock.h>
-#include <Utility\StateUnit.h>
-//#include <Game\YugiohUnit.h>
-#include <Utility\ErrorHandler.h>
+#include <Game/Animation/Camera.h>//contains GL_FORCE_RADIANS ,glm.hpp
+#include <gtc/matrix_transform.hpp>
+#include <gtx/transform.hpp>
+#include <Utility/Clock.h>
+#include <Utility/StateUnit.h>
+//#include <Game/YugiohUnit.h>
+#include <Utility/ErrorHandler.h>
 
 
-#include <Game\Animation\ParticlesUnit.h>
-#include <Game\VectorUnit.h>
-#include <Game\Cards\Trap\TrapUnit.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Game\EnemyData.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Game/VectorUnit.h>
+#include <Game/Cards/Trap/TrapUnit.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Game/EnemyData.h>
 
-#include <Utility\DebugUnit.h>
-#include <Utility\InputUnit.h>
-#include <Game\Duel\BattleUnit.h>
-#include <Game\Duel\Board.h>
+#include <Utility/DebugUnit.h>
+#include <Utility/InputUnit.h>
+#include <Game/Duel/BattleUnit.h>
+#include <Game/Duel/Board.h>
 #include <iostream>
 
-#include <Game\VectorUnit.h>
+#include <Game/VectorUnit.h>
 
 #define YUG_CAM_DEFAULT_UP_VEC 0.0f, 1.0f, 0.0f
 #define YUG_CAM_DEFAULT_VIEW_VEC 0.0f, 0.0f, -1.0f
@@ -146,7 +144,7 @@ namespace Animation{
 		if(isChangingDirection){
 			//errorHandler.printError("Camera: new view Direction call interrupting one in progress.");
 		}
-		//std::cout<<"View interp called\n";
+		//std::cout<<"View interp called/n";
 		//debugUnit.printVec3(newDirection);
 		startingViewDirection = viewDirection;
 		endingViewDirection = newDirection;

@@ -1,8 +1,8 @@
 #include <stdlib.h>     /* srand, rand */
 #include <chrono>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Game\Duel\Deck.h>
-#include <Utility\ErrorHandler.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Game/Duel/Deck.h>
+#include <Utility/ErrorHandler.h>
 
 namespace Duel{
 

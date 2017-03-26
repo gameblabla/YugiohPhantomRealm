@@ -1,10 +1,8 @@
-//#include "windows.h"
-//#include "psapi.h"
 
-#include <Utility\TextureLoader.h>//contains glew.h
-#include <ThirdParty\lodepng.h>
+#include <Utility/TextureLoader.h>//contains glew.h
+#include <ThirdParty/lodepng.h>
 #include <DefinesAndTypedefs.h>
-#include <Utility\ErrorHandler.h>
+#include <Utility/ErrorHandler.h>
 #include <iostream>
 #include <algorithm>
 
@@ -39,7 +37,7 @@ namespace Utility{
 		if(error != 0 ){
 			errorHandler.printError("textureLoader: failed to load png: ");
 			errorHandler.printError(fileName);
-			errorHandler.printError("textureLoader: Going to crash now\n");
+			errorHandler.printError("textureLoader: Going to crash now/n");
 		}
 		
 		//send to openGL

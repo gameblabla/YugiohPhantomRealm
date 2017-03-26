@@ -1,21 +1,21 @@
 #include <sstream>
-#include <Utility\Clock.h>
-#include <Utility\InputUnit.h>
-#include <Screens\StoryScene.h>
-#include <Utility\TextureLoader.h>
-#include <Utility\TextPrinter.h>
-#include <Game\PlayerData.h>
+#include <Utility/Clock.h>
+#include <Utility/InputUnit.h>
+#include <Screens/StoryScene.h>
+#include <Utility/TextureLoader.h>
+#include <Utility/TextPrinter.h>
+#include <Game/PlayerData.h>
 #include <DefinesAndTypedefs.h>
-#include <Screens\ScreenUnit.h>
-#include <Game\EnemyData.h>
-#include <Screens\Trunk.h>
-#include <Screens\TempleMapScreen.h>
-#include <Screens\WorldMapScreen.h>
-#include <Game\Animation\FadeUnit.h>
-#include <Screens\SplashScreen.h>
-#include <Game\Duel\Board.h>
-#include <Screens\FinalScreen.h>
-#include <Utility\SoundUnit.h>
+#include <Screens/ScreenUnit.h>
+#include <Game/EnemyData.h>
+#include <Screens/Trunk.h>
+#include <Screens/TempleMapScreen.h>
+#include <Screens/WorldMapScreen.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Screens/SplashScreen.h>
+#include <Game/Duel/Board.h>
+#include <Screens/FinalScreen.h>
+#include <Utility/SoundUnit.h>
 
 #define ZYUG_CH_START 0
 #define ZYUG_CH_ACTIVE 1

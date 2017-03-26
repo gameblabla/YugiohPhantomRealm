@@ -1,11 +1,11 @@
-#include <Screens\WorldMapScreen.h>
-#include <Screens\StorySetter.h>
-#include <Utility\InputUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Game\Cursor.h>
-#include <Screens\ScreenUnit.h>
+#include <Screens/WorldMapScreen.h>
+#include <Screens/StorySetter.h>
+#include <Utility/InputUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Game/Cursor.h>
+#include <Screens/ScreenUnit.h>
 #include <DefinesAndTypedefs.h>
-#include <Utility\SoundUnit.h>
+#include <Utility/SoundUnit.h>
 #include <iostream>
 #define ZYUG_CH_START 0
 #define ZYUG_CH_ACTIVE 1

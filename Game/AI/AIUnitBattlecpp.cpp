@@ -1,11 +1,11 @@
-#include <Game\AI\AIUnit.h>
-#include <Utility\InputUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\Duel\FusionUnit.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Game\Duel\Parts\SwordUnit.h>
-#include <Utility\Clock.h>
-#include <Game\EnemyData.h>
+#include <Game/AI/AIUnit.h>
+#include <Utility/InputUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Duel/FusionUnit.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Game/Duel/Parts/SwordUnit.h>
+#include <Utility/Clock.h>
+#include <Game/EnemyData.h>
 #include <iostream>
 
 namespace AI{

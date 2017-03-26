@@ -1,5 +1,5 @@
-#include <Utility\ErrorHandler.h>
-#include <Game\PlayerData.h>
+#include <Utility/ErrorHandler.h>
+#include <Game/PlayerData.h>
 #include <iostream>
 
 namespace Game{

@@ -3,23 +3,23 @@
 #include <string>
 #include <sstream>
 #include <chrono>
-#include <Game\Duel\EndUnit.h>
-#include <Game\Duel\Board.h>
-#include <Utility\BlankUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Utility\DebugUnit.h>
-#include <Game\EnemyData.h>
-#include <Game\PlayerData.h>
-#include <Game\VectorUnit.h>
-#include <Utility\InputUnit.h>
-#include <Game\Animation\FadeUnit.h>
-#include <Screens\ScreenUnit.h>
-#include <Utility\StateUnit.h>
-#include <Utility\SoundUnit.h>
+#include <Game/Duel/EndUnit.h>
+#include <Game/Duel/Board.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/DebugUnit.h>
+#include <Game/EnemyData.h>
+#include <Game/PlayerData.h>
+#include <Game/VectorUnit.h>
+#include <Utility/InputUnit.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Screens/ScreenUnit.h>
+#include <Utility/StateUnit.h>
+#include <Utility/SoundUnit.h>
 #define GLM_FORCE_RADIANS
-#include <gtc\matrix_transform.hpp>
-#include <Screens\StoryScene.h>
+#include <gtc/matrix_transform.hpp>
+#include <Screens/StoryScene.h>
 
 #define ZYUG_IDLE 0
 #define ZYUG_REVEAL_LETTERS 1

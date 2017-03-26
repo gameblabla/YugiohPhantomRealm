@@ -1,8 +1,8 @@
-#include <Utility\StateUnit.h>//contains glew.h, glm.hpp
+#include <Utility/StateUnit.h>//contains glew.h, glm.hpp
 #include <fstream>
 #include <streambuf>
-#include <gtc\matrix_transform.hpp>
-#include <Utility\ErrorHandler.h>
+#include <gtc/matrix_transform.hpp>
+#include <Utility/ErrorHandler.h>
 #include <DefinesAndTypedefs.h>
 #include <iostream>
 
@@ -179,7 +179,7 @@ namespace Utility{
 		std::ifstream input;
 		input.open(fileName);
 		if(!input.good()){
-			errorHandler.printError("Shader File failed to load.\r\n");
+			errorHandler.printError("Shader File failed to load./r/n");
 			errorHandler.printError(fileName.c_str());
 			return NULL;
 		}
@@ -262,7 +262,7 @@ namespace Utility{
 
 	std::vector<std::string> StateUnit::breakUpText(std::vector<char>text,int maxLineLength)
 	{
-		//std::cout<<"SU: breaking text up\n";
+		//std::cout<<"SU: breaking text up/n";
 		std::vector<std::string> brokenText;
 		brokenText.push_back(std::string() );
 		int index = 0;

@@ -1,7 +1,7 @@
-#include <Game\Animation\MovementUnit.h>
-#include <gtc\matrix_transform.hpp>
-#include <gtx\rotate_vector.hpp>
-#include <Utility\DebugUnit.h>
+#include <Game/Animation/MovementUnit.h>
+#include <gtc/matrix_transform.hpp>
+#include <gtx/rotate_vector.hpp>
+#include <Utility/DebugUnit.h>
 
 namespace Animation{
 

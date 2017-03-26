@@ -1,10 +1,10 @@
-#include <Game\FlickerModelLoader.h>
+#include <Game/FlickerModelLoader.h>
 #include <iostream>
-#include <gtc\matrix_transform.hpp>
-#include <Utility\TextureLoader.h>
-#include <Utility\StateUnit.h>
-#include <Game\Animation\Camera.h>
-#include <Utility\Clock.h>
+#include <gtc/matrix_transform.hpp>
+#include <Utility/TextureLoader.h>
+#include <Utility/StateUnit.h>
+#include <Game/Animation/Camera.h>
+#include <Utility/Clock.h>
 
 namespace Game{
 

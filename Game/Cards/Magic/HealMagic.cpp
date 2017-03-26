@@ -1,11 +1,11 @@
-#include <Game\Cards\Magic\HealMagic.h>
-#include <Utility\Clock.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Game\Duel\Board.h>
-#include <Utility\SoundUnit.h>
-#include <Game\Duel\EndUnit.h>
+#include <Game/Cards/Magic/HealMagic.h>
+#include <Utility/Clock.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Game/Duel/Board.h>
+#include <Utility/SoundUnit.h>
+#include <Game/Duel/EndUnit.h>
 
 #define ZYUG_GO 0
 #define ZYUG_TEXT 1

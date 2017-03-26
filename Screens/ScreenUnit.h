@@ -1,5 +1,5 @@
 #pragma once
-#include <Screens\BaseScreen.h>
+#include <Screens/BaseScreen.h>
 #include <string>
 
 namespace Screen{

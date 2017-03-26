@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
 #include <fstream>
-#include <Game\Duel\Deck.h>
-#include <definesAndTypedefs.h>
-#include <Game\AI\AIUnit.h>
+#include <Game/Duel/Deck.h>
+#include <DefinesAndTypedefs.h>
+#include <Game/AI/AIUnit.h>
 namespace Game{
 
 	class EnemyData

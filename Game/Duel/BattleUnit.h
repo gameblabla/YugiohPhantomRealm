@@ -1,10 +1,10 @@
 #pragma once
-#include <GL\glew.h>
+#include <GL/glew.h>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
-#include <Game\YugiohUnit.h>
-#include <Game\Cards\BigCardRender.h>
-#include <Game\ModelLoader.h>
+#include <Game/YugiohUnit.h>
+#include <Game/Cards/BigCardRender.h>
+#include <Game/ModelLoader.h>
 
 #define YUG_BAT_CH_START 0
 #define YUG_BAT_CH_POSITIONING 1

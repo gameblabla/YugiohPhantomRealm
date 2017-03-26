@@ -1,7 +1,7 @@
 #pragma once
-#include <Game\Cards\Magic\MagicSource.h>
-#include <Game\Cards\CardData.h>
-#include <Game\WaitUnit.h>
+#include <Game/Cards/Magic/MagicSource.h>
+#include <Game/Cards/CardData.h>
+#include <Game/WaitUnit.h>
 namespace Card{
 
 	class SwordsMagic : public MagicSource, public Game::WaitUnit

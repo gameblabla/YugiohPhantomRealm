@@ -3,8 +3,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <Screens\BaseScreen.h>
-#include <Game\ModelLoader.h>
+#include <Screens/BaseScreen.h>
+#include <Game/ModelLoader.h>
 
 
 namespace Screen{

@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
-#include <Game\Cards\CardData.h>
-#include <Game\Cards\Magic\MagicSource.h>
-#include <Game\WaitUnit.h>
+#include <Game/Cards/CardData.h>
+#include <Game/Cards/Magic/MagicSource.h>
+#include <Game/WaitUnit.h>
 
 
 #define YUG_MAG_CH_START 0

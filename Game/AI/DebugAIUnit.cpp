@@ -1,9 +1,9 @@
-#include <Game\AI\DebugAIUnit.h>
-#include <Utility\InputUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\Duel\FusionUnit.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Utility\Clock.h>
+#include <Game/AI/DebugAIUnit.h>
+#include <Utility/InputUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Duel/FusionUnit.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/Clock.h>
 #include <iostream>
 
 namespace AI{

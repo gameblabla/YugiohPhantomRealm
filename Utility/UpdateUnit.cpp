@@ -1,7 +1,7 @@
-#include <Game\YugiohUnit.h>
-#include <Utility\ErrorHandler.h>
-#include <Utility\UpdateUnit.h>
-#include <Game\Cards\CardDisplayUnit.h>
+#include <Game/YugiohUnit.h>
+#include <Utility/ErrorHandler.h>
+#include <Utility/UpdateUnit.h>
+#include <Game/Cards/CardDisplayUnit.h>
 
 #define Y_NULL 0
 namespace Utility{

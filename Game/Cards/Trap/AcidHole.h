@@ -1,7 +1,7 @@
 #pragma once
-#include <Game\Cards\Trap\TrapSource.h>
-#include <Game\WaitUnit.h>
-#include <Game\Cards\CardData.h>
+#include <Game/Cards/Trap/TrapSource.h>
+#include <Game/WaitUnit.h>
+#include <Game/Cards/CardData.h>
 
 namespace Card{
 

@@ -1,11 +1,11 @@
-#include <Game\Cards\Magic\SpellCircle.h>
-#include <Utility\Clock.h>
-#include <Game\Animation\MovementUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Game\Duel\Board.h>
-#include <Utility\SoundUnit.h>
+#include <Game/Cards/Magic/SpellCircle.h>
+#include <Utility/Clock.h>
+#include <Game/Animation/MovementUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Game/Duel/Board.h>
+#include <Utility/SoundUnit.h>
 
 #define ZYUG_GO 0
 #define ZYUG_FADE_CIRCLE 1

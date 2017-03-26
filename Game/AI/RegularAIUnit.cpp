@@ -1,9 +1,9 @@
-#include <Game\AI\RegularAIUnit.h>
-#include <Utility\InputUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\Duel\FusionUnit.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Utility\Clock.h>
+#include <Game/AI/RegularAIUnit.h>
+#include <Utility/InputUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Duel/FusionUnit.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/Clock.h>
 #include <iostream>
 
 namespace AI{
@@ -51,12 +51,12 @@ namespace AI{
 	}
 
 	void RegularAIUnit::decideHandPath(){
-		/*std::cout<<"RegAI::AI hand info\n";
+		/*std::cout<<"RegAI::AI hand info/n";
 		std::cout<<"breakThrough: "<<canBreak<<
-			"\nBest Attack: "<<bestAttack<<
-			"\nHold Him: "<<canHold<<std::endl;
+			"/nBest Attack: "<<bestAttack<<
+			"/nHold Him: "<<canHold<<std::endl;
 		std::cout<<"Their highest atk at "<<theirAtkCard<<
-			"\nTheir highest def at "<<theirDefCard<<std::endl;
+			"/nTheir highest def at "<<theirDefCard<<std::endl;
 		*/
 		if(isFirstTurn()){
 			firstTurnHandPath();
@@ -72,17 +72,17 @@ namespace AI{
 		}
 
 		if(canBreak){
-			//std::cout<<"RegAI::breakthroughHandPath()\n";
+			//std::cout<<"RegAI::breakthroughHandPath()/n";
 			breakThroughHandPath();
 			return;
 		}
 		if(bestAttack){
-			//std::cout<<"RegAI::bestAttackHandPath()\n";
+			//std::cout<<"RegAI::bestAttackHandPath()/n";
 			bestAttackHandPath();
 			return;
 		}
 		if(canHold){
-			//std::cout<<"RegAI::canHoldHandPath()\n";
+			//std::cout<<"RegAI::canHoldHandPath()/n";
 			canHoldHandPath();
 			return;
 		}
@@ -90,7 +90,7 @@ namespace AI{
 	}
 	
 	void RegularAIUnit::firstTurnHandPath(){
-		//std::cout<<"Debug AI: first turn hand path\n";
+		//std::cout<<"Debug AI: first turn hand path/n";
 		for(unsigned int i = 0; i <  5; i++){
 			if(!theBoard.board[i][YUG_BOARD_PLAYER_MAG_ROW].blankCard()){
 				boardMarks[i][YUG_BOARD_PLAYER_MAG_ROW] = YUG_AI_IS_TRAP;
@@ -105,7 +105,7 @@ namespace AI{
 			}
 		}//no enemy monsters
 		if(foundAndPlayedNewStrongestCard()){
-			//std::cout<<"Playing new strongest Card\n";
+			//std::cout<<"Playing new strongest Card/n";
 			return;
 		}
 		if(foundAndPlayedNewStrongestDefense()){
@@ -115,9 +115,9 @@ namespace AI{
 	}
 
 	void RegularAIUnit::iHaveNoCardsHandPath(){
-		//std::cout<<"Debug AI: I have no cards hand path\n";
+		//std::cout<<"Debug AI: I have no cards hand path/n";
 		if(foundAndPlayedNewStrongestCard()){
-			//std::cout<<"Playing new strongest Card\n";
+			//std::cout<<"Playing new strongest Card/n";
 			return;
 		}
 		if(foundAndPlayedNewStrongestDefense()){
@@ -133,16 +133,16 @@ namespace AI{
 	}
 
 	void RegularAIUnit::emptyBoardHandPath(){
-		//std::cout<<"DebugAI: empty board path\n";
+		//std::cout<<"DebugAI: empty board path/n";
 		if(canWin())
 			playStrongestCard();
-		//std::cout<<"debug AI 2b\n";
+		//std::cout<<"debug AI 2b/n";
 		if(myNoOfMonsterCards() > 0){
 			if( enemyHasTraps() || noOfEnemyMagics() <= 2){
-				//std::cout<<"Trying To play harpies\n";
+				//std::cout<<"Trying To play harpies/n";
 				int posi = canPlayHarpies();
 				if(posi != YUG_AI_NO_MARK){
-					//std::cout<<"Playing harpies\n";
+					//std::cout<<"Playing harpies/n";
 					playMagicCard(posi);
 					return;
 				}
@@ -152,12 +152,12 @@ namespace AI{
 	}
 
 	void RegularAIUnit::breakThroughHandPath(){
-		//std::cout<<"DebugAI: breakthrough path\n";
+		//std::cout<<"DebugAI: breakthrough path/n";
 		if(enemyHasTraps() || (noOfEnemyMagics() >= 2) ){
-			//std::cout<<"Trying To play harpies\n";
+			//std::cout<<"Trying To play harpies/n";
 			int posi = canPlayHarpies();
 			if(posi != YUG_AI_NO_MARK){
-				//std::cout<<"Playing harpies\n";
+				//std::cout<<"Playing harpies/n";
 				playMagicCard(posi);
 				return;
 			}
@@ -187,19 +187,19 @@ namespace AI{
 	}
 
 	void RegularAIUnit::bestAttackHandPath(){
-		//std::cout<<"Best attack hand path\n";
+		//std::cout<<"Best attack hand path/n";
 		if(enemyHasTraps() || (noOfEnemyMagics() >= 2) ){
-			//std::cout<<"Trying To play harpies\n";
+			//std::cout<<"Trying To play harpies/n";
 			int posi = canPlayHarpies();
 			if(posi != YUG_AI_NO_MARK){
-				//std::cout<<"Playing harpies\n";
+				//std::cout<<"Playing harpies/n";
 				playMagicCard(posi);
 				return;
 			}
 		}
-		//std::cout<<"\ttry break defense\n";
+		//std::cout<<"/ttry break defense/n";
 		if(foundAndPlayedCardToBreakDefense()){
-			//std::cout<<"Best Attack: break defense\n";
+			//std::cout<<"Best Attack: break defense/n";
 			return;
 		}
 		if(foundAndPlayedAttackMagic()){
@@ -221,14 +221,14 @@ namespace AI{
 			}
 			return;
 		}
-		//std::cout<<"Best attack: default: strongest card\n";
+		//std::cout<<"Best attack: default: strongest card/n";
 		playStrongestCard();
 	}
 
 	void RegularAIUnit::canHoldHandPath(){
-		//std::cout<<"Hold Him Hand Path\n";
+		//std::cout<<"Hold Him Hand Path/n";
 		if(foundAndPlayedAttackMagic()){
-			//std::cout<<"Playing attack magic\n";
+			//std::cout<<"Playing attack magic/n";
 			return;
 		}
 		int dt = hasDefensiveTrap();
@@ -237,7 +237,7 @@ namespace AI{
 			return;
 		}
 		if(foundAndPlayedNewStrongestCard()){
-			//std::cout<<"Playing new strongest Card\n";
+			//std::cout<<"Playing new strongest Card/n";
 			return;
 		}
 		dt = hasField();
@@ -249,15 +249,15 @@ namespace AI{
 	}
 
 	void RegularAIUnit::badPositonHandPath(){
-		//std::cout<<"Bad position hand path\n";
+		//std::cout<<"Bad position hand path/n";
 		if(foundAndPlayedNewStrongestCard()){
 			return;
 		}
-		//std::cout<<"\tCouldnt find new attacker\n";
+		//std::cout<<"/tCouldnt find new attacker/n";
 		if(foundAndPlayedNewStrongestDefense()){
 			return;
 		}
-		//std::cout<<"\tCouldnt find new defender\n";
+		//std::cout<<"/tCouldnt find new defender/n";
 		if(!theirSworded()){
 			int s = hasSwords();
 			if(s != YUG_AI_NO_MARK){

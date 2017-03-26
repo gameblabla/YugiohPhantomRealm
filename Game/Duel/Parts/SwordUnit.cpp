@@ -1,8 +1,8 @@
-#include <Game\Duel\Parts\SwordUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\VectorUnit.h>
-#include <Utility\Clock.h>
-#include <Utility\SoundUnit.h>
+#include <Game/Duel/Parts/SwordUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/VectorUnit.h>
+#include <Utility/Clock.h>
+#include <Utility/SoundUnit.h>
 
 #define YUG_SWORDS_NOT_ACTIVE -1
 #define ZYUG_IDLE 0

@@ -1,5 +1,5 @@
 #pragma once
-#include <GL\glew.h>
+#include <GL/glew.h>
 #include <vector>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>

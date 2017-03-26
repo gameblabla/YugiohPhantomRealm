@@ -1,14 +1,14 @@
-#include <Game\Cards\Magic\DarkHole.h>
+#include <Game/Cards/Magic/DarkHole.h>
 #include <random>
-#include <Utility\Clock.h>
+#include <Utility/Clock.h>
 #define GLM_FORCE_RADIANS
-#include <gtc\matrix_transform.hpp>
-#include <Game\Animation\MovementUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Utility\SoundUnit.h>
+#include <gtc/matrix_transform.hpp>
+#include <Game/Animation/MovementUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/SoundUnit.h>
 
 #define ZYUG_GO 0
 #define ZYUG_SUCK 1

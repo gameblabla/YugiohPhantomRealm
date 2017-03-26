@@ -1,14 +1,14 @@
-#include <Game\Duel\Parts\BattleCursor.h>
-#include <Game\Duel\Board.h>
+#include <Game/Duel/Parts/BattleCursor.h>
+#include <Game/Duel/Board.h>
 #include <iostream>
-#include <gtc\matrix_transform.hpp>
-#include <Utility\TextureLoader.h>
-#include <Utility\StateUnit.h>
-#include <Game\Animation\Camera.h>
-#include <Utility\Clock.h>
-#include <Game\Animation\MovementUnit.h>
+#include <gtc/matrix_transform.hpp>
+#include <Utility/TextureLoader.h>
+#include <Utility/StateUnit.h>
+#include <Game/Animation/Camera.h>
+#include <Utility/Clock.h>
+#include <Game/Animation/MovementUnit.h>
 #include <DefinesAndTypedefs.h>
-#include <Game\VectorUnit.h>
+#include <Game/VectorUnit.h>
 
 namespace Duel{
 

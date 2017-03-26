@@ -1,17 +1,17 @@
-#include <Game\Cards\BigCardRender.h>
-#include <Game\Cards\CardData.h>
+#include <Game/Cards/BigCardRender.h>
+#include <Game/Cards/CardData.h>
 #define GLM_FORCE_RADIANS
-#include <gtc\matrix_transform.hpp>
-#include <Utility\TextureLoader.h>
+#include <gtc/matrix_transform.hpp>
+#include <Utility/TextureLoader.h>
 #include <DefinesAndTypedefs.h>
-#include <Utility\StateUnit.h>
-#include <Game\Animation\Camera.h>
-#include <Utility\TextPrinter.h>
-#include <Utility\Clock.h>
+#include <Utility/StateUnit.h>
+#include <Game/Animation/Camera.h>
+#include <Utility/TextPrinter.h>
+#include <Utility/Clock.h>
 
-#include <Utility\InputUnit.h>
+#include <Utility/InputUnit.h>
 #include <iostream>
-#include <Utility\DebugUnit.h>
+#include <Utility/DebugUnit.h>
 
 #define YUG_CARD_RATIO 1.45333f
 #define YUG_CARD_X 0.5f

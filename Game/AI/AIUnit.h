@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include <Game\Cards\CardData.h>
+#include <Game/Cards/CardData.h>
 
 #define YUG_AI_NO_MARK -2
 #define YUG_AI_CARD_DOWN -3

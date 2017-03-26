@@ -1,16 +1,16 @@
 #pragma once
-#include <GL\glew.h>
+#include <GL/glew.h>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
-#include <Game\Cards\CardData.h>
-#include <Game\Duel\GamePlayer.h>
-#include <Game\Duel\EnemyPlayer.h>
-#include <Game\ModelLoader.h>
-#include <Game\Duel\Parts\FieldWidget.h>
-#include <Game\Duel\Parts\LifepointsWidget.h>
-#include <Game\Duel\Parts\UnderlayWidget.h>
-#include <Game\Duel\Parts\BattleCursor.h>
-#include <Game\Duel\EndUnit.h>
+#include <Game/Cards/CardData.h>
+#include <Game/Duel/GamePlayer.h>
+#include <Game/Duel/EnemyPlayer.h>
+#include <Game/ModelLoader.h>
+#include <Game/Duel/Parts/FieldWidget.h>
+#include <Game/Duel/Parts/LifepointsWidget.h>
+#include <Game/Duel/Parts/UnderlayWidget.h>
+#include <Game/Duel/Parts/BattleCursor.h>
+#include <Game/Duel/EndUnit.h>
 #include <string>
 #define YUG_BOARD_CARDS_PER_ROW 5
 #define YUG_BOARD_CARDS_PER_COL 4

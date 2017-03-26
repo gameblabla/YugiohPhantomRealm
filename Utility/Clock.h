@@ -1,6 +1,6 @@
 #pragma once
-
-#include <Windows.h>//for 
+#include <time.h>
+#define LARGE_INTEGER long long
 
 namespace Utility
 {	//tells compiler that we want to export this class, makes .lib file for our .dll
@@ -8,7 +8,8 @@ namespace Utility
 	{
 		LARGE_INTEGER timeFrequency;
 		LARGE_INTEGER lastStartTime;
-		LARGE_INTEGER deltaLastLap;
+		struct timespec deltaLastLap;
+		//LARGE_INTEGER deltaLastLap;
 		float deltaTime;//time delta in seconds, but shouldn't hold more then a second
 	public:
 		bool initialize();

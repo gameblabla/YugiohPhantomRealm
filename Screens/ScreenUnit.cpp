@@ -1,7 +1,7 @@
 #include <iostream>
-#include <Screens\ScreenUnit.h>
-#include <Game\Cursor.h>
-#include <Game\Animation\FadeUnit.h>
+#include <Screens/ScreenUnit.h>
+#include <Game/Cursor.h>
+#include <Game/Animation/FadeUnit.h>
 
 namespace Screen{
 

@@ -1,5 +1,5 @@
-#include <Game\Cards\Magic\BlankMagic.h>
-#include <Game\Cards\Magic\MagicUnit.h>
+#include <Game/Cards/Magic/BlankMagic.h>
+#include <Game/Cards/Magic/MagicUnit.h>
 
 namespace Card{
 

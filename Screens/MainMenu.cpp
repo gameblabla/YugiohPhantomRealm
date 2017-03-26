@@ -1,16 +1,16 @@
 #include <iostream>
-#include <Utility\InputUnit.h>
-#include <Screens\MainMenu.h>
+#include <Utility/InputUnit.h>
+#include <Screens/MainMenu.h>
 #include <DefinesAndTypedefs.h>
-#include <Screens\OptionsScreen.h>
-#include <Screens\NameScreen.h>
-#include <Screens\ScreenUnit.h>
-#include <Screens\ShopScreen.h>
-#include <Game\PlayerData.h>
-#include <Screens\StoryScene.h>
-#include <Utility\SoundUnit.h>
+#include <Screens/OptionsScreen.h>
+#include <Screens/NameScreen.h>
+#include <Screens/ScreenUnit.h>
+#include <Screens/ShopScreen.h>
+#include <Game/PlayerData.h>
+#include <Screens/StoryScene.h>
+#include <Utility/SoundUnit.h>
 
-//#include <Utility\ConfigUnit.h>
+//#include <Utility/ConfigUnit.h>
 #define ZYUG_CH_IDLE 0
 #define ZYUG_CH_START 1
 #define ZYUG_CH_LOAD 2

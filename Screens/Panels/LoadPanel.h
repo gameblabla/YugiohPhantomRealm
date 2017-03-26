@@ -1,7 +1,9 @@
 #pragma once
-#include <Game\ModelLoader.h>
-#include <Game\YugiohUnit.h>
-#include <Game\WaitUnit.h>
+#include <string>
+
+#include <Game/ModelLoader.h>
+#include <Game/YugiohUnit.h>
+#include <Game/WaitUnit.h>
 #define YUG_LOAD_PANEL_EXT_IDLE 0
 #define YUG_LOAD_PANEL_EXT_WORKING 1
 #define YUG_LOAD_PANEL_EXT_SUCCESS 2

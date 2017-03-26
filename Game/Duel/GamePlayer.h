@@ -1,10 +1,10 @@
 #pragma once
 #include <vector>
-#include <Game\YugiohUnit.h>
-#include <Game\Cards\CardData.h>
-#include <Game\ModelLoader.h>
-#include <Game\Duel\Deck.h>
-#include <Game\Duel\markingStruct.h>
+#include <Game/YugiohUnit.h>
+#include <Game/Cards/CardData.h>
+#include <Game/ModelLoader.h>
+#include <Game/Duel/Deck.h>
+#include <Game/Duel/markingStruct.h>
 
 #define YUG_GAME_PLAYER_PLAYER 0
 #define YUG_GAME_PLAYER_ENEMY 1

@@ -1,10 +1,10 @@
-#include <Game\Cards\Trap\House.h>
-#include <Game\Cards\Trap\TrapUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Utility\Clock.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Utility\SoundUnit.h>
+#include <Game/Cards/Trap/House.h>
+#include <Game/Cards/Trap/TrapUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/Clock.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Utility/SoundUnit.h>
 
 #define ZYUG_GO 0
 #define ZYUG_CR 1

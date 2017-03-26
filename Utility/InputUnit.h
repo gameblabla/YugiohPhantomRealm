@@ -1,5 +1,5 @@
 #pragma once
-#include <Game\WaitUnit.h>
+#include <Game/WaitUnit.h>
 
 #define YUG_KEY_UP 0
 #define YUG_KEY_DOWN 1

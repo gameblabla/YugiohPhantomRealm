@@ -1,6 +1,6 @@
-#include <Game\Cards\Trap\BlankTrap.h>
-#include <Game\Cards\Trap\TrapUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
+#include <Game/Cards/Trap/BlankTrap.h>
+#include <Game/Cards/Trap/TrapUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
 
 namespace Card{
 

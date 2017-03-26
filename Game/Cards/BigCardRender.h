@@ -1,8 +1,8 @@
 #pragma once
-#include <GL\glew.h>
+#include <GL/glew.h>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
-#include <Game\Cards\CardRender.h>
+#include <Game/Cards/CardRender.h>
 
 #define YUG_BIG_CARD_EMPHASIS_ATK 1
 #define YUG_BIG_CARD_EMPHASIS_DEF 2

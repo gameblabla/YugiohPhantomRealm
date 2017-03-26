@@ -1,6 +1,6 @@
-#include <Game\Duel\EnemyPlayer.h>
-#include <Game\EnemyData.h>
-#include <Utility\InputUnit.h>
+#include <Game/Duel/EnemyPlayer.h>
+#include <Game/EnemyData.h>
+#include <Utility/InputUnit.h>
 #include <iostream>
 
 namespace Duel{

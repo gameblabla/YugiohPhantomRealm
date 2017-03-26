@@ -1,16 +1,16 @@
 //#include "windows.h"
 //#include "psapi.h"
 
-#include <Game\ModelLoader.h>
-#include <gtc\matrix_transform.hpp>
-#include <gtx\transform.hpp>
-#include <gtc\quaternion.hpp>
-#include <Utility\TextureLoader.h>
-#include <Utility\StateUnit.h>
-#include <Game\Animation\Camera.h>
-#include <Utility\DebugUnit.h>
-#include <Utility\ErrorHandler.h>
-#include <Utility\Clock.h>
+#include <Game/ModelLoader.h>
+#include <gtc/matrix_transform.hpp>
+#include <gtx/transform.hpp>
+#include <gtc/quaternion.hpp>
+#include <Utility/TextureLoader.h>
+#include <Utility/StateUnit.h>
+#include <Game/Animation/Camera.h>
+#include <Utility/DebugUnit.h>
+#include <Utility/ErrorHandler.h>
+#include <Utility/Clock.h>
 #include <iostream>
 
 namespace{

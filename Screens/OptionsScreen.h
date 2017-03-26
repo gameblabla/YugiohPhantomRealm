@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include <Screens\BaseScreen.h>
-#include <Game\ModelLoader.h>
+#include <Screens/BaseScreen.h>
+#include <Game/ModelLoader.h>
 
 namespace Screen{
 

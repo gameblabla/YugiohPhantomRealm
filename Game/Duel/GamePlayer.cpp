@@ -1,25 +1,25 @@
-#include <Game\Duel\GamePlayer.h>
-#include <Game\PlayerData.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Game\Animation\Camera.h>
-#include <Utility\BlankUnit.h>
-#include <Utility\Clock.h>
-#include <Game\Duel\Board.h>
-#include <Game\Cursor.h>
-#include <Utility\InputUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Game\Duel\FusionUnit.h>
-#include <Utility\StateUnit.h>
-#include <Game\Cards\CardDisplayUnit.h>
-#include <Game\Duel\PositionUnit.h>
-#include <Game\EnemyData.h>
-#include <gtc\matrix_transform.hpp>
+#include <Game/Duel/GamePlayer.h>
+#include <Game/PlayerData.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Game/Animation/Camera.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/Clock.h>
+#include <Game/Duel/Board.h>
+#include <Game/Cursor.h>
+#include <Utility/InputUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Game/Duel/FusionUnit.h>
+#include <Utility/StateUnit.h>
+#include <Game/Cards/CardDisplayUnit.h>
+#include <Game/Duel/PositionUnit.h>
+#include <Game/EnemyData.h>
+#include <gtc/matrix_transform.hpp>
 #include <iostream>
-#include <Game\VectorUnit.h>
-#include <Game\Animation\MovementUnit.h>
-#include <Utility\SoundUnit.h>
+#include <Game/VectorUnit.h>
+#include <Game/Animation/MovementUnit.h>
+#include <Utility/SoundUnit.h>
 
-#include <Game\Animation\ParticlesUnit.h>
+#include <Game/Animation/ParticlesUnit.h>
 
 namespace Duel{
 

@@ -1,14 +1,14 @@
 #include <iostream>
 
-#include <Utility\UpdateUnit.h>
-#include <Utility\BlankUnit.h>
-#include <Utility\StateUnit.h>
-#include <Base\RenderUnit.h>
+#include <Utility/UpdateUnit.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/StateUnit.h>
+#include <Base/RenderUnit.h>
 
-#include <Game\Animation\FadeUnit.h>
-#include <Screens\BaseScreen.h>
-#include <Screens\ScreenUnit.h>
-#include <Screens\Trunk.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Screens/BaseScreen.h>
+#include <Screens/ScreenUnit.h>
+#include <Screens/Trunk.h>
 
 namespace Screen{
 
@@ -31,7 +31,7 @@ namespace Screen{
 
 	void BaseScreen::refreshScreenUnit(){
 		if(screenUnit.currentScreen != 0 && screenUnit.currentScreen != &trunkUnit){
-			//std::cout<<"BaseScreen: Deleting old screen\n";
+			//std::cout<<"BaseScreen: Deleting old screen/n";
 			delete screenUnit.currentScreen;
 			screenUnit.currentScreen = 0;
 		}

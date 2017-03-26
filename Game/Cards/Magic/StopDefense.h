@@ -1,10 +1,10 @@
 #pragma once
 #include <vector>
-#include <Game\Cards\Magic\MagicSource.h>
-#include <Utility\Clock.h>
-#include <Game\Cards\CardData.h>
-#include <Game\WaitUnit.h>
-#include <Game\ModelLoader.h>
+#include <Game/Cards/Magic/MagicSource.h>
+#include <Utility/Clock.h>
+#include <Game/Cards/CardData.h>
+#include <Game/WaitUnit.h>
+#include <Game/ModelLoader.h>
 
 namespace Card{
 

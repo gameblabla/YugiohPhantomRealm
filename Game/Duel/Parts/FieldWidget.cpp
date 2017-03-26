@@ -1,10 +1,10 @@
-#include <Game\Duel\Parts\FieldWidget.h>
-#include <Utility\Clock.h>
-#include <Utility\TextPrinter.h>
-#include <Utility\TextureLoader.h>
-#include <Game\VectorUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\Animation\MovementUnit.h>
+#include <Game/Duel/Parts/FieldWidget.h>
+#include <Utility/Clock.h>
+#include <Utility/TextPrinter.h>
+#include <Utility/TextureLoader.h>
+#include <Game/VectorUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Animation/MovementUnit.h>
 
 #define ZYUG_NO_OF_FIELDS 1
 
@@ -28,7 +28,7 @@ namespace Duel{
 		fieldName.push_back(' ');
 		fieldName.push_back('-');
 		fieldName.push_back(' ');
-		fieldName.push_back('\0');
+		fieldName.push_back('/0');
 		boostTypes.clear();
 		boostTypes.push_back(0);
 		weakenTypes.clear();

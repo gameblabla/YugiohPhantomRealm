@@ -1,9 +1,9 @@
-#include <Game\AI\DefensiveAIUnit.h>
-#include <Utility\InputUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\Duel\FusionUnit.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Utility\Clock.h>
+#include <Game/AI/DefensiveAIUnit.h>
+#include <Utility/InputUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Duel/FusionUnit.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/Clock.h>
 #include <iostream>
 
 namespace AI{
@@ -51,10 +51,10 @@ namespace AI{
 
 	void DefensiveAIUnit::decideHandPath(){
 		/*std::cout<<"breakThrough: "<<canBreak<<
-			"\nBest Attack: "<<bestAttack<<
-			"\nHold Him: "<<canHold<<std::endl;
+			"/nBest Attack: "<<bestAttack<<
+			"/nHold Him: "<<canHold<<std::endl;
 		std::cout<<"Their highest atk at "<<theirAtkCard<<
-			"\nTheir highest def at "<<theirDefCard<<std::endl;
+			"/nTheir highest def at "<<theirDefCard<<std::endl;
 		*/
 		if(isFirstTurn()){
 			firstTurnHandPath();
@@ -85,7 +85,7 @@ namespace AI{
 	}
 	
 	void DefensiveAIUnit::firstTurnHandPath(){
-		//std::cout<<"Debug AI: first turn hand path\n";
+		//std::cout<<"Debug AI: first turn hand path/n";
 		for(unsigned int i = 0; i <  5; i++){
 			if(!theBoard.board[i][YUG_BOARD_PLAYER_MAG_ROW].blankCard()){
 				boardMarks[i][YUG_BOARD_PLAYER_MAG_ROW] = YUG_AI_IS_TRAP;
@@ -103,12 +103,12 @@ namespace AI{
 	}
 
 	void DefensiveAIUnit::iHaveNoCardsHandPath(){
-		//std::cout<<"Debug AI: I have no cards hand path\n";
+		//std::cout<<"Debug AI: I have no cards hand path/n";
 		if(foundAndPlayedNewStrongestDefense()){
 			return;
 		}
 		if(foundAndPlayedNewStrongestCard()){
-			//std::cout<<"Playing new strongest Card\n";
+			//std::cout<<"Playing new strongest Card/n";
 			return;
 		}
 		if(opponentHasStrongField()){
@@ -121,16 +121,16 @@ namespace AI{
 	}
 
 	void DefensiveAIUnit::emptyBoardHandPath(){
-		//std::cout<<"DebugAI: empty board path\n";
+		//std::cout<<"DebugAI: empty board path/n";
 		if(canWin())
 			playStrongestCard();
-		//std::cout<<"debug AI 2b\n";
+		//std::cout<<"debug AI 2b/n";
 		if(myNoOfMonsterCards() > 0){
 			if( enemyHasTraps() || noOfEnemyMagics() <= 2){
-				//std::cout<<"Trying To play harpies\n";
+				//std::cout<<"Trying To play harpies/n";
 				int posi = canPlayHarpies();
 				if(posi != YUG_AI_NO_MARK){
-					//std::cout<<"Playing harpies\n";
+					//std::cout<<"Playing harpies/n";
 					playMagicCard(posi);
 					return;
 				}
@@ -140,7 +140,7 @@ namespace AI{
 	}
 
 	void DefensiveAIUnit::breakThroughHandPath(){
-		//std::cout<<"DebugAI: breakthrough path\n";
+		//std::cout<<"DebugAI: breakthrough path/n";
 		bool cardFaceup = false;
 		int posi = hasSupportMagics(cardFaceup);
 		if(posi != YUG_AI_NO_MARK){
@@ -153,10 +153,10 @@ namespace AI{
 		}
 
 		if(enemyHasTraps() || (noOfEnemyMagics() >= 2) ){
-			//std::cout<<"Trying To play harpies\n";
+			//std::cout<<"Trying To play harpies/n";
 			int posi = canPlayHarpies();
 			if(posi != YUG_AI_NO_MARK){
-				//std::cout<<"Playing harpies\n";
+				//std::cout<<"Playing harpies/n";
 				playMagicCard(posi);
 				return;
 			}
@@ -176,7 +176,7 @@ namespace AI{
 	}
 
 	void DefensiveAIUnit::bestAttackHandPath(){
-		//std::cout<<"Best attack hand path\n";
+		//std::cout<<"Best attack hand path/n";
 		bool cardFaceup = false;
 		int posi = hasSupportMagics(cardFaceup);
 		if(posi != YUG_AI_NO_MARK){
@@ -189,17 +189,17 @@ namespace AI{
 		}
 
 		if(enemyHasTraps() || (noOfEnemyMagics() >= 2) ){
-			//std::cout<<"Trying To play harpies\n";
+			//std::cout<<"Trying To play harpies/n";
 			int posi = canPlayHarpies();
 			if(posi != YUG_AI_NO_MARK){
-				//std::cout<<"Playing harpies\n";
+				//std::cout<<"Playing harpies/n";
 				playMagicCard(posi);
 				return;
 			}
 		}
-		//std::cout<<"\ttry break defense\n";
+		//std::cout<<"/ttry break defense/n";
 		if(foundAndPlayedCardToBreakDefense()){
-			//std::cout<<"Best Attack: break defense\n";
+			//std::cout<<"Best Attack: break defense/n";
 			return;
 		}
 		if(foundAndPlayedAttackMagic()){
@@ -211,12 +211,12 @@ namespace AI{
 			playCard(dt);
 			return;
 		}
-		//std::cout<<"Best attack: default: strongest card\n";
+		//std::cout<<"Best attack: default: strongest card/n";
 		playStrongestCard();
 	}
 
 	void DefensiveAIUnit::canHoldHandPath(){
-		//std::cout<<"Hold Him Hand Path\n";
+		//std::cout<<"Hold Him Hand Path/n";
 		bool cardFaceup = false;
 		int posi = hasSupportMagics(cardFaceup);
 		if(posi != YUG_AI_NO_MARK){
@@ -229,7 +229,7 @@ namespace AI{
 		}
 
 		if(foundAndPlayedAttackMagic()){
-			//std::cout<<"Playing attack magic\n";
+			//std::cout<<"Playing attack magic/n";
 			return;
 		}
 		int dt = hasDefensiveTrap();
@@ -238,22 +238,22 @@ namespace AI{
 			return;
 		}
 		if(foundAndPlayedNewStrongestCard()){
-			//std::cout<<"Playing new strongest Card\n";
+			//std::cout<<"Playing new strongest Card/n";
 			return;
 		}
 		playStrongestCard();
 	}
 
 	void DefensiveAIUnit::badPositonHandPath(){
-		//std::cout<<"Bad position hand path\n";
+		//std::cout<<"Bad position hand path/n";
 		if(foundAndPlayedNewStrongestCard()){
 			return;
 		}
-		//std::cout<<"\tCouldnt find new attacker\n";
+		//std::cout<<"/tCouldnt find new attacker/n";
 		if(foundAndPlayedNewStrongestDefense()){
 			return;
 		}
-		//std::cout<<"\tCouldnt find new defender\n";
+		//std::cout<<"/tCouldnt find new defender/n";
 		if(!theirSworded()){
 			int s = hasSwords();
 			if(s != YUG_AI_NO_MARK){
@@ -268,12 +268,12 @@ namespace AI{
 	}
 
 	void DefensiveAIUnit::fieldRecursion(){
-		//std::cout<<"battle AI: start field recursion\n";
+		//std::cout<<"battle AI: start field recursion/n";
 		recursionBattleSetup();
-		//std::cout<<"Can break: "<<canBreak<<"\nBest Attack: "<<bestAttack
-		//	<<"\nCan Hold: "<<canHold<<std::endl;
+		//std::cout<<"Can break: "<<canBreak<<"/nBest Attack: "<<bestAttack
+		//	<<"/nCan Hold: "<<canHold<<std::endl;
 		if(allCardsDecided()){//end turn
-			//std::cout<<"\tAll cards decided\n";
+			//std::cout<<"/tAll cards decided/n";
 			moveList.push_back(YUG_KEY_START);
 			return;
 		}
@@ -307,7 +307,7 @@ namespace AI{
 		
 		if(noOfCardsIn(YUG_BOARD_PLAYER_MON_ROW)==0){//empty board
 			for(unsigned int j = 0; j < myCards.size(); j++){
-				//std::cout<<"\tDirect attack : "<<j<<std::endl;
+				//std::cout<<"/tDirect attack : "<<j<<std::endl;
 				if(thinkAboutAttack(myCards[j],YUG_AI_NO_MARK)){
 					return;
 				}
@@ -317,7 +317,7 @@ namespace AI{
 			//std::cout<<"-"<<theBoard.board[theirCards[i]][YUG_BOARD_PLAYER_MON_ROW].name.data()<<std::endl;
 			for(unsigned int j = 0; j < myCards.size(); j++){
 				//std::cout<<"--"<<theBoard.board[myCards[j]][YUG_BOARD_ENEMY_MON_ROW].name.data()<<std::endl;
-				//std::cout<<"\tMonster attack - their: "<<theirCards[i]<<" my: "<<myCards[j]<<std::endl;
+				//std::cout<<"/tMonster attack - their: "<<theirCards[i]<<" my: "<<myCards[j]<<std::endl;
 				if(thinkAboutAttack(myCards[j],theirCards[i])){
 					return;
 				}
@@ -325,17 +325,17 @@ namespace AI{
 		}
 		//no more attacks
 		for(unsigned int j = 0; j < myCards.size(); j++){
-			//std::cout<<"\tBest Position "<<myCards[j]<<std::endl;
+			//std::cout<<"/tBest Position "<<myCards[j]<<std::endl;
 			if(putInBestPosition( myCards[j] )){
 				return;
 			}
 		}
-		//std::cout<<"\t Field recursion drop through\n";
+		//std::cout<<"/t Field recursion drop through/n";
 		moveList.push_back(YUG_KEY_START);
 	}
 
 		bool DefensiveAIUnit::defenseOnlyMon(int myCol){
-		//std::cout<<"\t\t\tDefenseOnly Monster\n";
+		//std::cout<<"/t/t/tDefenseOnly Monster/n";
 		Card::CardData& c = theBoard.board[myCol][YUG_BOARD_ENEMY_MON_ROW];
 		if (c.attack < (c.defense-500))
 			return true;

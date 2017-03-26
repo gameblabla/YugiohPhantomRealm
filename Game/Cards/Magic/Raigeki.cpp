@@ -1,12 +1,12 @@
-#include <Game\Cards\Magic\Raigeki.h>
-#include <Utility\Clock.h>
-#include <Utility\StateUnit.h>
-#include <Game\Animation\Camera.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Utility\SoundUnit.h>
-#include <Game\Animation\FadeUnit.h>
+#include <Game/Cards/Magic/Raigeki.h>
+#include <Utility/Clock.h>
+#include <Utility/StateUnit.h>
+#include <Game/Animation/Camera.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/SoundUnit.h>
+#include <Game/Animation/FadeUnit.h>
 
 #define ZYUG_GO 0
 #define ZYUG_FALL 1

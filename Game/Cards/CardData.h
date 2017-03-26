@@ -1,9 +1,9 @@
 #pragma once
-#include <Game\Cards\BigCardRender.h>//contains glew.h
-#include <Game\Cards\SmallCardRender.h>
+#include <Game/Cards/BigCardRender.h>//contains glew.h
+#include <Game/Cards/SmallCardRender.h>
 #include <vector>
 #include <DefinesAndTypedefs.h>
-#include <Game\YugiohUnit.h>
+#include <Game/YugiohUnit.h>
 
 #define YUG_CARD_NO_CURRENT_CON -2
 #define YUG_CARD_CH_IDLE 0

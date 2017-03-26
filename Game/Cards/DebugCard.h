@@ -1,7 +1,7 @@
 #pragma once
-#include <GL\glew.h>
+#include <GL/glew.h>
 
-#include <Game\YugiohUnit.h>
+#include <Game/YugiohUnit.h>
 
 class DebugCard : public Game::YugiohUnit
 {

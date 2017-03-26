@@ -1,12 +1,12 @@
-#include <Game\Cards\Trap\AcidHole.h>
-#include <Game\Cards\Trap\TrapUnit.h>
-#include <Game\Animation\FadeUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\VectorUnit.h>
-#include <Game\Animation\MovementUnit.h>
-#include <Utility\SoundUnit.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Game\Cards\CardCreatorUnit.h>
+#include <Game/Cards/Trap/AcidHole.h>
+#include <Game/Cards/Trap/TrapUnit.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/VectorUnit.h>
+#include <Game/Animation/MovementUnit.h>
+#include <Utility/SoundUnit.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Game/Cards/CardCreatorUnit.h>
 #include <iostream>
 
 #define ZYUG_IDLE 0

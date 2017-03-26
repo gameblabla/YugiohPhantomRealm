@@ -1,13 +1,13 @@
-#include <Game\Duel\FusionUnit.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Utility\Clock.h>
-#include <Game\Duel\Board.h>
+#include <Game/Duel/FusionUnit.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/Clock.h>
+#include <Game/Duel/Board.h>
 #include <iostream>
-#include <Utility\BlankUnit.h>
-#include <Utility\StateUnit.h>
-#include <Game\Duel\PositionUnit.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/StateUnit.h>
+#include <Game/Duel/PositionUnit.h>
 #include <fstream>
-#include <Game\VectorUnit.h>
+#include <Game/VectorUnit.h>
 #define YUG_FUS_WAIT 0.6f
 namespace Duel{
 
@@ -31,13 +31,13 @@ namespace Duel{
 
 	void FusionUnit::render(){
 		for(unsigned int i = 0; i<cards.size(); i++){
-			//std::cout<<"fusion Render 1\n";
+			//std::cout<<"fusion Render 1/n";
 			if(!cards[i].blankCard()){
 				cards[i].smallRender.render();
 			}
 		}
 		if(renderNewCard){
-			//std::cout<<"FUS: is render new\n";
+			//std::cout<<"FUS: is render new/n";
 			newCard.bigRender.render();
 			newCard.smallRender.render();
 		}
@@ -64,30 +64,30 @@ namespace Duel{
 		centreGlow.update();
 		massiveCard.update();
 		if(!isWaiting){
-			//std::cout<<"Fusion non-wait update\n";
+			//std::cout<<"Fusion non-wait update/n";
 			if(chain == YUG_FUS_CH_POSITIONING){
-				//std::cout<<"Fusion pos update\n";
+				//std::cout<<"Fusion pos update/n";
 				chain = YUG_FUS_CH_FUSEDOWN;
 				wasDowning = true;
 				outsideIndex = 0;
 				wait(YUG_FUS_WAIT);
 			}else if(chain == YUG_FUS_CH_FUSEDOWN){
-				//std::cout<<"Fusion down update\n";
+				//std::cout<<"Fusion down update/n";
 				fuseDowns();
 			}else if(chain == YUG_FUS_CH_FUSEUP){
-				//std::cout<<"Fusion up update\n";
+				//std::cout<<"Fusion up update/n";
 				fuseUps();
 			}else if(chain == YUG_FUS_CH_SECONDANIMATION){
-				//std::cout<<"Fusion 2nd ani update\n";
+				//std::cout<<"Fusion 2nd ani update/n";
 				secondaryAnimationUpdate();
 			}else if(chain == YUG_FUS_CH_FINALFUSEANIMATION){
-				//std::cout<<"Fusion final ani update\n";
+				//std::cout<<"Fusion final ani update/n";
 				finalFusePart();
 			}else if(chain == YUG_FUS_CH_PASSOVER){
 				cardPassover();
 				
 			}else if(chain == YUG_FUS_CH_FINISHED){
-				//std::cout<<"Fusion fin update\n";
+				//std::cout<<"Fusion fin update/n";
 			}else{
 				animationUpdates();
 			}
@@ -99,7 +99,7 @@ namespace Duel{
 
 	void FusionUnit::wait(float duration){
 		//if(isWaiting)
-		//	std::cout<<"Game Player: one wait time overriding another\n";
+		//	std::cout<<"Game Player: one wait time overriding another/n";
 		totalWait = duration;
 		currentlyWaited = 0;
 		isWaiting = true;
@@ -142,11 +142,11 @@ namespace Duel{
 						p->fusionMarks[i].position = 0;
 						p->fusionMarks[i].upDown = YUG_MARKINGS_MIDDLE;
 
-						//std::cout<<"Fusion : new Card\n";
-						//std::cout<<cards[cards.size()-1].name.data()<<"\n";
+						//std::cout<<"Fusion : new Card/n";
+						//std::cout<<cards[cards.size()-1].name.data()<<"/n";
 						//std::cout<<markings[markings.size()-1].position<<" "
 						//	<<markings[markings.size()-1].upDown<<std::endl;
-						//std::cout<<"\n|"<<cards[cards.size()-1].smallRender.parentCard->name.data()<<"|\n"<<std::endl;
+						//std::cout<<"/n|"<<cards[cards.size()-1].smallRender.parentCard->name.data()<<"|/n"<<std::endl;
 
 
 					}
@@ -162,7 +162,7 @@ namespace Duel{
 		blankUnit.holdInputForNow();
 		wait(0.5f);
 		chain = YUG_FUS_CH_POSITIONING;
-		//std::cout<<"finished hand function\n"<<cards.size()<<std::endl;
+		//std::cout<<"finished hand function/n"<<cards.size()<<std::endl;
 	}
 
 	void FusionUnit::interpolateCards(){
@@ -176,7 +176,7 @@ namespace Duel{
 	}
 
 	void FusionUnit::fuseDowns(){
-		//std::cout<<"fuse: FuseDown called out = "<<outsideIndex<<" \n";
+		//std::cout<<"fuse: FuseDown called out = "<<outsideIndex<<" /n";
 		if(outsideIndex < (cards.size()-1)){
 			downRecursion(outsideIndex+1);
 			outsideIndex++;
@@ -184,10 +184,10 @@ namespace Duel{
 				//if(!cards[t].blankCard())
 					//std::cout<<t<<cards[t].name.data()<<std::endl;
 				//else
-					//std::cout<<t<<" blank\n";
+					//std::cout<<t<<" blank/n";
 			}
 		}else{//down finished
-			//std::cout<<"fuse: FuseDown finished \n";
+			//std::cout<<"fuse: FuseDown finished /n";
 			outsideIndex = 0;
 			chain = YUG_FUS_CH_FUSEUP;
 			wasDowning = false;
@@ -199,25 +199,25 @@ namespace Duel{
 		//std::cout<<"downRec: out "<<outsideIndex<<" in "<<insideIndex<<std::endl;
 		if(markings[outsideIndex].upDown == YUG_MARKINGS_UP ||
 			cards[outsideIndex].blankCard()){
-			//std::cout<<"fuse down: out blank or an up card\n";
+			//std::cout<<"fuse down: out blank or an up card/n";
 			return;
 		}
 		if(markings[outsideIndex].upDown == YUG_MARKINGS_DOWN &&
 			cards[outsideIndex].blankCard()){
-			//std::cout<<"fuse down: out down but in blank\n";
+			//std::cout<<"fuse down: out down but in blank/n";
 			if(insideIndex+1 < cards.size()){
 				downRecursion(insideIndex+1);
 			}
 		}
 		if(markings[outsideIndex].upDown == YUG_MARKINGS_DOWN && 
 			markings[insideIndex].upDown == YUG_MARKINGS_UP){
-			//std::cout<<"fuse down: out down but in up\n";
+			//std::cout<<"fuse down: out down but in up/n";
 			markings[outsideIndex].upDown = YUG_MARKINGS_UP;
 			return;
 		}
 		if(markings[outsideIndex].upDown == YUG_MARKINGS_DOWN &&
 			markings[insideIndex].upDown == YUG_MARKINGS_DOWN){
-				//std::cout<<"fuse down: fusing pri = "<<outsideIndex<<" sec= "<<insideIndex<<"\n";
+				//std::cout<<"fuse down: fusing pri = "<<outsideIndex<<" sec= "<<insideIndex<<"/n";
 				priCard = outsideIndex;
 				secCard = insideIndex;
 				newCard = tryFusion();
@@ -245,7 +245,7 @@ namespace Duel{
 	}
 
 	void FusionUnit::fuseUps(){
-		//std::cout<<"fuse: Fuseup called out = "<<outsideIndex<<" \n";
+		//std::cout<<"fuse: Fuseup called out = "<<outsideIndex<<" /n";
 		if(outsideIndex < (cards.size()-1)){
 			upRecursion(outsideIndex+1);
 			outsideIndex++;
@@ -253,10 +253,10 @@ namespace Duel{
 				//if(!cards[t].blankCard())
 					//std::cout<<t<<cards[t].name.data()<<std::endl;
 				//else
-					//std::cout<<t<<" blank\n";
+					//std::cout<<t<<" blank/n";
 			}
 		}else{//down finished
-			//std::cout<<"fuse: Fuseup finished \n";
+			//std::cout<<"fuse: Fuseup finished /n";
 			outsideIndex = 0;
 			chain = YUG_FUS_CH_PASSOVER;
 			wait(YUG_FUS_WAIT);
@@ -265,17 +265,17 @@ namespace Duel{
 
 	void FusionUnit::upRecursion(int insideIndex){
 		if(cards[outsideIndex].blankCard()){
-			//std::cout<<"Fuse up, out card is null\n";
+			//std::cout<<"Fuse up, out card is null/n";
 			return;
 		}
 		if(cards[insideIndex].blankCard()){
-			//std::cout<<"Fuse up, in card is null\n";
+			//std::cout<<"Fuse up, in card is null/n";
 			if(insideIndex+1 < cards.size()){
 			upRecursion( insideIndex+1);
 			}
 			return;
 		}
-		//std::cout<<"fuse up: fusing pri = "<<outsideIndex<<" sec= "<<insideIndex<<"\n";
+		//std::cout<<"fuse up: fusing pri = "<<outsideIndex<<" sec= "<<insideIndex<<"/n";
 		priCard = outsideIndex;
 		secCard = insideIndex;
 		if(regularFusion()){
@@ -394,7 +394,7 @@ namespace Duel{
 		}else{
 			return cardCreator.blankCard();
 		}
-		//std::cout<<"Reading fusion data done\n";
+		//std::cout<<"Reading fusion data done/n";
 	}
 
 
@@ -402,19 +402,19 @@ namespace Duel{
 		int output = indiviualFusion(priCard, secCard);
 		if(output != 0)
 			return output;
-		//std::cout<<"completed first inidiv fuse read\n";
+		//std::cout<<"completed first inidiv fuse read/n";
 		output = indiviualFusion(secCard, priCard);
 		if(output != 0)
 			return output;
-		//std::cout<<"completed second inidiv fuse read\n";
+		//std::cout<<"completed second inidiv fuse read/n";
 		output = generalFusion(priCard, secCard);
 		if(output != 0)
 			return output;
-		//std::cout<<"completed first general fuse read\n";
+		//std::cout<<"completed first general fuse read/n";
 		/*output = generalFusion(secCard, priCard);
 		if(output != 0)
 			return output;*/
-		//std::cout<<"completed second general fuse read\n";
+		//std::cout<<"completed second general fuse read/n";
 		return 0;
 	}
 
@@ -467,7 +467,7 @@ namespace Duel{
 	}
 
 	/*int FusionUnit::generalFusion(int pri, int sec){
-		//std::cout<<"into general fusion\n";
+		//std::cout<<"into general fusion/n";
 		for(unsigned int priFuseIndex = 0; priFuseIndex < cards[pri].fusionTypes.size(); priFuseIndex++)
 		{
 			for(unsigned int secFuseIndex = 0; secFuseIndex < cards[sec].fusionTypes.size(); secFuseIndex++)
@@ -697,7 +697,7 @@ namespace Duel{
 	}
 
 	/*int FusionUnit::generalFusion(Card::CardData& c1, Card::CardData& c2){
-		//std::cout<<"into general fusion\n";
+		//std::cout<<"into general fusion/n";
 		for(unsigned int priFuseIndex = 0; priFuseIndex < c1.fusionTypes.size(); priFuseIndex++)
 		{
 			for(unsigned int secFuseIndex = 0; secFuseIndex < c2.fusionTypes.size(); secFuseIndex++)
@@ -784,12 +784,12 @@ namespace Duel{
 			if(indexCount >= c2.fusionTypes.size())
 				return leftOver(c1, c2, indexCount);
 			for(int n = 0; n <= indexCount-1; n++){//have used fusion list catch up to new index
-				//std::cout<<"FusionUnit::tryFuse2: first for: n= :"<<n<<"looking at: ("<<n<<", "<<indexCount<<")\n";
+				//std::cout<<"FusionUnit::tryFuse2: first for: n= :"<<n<<"looking at: ("<<n<<", "<<indexCount<<")/n";
 				int out = tryFuse3(n, indexCount, c1, c2);
 				if(out!=0) return out;
 			}
 			for(int n = 0; n <= indexCount; n++){//have new c1 fusion part try with up-to-index c2 fusion list parts
-				//std::cout<<"FusionUnit::tryFuse2: second for: n= :"<<n<<"looking at: ("<<indexCount<<", "<<n<<")\n";
+				//std::cout<<"FusionUnit::tryFuse2: second for: n= :"<<n<<"looking at: ("<<indexCount<<", "<<n<<")/n";
 				int out = tryFuse3(indexCount, n, c1, c2);
 				if(out!=0) return out;
 			}
@@ -819,7 +819,7 @@ namespace Duel{
 	int FusionUnit::leftOver(Card::CardData& longCard, Card::CardData& shortCard, int indexCount){
 		for(unsigned int index = indexCount; index < longCard.fusionTypes.size(); index++){
 			for(unsigned int index2 = 0; index2 < shortCard.fusionTypes.size(); index2++){
-				//std::cout<<"FusionUnit::leftover: looking at: ("<<index<<", "<<index2<<")\n";
+				//std::cout<<"FusionUnit::leftover: looking at: ("<<index<<", "<<index2<<")/n";
 				int out = tryFuse3(index, index2, longCard, shortCard);
 				if(out!=0) return out;
 			}

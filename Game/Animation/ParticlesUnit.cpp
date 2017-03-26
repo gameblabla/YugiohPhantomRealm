@@ -1,14 +1,14 @@
-#include <Game\Animation\ParticlesUnit.h>
+#include <Game/Animation/ParticlesUnit.h>
 #include <vector>
 #include <string>
-#include <gtc\matrix_transform.hpp>
-#include <ThirdParty\objloader.hpp>
-#include <Utility\TextureLoader.h>
-#include <Utility\Clock.h>
-#include <Utility\StateUnit.h>
-#include <Game\Animation\Camera.h>
+#include <gtc/matrix_transform.hpp>
+#include <ThirdParty/objloader.hpp>
+#include <Utility/TextureLoader.h>
+#include <Utility/Clock.h>
+#include <Utility/StateUnit.h>
+#include <Game/Animation/Camera.h>
 #include <DefinesAndTypedefs.h>
-#include <Game\Animation\MovementUnit.h>
+#include <Game/Animation/MovementUnit.h>
 #include <random>
 #include <iostream>
 
@@ -24,8 +24,8 @@
 #define ZYUG_CARD_HIT 5
 namespace{
 
-#include <TextFiles\randomNumbers.txt>
-#include <TextFiles\risingLightData.txt>
+#include <TextFiles/randomNumbers.txt>
+#include <TextFiles/risingLightData.txt>
 
 }
 namespace Animation{
@@ -341,7 +341,7 @@ namespace Animation{
 		particleAmtran = glm::vec4(1.0f,1.0f,1.0f,1.0f);
 		ignoreCamera = true;
 		startCount(duration);
-		//std::cout<<"Partsicles : Started Bang!\n";
+		//std::cout<<"Partsicles : Started Bang!/n";
 	}
 		
 	void ParticlesUnit::particleSuck(glm::vec3 gCentre, float duration){
@@ -352,7 +352,7 @@ namespace Animation{
 		particleAmtran = glm::vec4(1.0f,1.0f,1.0f,1.0f);
 		ignoreCamera = true;
 		startCount(duration);
-		//std::cout<<"Partsicles : Started Suck!\n";
+		//std::cout<<"Partsicles : Started Suck!/n";
 	}
 
 	void ParticlesUnit::particleRise(std::vector<glm::vec3> centres, glm::vec4 colour, float duration, bool pplayerView){
@@ -439,7 +439,7 @@ namespace Animation{
 		cardBlocker.position = mov.addZOffset(cardPosi, 0.01f);
 		cardBlocker.ignoreCamera = true;
 
-		//std::cout<<"Partsicles : Started Burn!\n";
+		//std::cout<<"Partsicles : Started Burn!/n";
 	}
 
 	void ParticlesUnit::continueCount(){

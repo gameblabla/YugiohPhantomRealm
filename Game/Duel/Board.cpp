@@ -1,27 +1,27 @@
-#include <Game\Duel\Board.h>//HAS glew.h, glm
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Game\Duel\FusionUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Utility\BlankUnit.h>
-#include <Utility\InputUnit.h>
-#include <Base\RenderUnit.h>
-#include <Utility\StateUnit.h>
-#include <Utility\Clock.h>
-#include <Utility\UpdateUnit.h>
-#include <Game\Cursor.h>
-#include <Game\Animation\Camera.h>
-#include <gtc\matrix_transform.hpp>
-#include <Game\Cards\CardDisplayUnit.h>
-#include <Game\Duel\PositionUnit.h>
-#include <Game\Duel\BattleUnit.h>
-#include <Utility\SoundUnit.h>
-#include <Game\VectorUnit.h>
-#include <Game\Duel\markingStruct.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Game\Cards\Trap\TrapUnit.h>
-#include <Game\Duel\Parts\SwordUnit.h>
-#include <Utility\TextureLoader.h>
+#include <Game/Duel/Board.h>//HAS glew.h, glm
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Game/Duel/FusionUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/InputUnit.h>
+#include <Base/RenderUnit.h>
+#include <Utility/StateUnit.h>
+#include <Utility/Clock.h>
+#include <Utility/UpdateUnit.h>
+#include <Game/Cursor.h>
+#include <Game/Animation/Camera.h>
+#include <gtc/matrix_transform.hpp>
+#include <Game/Cards/CardDisplayUnit.h>
+#include <Game/Duel/PositionUnit.h>
+#include <Game/Duel/BattleUnit.h>
+#include <Utility/SoundUnit.h>
+#include <Game/VectorUnit.h>
+#include <Game/Duel/markingStruct.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Game/Cards/Trap/TrapUnit.h>
+#include <Game/Duel/Parts/SwordUnit.h>
+#include <Utility/TextureLoader.h>
 
 
 #define GL_GPU_MEM_INFO_TOTAL_AVAILABLE_MEM_NVX 0x9048

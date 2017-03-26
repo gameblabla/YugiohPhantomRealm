@@ -1,7 +1,7 @@
-#include <qt\qapplication.h>
+#include <Qt/qapplication.h>
 #include <iostream>
-#include <QtGui\qwidget.h>
-#include <Base\YugiohGame.h>
+#include <QtGui/qwidget.h>
+#include <Base/YugiohGame.h>
 
 
 void printErrorThenWait(const char* error){

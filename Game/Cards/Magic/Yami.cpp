@@ -1,6 +1,6 @@
-#include <Game\Cards\Magic\Yami.h>
-#include <Game\Duel\Board.h>
-#include <Utility\TextureLoader.h>
+#include <Game/Cards/Magic/Yami.h>
+#include <Game/Duel/Board.h>
+#include <Utility/TextureLoader.h>
 #include <vector>
 namespace Card{
 

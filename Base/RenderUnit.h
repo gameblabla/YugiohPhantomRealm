@@ -1,7 +1,7 @@
 #pragma once
-#include <GL\glew.h>
-#include <QtOpenGL\qglwidget>
-#include <Game\YugiohUnit.h>
+#include <GL/glew.h>
+#include <QtOpenGL/QGLWidget>
+#include <Game/YugiohUnit.h>
 class RenderUnit : public QGLWidget 
 {
 protected:

@@ -1,15 +1,16 @@
-#include <irrKlang.h>
-#include <Utility\SoundUnit.h>
-#include <Utility\Clock.h>
-#include <Utility\ErrorHandler.h>
-using namespace irrklang;
+//#include <irrKlang.h>
+#include <Utility/SoundUnit.h>
+#include <Utility/Clock.h>
+#include <Utility/ErrorHandler.h>
+//using namespace irrklang;
+//gameblabla FIX
 
 namespace Utility{
 
 	SoundUnit SoundUnit::soundInstance;
 
 	bool SoundUnit::initialize(){
-		musicSource = createIrrKlangDevice();
+		/*musicSource = createIrrKlangDevice();
 		if(!musicSource){
 			errorHandler.printError("Sound Unit: irrKlang music engine failed to load.");
 			return false;
@@ -17,79 +18,79 @@ namespace Utility{
 		soundOn = true;
 		effectsOn = true;
 		musicOn = true;
-		musicCounting = false;
+		musicCounting = false;*/
 		//musicSource->play2D("GameData/sounds/music/warmupMusic.wav", true);
 		return true;
 	}
 	bool SoundUnit::shutdown(){
-		if(musicSource)
-			musicSource->drop();
+		/*if(musicSource)
+			musicSource->drop();*/
 		return true;
 	}
 
 	void SoundUnit::update(){
-		if(musicCounting){
+		/*if(musicCounting){
 			musicClock.newLoop();
 			timeLeft -= musicClock.lastLoopTime();
 			if(timeLeft<=0)
 				moveToNextTrack();
-		}
+		}*/
 	}
 	void SoundUnit::playLeadinTrack(const char* track, const char* followup, float length){
-		if(!musicOn) return;
+		/*if(!musicOn) return;
 		musicCounting = true;
 		nextTrack = followup;
 		timeLeft = length;
 		musicClock.newLoop();
-		playOnce(track);
+		playOnce(track);*/
 	}
 	void SoundUnit::moveToNextTrack(){
-		musicCounting = false;
+		/*musicCounting = false;
 		if(!musicOn) return;
 		playLoop(nextTrack.c_str());
-		nextTrack = "";
+		nextTrack = "";*/
 	}
 
 	void SoundUnit::playOnce(const char* filename){
-			musicSource->play2D(filename);
+			//musicSource->play2D(filename);
 	}
 	void SoundUnit::playLoop(const char* filename){
-		if(soundOn && musicOn){
+		/*if(soundOn && musicOn){
 			musicSource->play2D(filename, true);
-		}
+		}*/
 	}
 	void SoundUnit::stopAll(){
-		musicSource->removeAllSoundSources();
+		//musicSource->removeAllSoundSources();
 	}
 	void SoundUnit::stopThisSound(const char* filename){
-		musicSource->removeSoundSource(filename);
+		//musicSource->removeSoundSource(filename);
 	}
 
 	void SoundUnit::cardSwoosh(){
-		if(soundOn && effectsOn)
-			soundUnit.playOnce("GameData/sounds/card/cardSwipe2.wav");
+		/*if(soundOn && effectsOn)
+			soundUnit.playOnce("GameData/sounds/card/cardSwipe2.wav");*/
 	}
 	void SoundUnit::cardSwivel(){
-		if(soundOn && effectsOn)
-			soundUnit.playOnce("GameData/sounds/card/cardSwipe3.wav");
+		/*if(soundOn && effectsOn)
+			soundUnit.playOnce("GameData/sounds/card/cardSwipe3.wav");*/
 	}
 	void SoundUnit::cursorMove(){
-		if(soundOn && effectsOn)
-			playOnce("GameData/sounds/menu/gameBeep.wav"); //cursorMove.wav");
+		/*if(soundOn && effectsOn)
+			playOnce("GameData/sounds/menu/gameBeep.wav"); //cursorMove.wav");*/
 	}
 	void SoundUnit::cursorSelectionSuccess(){}
 	void SoundUnit::cursorSelectionFail(){
-		if(soundOn && effectsOn)
-			playOnce("GameData/sounds/menu/cursorUnsuccess.wav");
+		/*if(soundOn && effectsOn)
+			playOnce("GameData/sounds/menu/cursorUnsuccess.wav");*/
 	}
 
 	void SoundUnit::cursorSelect(){
-		if(soundOn && effectsOn)
-			playOnce("GameData/sounds/menu/cursorSelect4.wav");
+		/*if(soundOn && effectsOn)
+			playOnce("GameData/sounds/menu/cursorSelect4.wav");*/
 	}
 	void SoundUnit::cursorCancel(){
-		if(soundOn && effectsOn)
-			playOnce("GameData/sounds/menu/cursorCancel.wav");
+		/*if(soundOn && effectsOn)
+			playOnce("GameData/sounds/menu/cursorCancel.wav");*/
 	}
 
 

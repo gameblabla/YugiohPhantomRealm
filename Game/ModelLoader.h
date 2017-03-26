@@ -1,8 +1,8 @@
 #pragma once
-#include<GL\glew.h>
+#include <GL/glew.h>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
-#include <ThirdParty\objloader.hpp>
+#include <ThirdParty/objloader.hpp>
 
 #define YUG_MODEL_PLANE 0
 namespace Game{

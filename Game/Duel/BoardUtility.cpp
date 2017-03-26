@@ -1,10 +1,9 @@
-#include <Game\Duel\Board.h>
-#include <Utility\Clock.h>
-#include <Game\VectorUnit.h>
-#include <Game\Animation\MovementUnit.h>
+#include <Game/Duel/Board.h>
+#include <Utility/Clock.h>
+#include <Game/VectorUnit.h>
+#include <Game/Animation/MovementUnit.h>
 
 #include <iostream>
-
 
 namespace Duel{
 

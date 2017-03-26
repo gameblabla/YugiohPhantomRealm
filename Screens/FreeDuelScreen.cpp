@@ -1,17 +1,17 @@
 #include <string>
 #include <sstream>
-#include <Screens\FreeDuelScreen.h>
-#include <Game\PlayerData.h>
-#include <Game\EnemyData.h>
-#include <Utility\InputUnit.h>
-#include <Screens\Trunk.h>
-#include <Screens\ScreenUnit.h>
-#include <Screens\ShopScreen.h>
-#include <Utility\TextPrinter.h>
-#include <Utility\StateUnit.h>
+#include <Screens/FreeDuelScreen.h>
+#include <Game/PlayerData.h>
+#include <Game/EnemyData.h>
+#include <Utility/InputUnit.h>
+#include <Screens/Trunk.h>
+#include <Screens/ScreenUnit.h>
+#include <Screens/ShopScreen.h>
+#include <Utility/TextPrinter.h>
+#include <Utility/StateUnit.h>
 #include <DefinesAndTypedefs.h>
-#include <Game\Duel\Board.h>
-#include <Utility\SoundUnit.h>
+#include <Game/Duel/Board.h>
+#include <Utility/SoundUnit.h>
 #include <iostream>
 
 #define ZYUG_CH_IDLE 0

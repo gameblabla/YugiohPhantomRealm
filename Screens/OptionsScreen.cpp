@@ -1,15 +1,15 @@
 #define WIN32_LEAN_AND_MEAN
-#include <Windows.h>
-#include <Utility\InputUnit.h>
-#include <Utility\SoundUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Utility\ConfigUnit.h>
-#include <Screens\ScreenUnit.h>
-#include <Screens\OptionsScreen.h>
-#include <Screens\ShopScreen.h>
-#include <Screens\MainMenu.h>
+
+#include <Utility/InputUnit.h>
+#include <Utility/SoundUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Utility/ConfigUnit.h>
+#include <Screens/ScreenUnit.h>
+#include <Screens/OptionsScreen.h>
+#include <Screens/ShopScreen.h>
+#include <Screens/MainMenu.h>
 #include <DefinesAndTypedefs.h>
-#include <Utility\SoundUnit.h>
+#include <Utility/SoundUnit.h>
 
 #include <iostream>
 

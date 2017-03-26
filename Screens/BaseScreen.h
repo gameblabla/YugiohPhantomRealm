@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include <Game\YugiohUnit.h>
-#include <Game\WaitUnit.h>
+#include <Game/YugiohUnit.h>
+#include <Game/WaitUnit.h>
 #define YUG_SCREEN_WINDOW_TEXTURE_PATH "GameData/textures/story/bg/textBox.png"
 #define YUG_SCREEN_CH_IDLE 0
 #define YUG_SCREEN_CH_START 1

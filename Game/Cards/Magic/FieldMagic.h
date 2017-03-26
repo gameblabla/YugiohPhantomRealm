@@ -1,6 +1,6 @@
 #pragma once
-#include <Game\Cards\Magic\MagicSource.h>
-#include <Game\WaitUnit.h>
+#include <Game/Cards/Magic/MagicSource.h>
+#include <Game/WaitUnit.h>
 
 #define YUG_MAG_FD_CH_START 0
 #define YUG_MAG_FD_CH_GLOW1 1

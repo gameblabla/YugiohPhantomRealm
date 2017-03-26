@@ -1,15 +1,15 @@
-#include <GL\glew.h>
-#include <Utility\ErrorHandler.h>
-#include <Base\RenderUnit.h>
-#include <Game\Animation\Camera.h>
-#include <Utility\DebugUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Game\Cursor.h>
-#include <Utility\Clock.h>
-#include <Game\Animation\FadeUnit.h>
-#include <iostream>//needed to print glew error
-#include <Game\Cards\CardDisplayUnit.h>
-#include <Game\Animation\ParticlesUnit.h>
+#include <GL/glew.h>
+#include <Utility/ErrorHandler.h>
+#include <Base/RenderUnit.h>
+#include <Game/Animation/Camera.h>
+#include <Utility/DebugUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Game/Cursor.h>
+#include <Utility/Clock.h>
+#include <Game/Animation/FadeUnit.h>
+#include <iostream>
+#include <Game/Cards/CardDisplayUnit.h>
+#include <Game/Animation/ParticlesUnit.h>
 
 #define YUG_DEFAULT_SCREEN_WIDTH 800
 #define YUG_DEFAULT_SCREEN_HEIGHT 600

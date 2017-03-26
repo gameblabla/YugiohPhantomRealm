@@ -1,10 +1,10 @@
-#include <Game\Cards\Trap\Reverse.h>
-#include <Game\Cards\Trap\TrapUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Utility\Clock.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Utility\SoundUnit.h>
+#include <Game/Cards/Trap/Reverse.h>
+#include <Game/Cards/Trap/TrapUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/Clock.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Utility/SoundUnit.h>
 #include <iostream>
 
 #define ZYUG_GO 0
@@ -96,7 +96,7 @@ void Reverse::startup(){
 
 	}
 	bool Reverse::listen(int info){
-		//std::cout<<"reverse listen called\n";
+		//std::cout<<"reverse listen called/n";
 		//std::cout<<"atk stat boost = "<<theBoard.board[theBoard.cP[0]][theBoard.cP[1]].atkStatBoost<<std::endl;
 		if(info == YUG_TRAP_MON_PLAYED){
 			return(	theBoard.board[theBoard.cP[0]][theBoard.cP[1]].atkStatBoost > 0 ||

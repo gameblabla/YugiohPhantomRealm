@@ -1,8 +1,8 @@
 #pragma once
-#include <GL\glew.h>
+#include <GL/glew.h>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
-#include <Game\Cards\CardRender.h>
+#include <Game/Cards/CardRender.h>
 
 namespace Card{
 	class SmallCardRender : public Card::CardRender

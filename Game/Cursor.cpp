@@ -1,7 +1,7 @@
-#include <Game\Cursor.h>
-#include <Game\Duel\Board.h>
-#include <Game\Animation\MovementUnit.h>
-#include <Game\VectorUnit.h>
+#include <Game/Cursor.h>
+#include <Game/Duel/Board.h>
+#include <Game/Animation/MovementUnit.h>
+#include <Game/VectorUnit.h>
 
 namespace Game{
 

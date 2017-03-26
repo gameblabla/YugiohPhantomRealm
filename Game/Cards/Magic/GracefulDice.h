@@ -1,12 +1,12 @@
 #pragma once
 #include <vector>
-#include <Game\Cards\Magic\MagicSource.h>
-#include <Utility\Clock.h>
+#include <Game/Cards/Magic/MagicSource.h>
+#include <Utility/Clock.h>
 #define GLM_FORCE_RADIANS 
-#include <gtc\quaternion.hpp>
-#include <Game\Cards\CardData.h>
-#include <Game\WaitUnit.h>
-#include <Game\ModelLoader.h>
+#include <gtc/quaternion.hpp>
+#include <Game/Cards/CardData.h>
+#include <Game/WaitUnit.h>
+#include <Game/ModelLoader.h>
 
 namespace Card{
 

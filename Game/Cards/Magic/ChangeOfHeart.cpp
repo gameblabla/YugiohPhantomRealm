@@ -1,10 +1,10 @@
-#include <Game\Cards\Magic\ChangeOfHeart.h>
-#include <Game\Duel\Board.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Game\Animation\MovementUnit.h>
-#include <Utility\SoundUnit.h>
-#include <Utility\DebugUnit.h>
+#include <Game/Cards/Magic/ChangeOfHeart.h>
+#include <Game/Duel/Board.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Game/Animation/MovementUnit.h>
+#include <Utility/SoundUnit.h>
+#include <Utility/DebugUnit.h>
 #include <iostream>
 
 #define ZYUG_MSTART 0

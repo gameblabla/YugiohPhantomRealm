@@ -1,6 +1,6 @@
 #pragma once
 #include <DefinesAndTypedefs.h>
-#include <Game\Cards\CardData.h>
+#include <Game/Cards/CardData.h>
 
 #include <vector>
 
@@ -33,9 +33,12 @@ namespace Duel{
 		int getNoAt(int index);
 
 		void generateNewDeck();
-		void fillList(std::vector< std::vector<unsigned int>>& v, std::string path);
+		//FIX
+		//void fillList(std::vector< std::vector<unsigned int>>& v, std::string path);
+		void fillList(std::vector< std::vector<unsigned int> >& v, std::string path);
 		void addMagicCards(std::vector<unsigned int>& newDeck);
-		void addOneOfEachCardType(std::vector< std::vector<unsigned int>>& v, std::vector<unsigned int>& newDeck);
+		//void addOneOfEachCardType(std::vector< std::vector<unsigned int>>& v, std::vector<unsigned int>& newDeck);
+		void addOneOfEachCardType(std::vector< std::vector<unsigned int> >& v, std::vector<unsigned int>& newDeck);
 		void addCardFrom(std::vector<unsigned int>& cardlist, std::vector<unsigned int>& newDeck);
 		char toNextSymbol(std::ifstream& in);
 	};

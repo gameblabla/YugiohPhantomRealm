@@ -1,27 +1,27 @@
 #include <algorithm>
-#include <Screens\Trunk.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Game\Animation\FadeUnit.h>
-#include <Utility\BlankUnit.h>
-#include <Utility\StateUnit.h>
-#include <Utility\UpdateUnit.h>
-#include <Base\RenderUnit.h>
-#include <Utility\InputUnit.h>
-#include <Game\PlayerData.h>
-#include <Utility\SoundUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Game\Cards\CardDisplayUnit.h>
-#include <Screens\ScreenUnit.h>
-#include <Screens\FreeDuelScreen.h>
-#include <Game\Duel\Board.h>
+#include <Screens/Trunk.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/StateUnit.h>
+#include <Utility/UpdateUnit.h>
+#include <Base/RenderUnit.h>
+#include <Utility/InputUnit.h>
+#include <Game/PlayerData.h>
+#include <Utility/SoundUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Game/Cards/CardDisplayUnit.h>
+#include <Screens/ScreenUnit.h>
+#include <Screens/FreeDuelScreen.h>
+#include <Game/Duel/Board.h>
 #include <iostream>
 
-#include <Game\Cards\Magic\Forest.h>
-#include <Game\Cards\Magic\Sogen.h>
-#include <Game\Cards\Magic\Wasteland.h>
-#include <Game\Cards\Magic\Mountain.h>
-#include <Game\Cards\Magic\Umi.h>
-#include <Game\Cards\Magic\Yami.h>
+#include <Game/Cards/Magic/Forest.h>
+#include <Game/Cards/Magic/Sogen.h>
+#include <Game/Cards/Magic/Wasteland.h>
+#include <Game/Cards/Magic/Mountain.h>
+#include <Game/Cards/Magic/Umi.h>
+#include <Game/Cards/Magic/Yami.h>
 
 #define ZYUG_SHEET_CENTRE glm::vec3(0.0f,0.0f, -2.75f)
 #define ZYUG_SHEET_X_OFF 2.24f

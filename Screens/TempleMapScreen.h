@@ -1,6 +1,6 @@
 #pragma once
-#include <Screens\BaseScreen.h>
-#include <Game\ModelLoader.h>
+#include <Screens/BaseScreen.h>
+#include <Game/ModelLoader.h>
 namespace Screen{
 
 	class TempleMapScreen : public BaseScreen

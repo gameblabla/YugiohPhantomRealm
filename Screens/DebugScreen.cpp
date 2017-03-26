@@ -1,32 +1,32 @@
-#include <Screens\DebugScreen.h>
-#include <Game\Duel\Board.h>
-#include <Game\Cursor.h>
-#include <Utility\BlankUnit.h>
-#include <Utility\StateUnit.h>
-#include <Utility\UpdateUnit.h>
-#include <Base\RenderUnit.h>
-#include <Game\Animation\FadeUnit.h>
-#include <Utility\InputUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Game\PlayerData.h>
-#include <Game\EnemyData.h>
-#include <Screens\Trunk.h>
-#include <Game\Duel\EndUnit.h>
+#include <Screens/DebugScreen.h>
+#include <Game/Duel/Board.h>
+#include <Game/Cursor.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/StateUnit.h>
+#include <Utility/UpdateUnit.h>
+#include <Base/RenderUnit.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Utility/InputUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Game/PlayerData.h>
+#include <Game/EnemyData.h>
+#include <Screens/Trunk.h>
+#include <Game/Duel/EndUnit.h>
 #include <iostream>
 
-#include <Game\Cards\Magic\Forest.h>
-#include <Game\Cards\Magic\Sogen.h>
-#include <Game\Cards\Magic\Wasteland.h>
-#include <Game\Cards\Magic\Mountain.h>
-#include <Game\Cards\Magic\Umi.h>
-#include <Game\Cards\Magic\Yami.h>
+#include <Game/Cards/Magic/Forest.h>
+#include <Game/Cards/Magic/Sogen.h>
+#include <Game/Cards/Magic/Wasteland.h>
+#include <Game/Cards/Magic/Mountain.h>
+#include <Game/Cards/Magic/Umi.h>
+#include <Game/Cards/Magic/Yami.h>
 
-#include <Screens\DialogScreen.h>
-#include <Screens\SplashScreen.h>
-#include <Screens\ScreenUnit.h>
-#include <Screens\MainMenu.h>
+#include <Screens/DialogScreen.h>
+#include <Screens/SplashScreen.h>
+#include <Screens/ScreenUnit.h>
+#include <Screens/MainMenu.h>
 
-#include <GL\glew.h>
+#include <GL/glew.h>
 #define GL_GPU_MEM_INFO_TOTAL_AVAILABLE_MEM_NVX 0x9048
 #define GL_GPU_MEM_INFO_CURRENT_AVAILABLE_MEM_NVX 0x9049
 

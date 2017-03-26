@@ -1,7 +1,7 @@
-#include <Game\Cards\Trap\MagicJammer.h>
-#include <Game\Cards\Trap\TrapUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Game\Cards\Magic\BlankMagic.h>
+#include <Game/Cards/Trap/MagicJammer.h>
+#include <Game/Cards/Trap/TrapUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Game/Cards/Magic/BlankMagic.h>
 
 namespace Card{
 

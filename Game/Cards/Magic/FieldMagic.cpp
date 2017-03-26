@@ -1,7 +1,7 @@
-#include <Game\Cards\Magic\FieldMagic.h>
-#include <Game\Duel\Board.h>
-#include <Game\Animation\MovementUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
+#include <Game/Cards/Magic/FieldMagic.h>
+#include <Game/Duel/Board.h>
+#include <Game/Animation/MovementUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
 #include <iostream>
 
 

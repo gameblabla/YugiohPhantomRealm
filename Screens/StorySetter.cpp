@@ -1,7 +1,7 @@
-#include <Screens\StorySetter.h>
-#include <Screens\ShopScreen.h>
-#include <Screens\StoryScene.h>
-#include <Game\PlayerData.h>
+#include <Screens/StorySetter.h>
+#include <Screens/ShopScreen.h>
+#include <Screens/StoryScene.h>
+#include <Game/PlayerData.h>
 #include <iostream>
 namespace Screen{
 

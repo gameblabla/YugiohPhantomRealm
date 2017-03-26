@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
 #include <string>
-#include <Screens\BaseScreen.h>
-#include <Game\ModelLoader.h>
-#include <Screens\Panels\LoadPanel.h>
+#include <Screens/BaseScreen.h>
+#include <Game/ModelLoader.h>
+#include <Screens/Panels/LoadPanel.h>
 
 namespace Screen{
 	class ShopScreen : public BaseScreen

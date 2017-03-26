@@ -2,8 +2,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <Game\ModelLoader.h>
-#include <Screens\BaseScreen.h>
+#include <Game/ModelLoader.h>
+#include <Screens/BaseScreen.h>
 
 #define YUG_SCREEN_WINDOW_SIZE glm::vec3(0.81f,0.217f,1)
 #define YUG_SCREEN_WINDOW_POS glm::vec3(0,-0.444f, -1.996f)

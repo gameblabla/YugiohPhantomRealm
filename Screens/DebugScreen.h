@@ -1,7 +1,7 @@
 #pragma once
-#include <Game\YugiohUnit.h>
-#include <Game\WaitUnit.h>
-#include <Screens\Panels\LoadPanel.h>
+#include <Game/YugiohUnit.h>
+#include <Game/WaitUnit.h>
+#include <Screens/Panels/LoadPanel.h>
 
 namespace Screen{
 

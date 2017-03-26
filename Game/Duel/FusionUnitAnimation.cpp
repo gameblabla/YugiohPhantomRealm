@@ -1,19 +1,19 @@
-#include <Game\Duel\FusionUnit.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Utility\Clock.h>
-#include <Game\Duel\Board.h>
+#include <Game/Duel/FusionUnit.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/Clock.h>
+#include <Game/Duel/Board.h>
 #include <iostream>
-#include <Utility\BlankUnit.h>
-#include <Utility\StateUnit.h>
-#include <Game\Duel\PositionUnit.h>
-#include <Game\Animation\MovementUnit.h>
-#include <Game\VectorUnit.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Game\Animation\FadeUnit.h>
-#include <Utility\SoundUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Utility\TextureLoader.h>
-#include <Utility\DebugUnit.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/StateUnit.h>
+#include <Game/Duel/PositionUnit.h>
+#include <Game/Animation/MovementUnit.h>
+#include <Game/VectorUnit.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Utility/SoundUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Utility/TextureLoader.h>
+#include <Utility/DebugUnit.h>
 
 namespace Duel{
 

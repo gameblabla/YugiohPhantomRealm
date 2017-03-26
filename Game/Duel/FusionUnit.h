@@ -1,12 +1,12 @@
 #pragma once
-#include <GL\glew.h>
+#include <GL/glew.h>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
 #include <vector>
-#include <Game\Cards\CardData.h>
-#include <Game\YugiohUnit.h>
-#include <Game\Duel\markingStruct.h>
-#include <Game\Duel\GamePlayer.h>
+#include <Game/Cards/CardData.h>
+#include <Game/YugiohUnit.h>
+#include <Game/Duel/markingStruct.h>
+#include <Game/Duel/GamePlayer.h>
 #include <fstream>
 
 #define YUG_FUS_CH_POSITIONING 0
@@ -199,7 +199,9 @@ namespace Duel{
 		void saveShuntDirection();
 
 		//new fusion type
-		std::vector<std::vector<FusionInfo>> generalLists;
+		//FIX
+		//std::vector<std::vector<FusionInfo>> generalLists;
+		std::vector<std::vector<FusionInfo> > generalLists;
 		void createFusionLists();
 		int tryFuse(Card::CardData& c1, Card::CardData& c2);
 		int leftOver(Card::CardData& longCard, Card::CardData& shortCard, int indexCount);

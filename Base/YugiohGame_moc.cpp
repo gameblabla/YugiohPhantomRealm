@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "C:\Cplusplus\Yugioh\Game\Code\FinalGame\FinalGame\Base\YugiohGame.h"
+#include "YugiohGame.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'YugiohGame.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63

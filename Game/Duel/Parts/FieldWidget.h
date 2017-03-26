@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
-#include <Game\WaitUnit.h>
-#include <Game\ModelLoader.h>
-#include <Game\YugiohUnit.h>
-#include <Game\Cards\CardData.h>
+#include <Game/WaitUnit.h>
+#include <Game/ModelLoader.h>
+#include <Game/YugiohUnit.h>
+#include <Game/Cards/CardData.h>
 
 #define YUG_BOARD_FIELD_NORMAL 0
 

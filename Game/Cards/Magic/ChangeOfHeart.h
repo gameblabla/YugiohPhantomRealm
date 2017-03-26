@@ -1,8 +1,8 @@
 #pragma once
-#include <Game\Cards\Magic\MagicSource.h>
-#include <Game\Cards\CardData.h>
-#include <Game\WaitUnit.h>
-#include <Game\ModelLoader.h>
+#include <Game/Cards/Magic/MagicSource.h>
+#include <Game/Cards/CardData.h>
+#include <Game/WaitUnit.h>
+#include <Game/ModelLoader.h>
 
 namespace Card{
 

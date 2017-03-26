@@ -1,14 +1,14 @@
-#include <Game\Cards\Magic\SkullDice.h>
+#include <Game/Cards/Magic/SkullDice.h>
 #include <random>
 #include <ctime>
-#include <Utility\Clock.h>
-#include <gtc\matrix_transform.hpp>
-#include <Game\Animation\MovementUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Game\Duel\Board.h>
-#include <Utility\SoundUnit.h>
+#include <Utility/Clock.h>
+#include <gtc/matrix_transform.hpp>
+#include <Game/Animation/MovementUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Game/Duel/Board.h>
+#include <Utility/SoundUnit.h>
 #include <iostream>
 
 #define ZYUG_GO 0

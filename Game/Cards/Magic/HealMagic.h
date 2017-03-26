@@ -1,7 +1,7 @@
 #pragma once
-#include <Game\Cards\Magic\MagicSource.h>
-#include <Game\WaitUnit.h>
-#include <Game\ModelLoader.h>
+#include <Game/Cards/Magic/MagicSource.h>
+#include <Game/WaitUnit.h>
+#include <Game/ModelLoader.h>
 namespace Card{
 
 	class HealMagic : public MagicSource, public Game::WaitUnit

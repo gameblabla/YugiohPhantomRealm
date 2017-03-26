@@ -1,8 +1,8 @@
-#include <Game\EnemyData.h>
-#include <Game\AI\RegularAIUnit.h>
-#include <Game\AI\DefensiveAIUnit.h>
-#include <Game\AI\DebugAIUnit.h>
-#include <Utility\ErrorHandler.h>
+#include <Game/EnemyData.h>
+#include <Game/AI/RegularAIUnit.h>
+#include <Game/AI/DefensiveAIUnit.h>
+#include <Game/AI/DebugAIUnit.h>
+#include <Utility/ErrorHandler.h>
 #include <iostream>
 #define YUG_NEW_ENTRY '#'
 #define YUG_END_FILE '&'

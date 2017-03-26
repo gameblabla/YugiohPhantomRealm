@@ -1,6 +1,6 @@
 #include <Game/WaitUnit.h>
 #include <iostream>
-#include <Utility/clock.h>
+#include <Utility/Clock.h>
 
 namespace Game{
 
@@ -12,7 +12,7 @@ namespace Game{
 
 	void WaitUnit::wait(float duration){
 		//if(isWaiting)
-		//	std::cout<<"Wait unit: one wait time overriding another\n";
+		//	std::cout<<"Wait unit: one wait time overriding another/n";
 		waitDuration = duration;
 		currentlyWaited = 0;
 		isWaiting = true;

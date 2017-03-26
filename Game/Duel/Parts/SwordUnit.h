@@ -1,6 +1,6 @@
 #pragma once
-#include <Game\ModelLoader.h>
-#include <Game\WaitUnit.h>
+#include <Game/ModelLoader.h>
+#include <Game/WaitUnit.h>
 
 namespace Duel{
 

@@ -1,6 +1,6 @@
 #pragma once
-#include <Game\Duel\GamePlayer.h>
-#include <Game\AI\AIUnit.h>
+#include <Game/Duel/GamePlayer.h>
+#include <Game/AI/AIUnit.h>
 namespace Duel{
 	class EnemyPlayer : public GamePlayer
 	{

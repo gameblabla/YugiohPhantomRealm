@@ -1,5 +1,5 @@
 #pragma once
-#include <Game\Cards\CardData.h>
+#include <Game/Cards/CardData.h>
 #include <fstream>
 #include <vector>
 namespace Card{

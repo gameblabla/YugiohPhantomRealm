@@ -1,7 +1,7 @@
-#include <Game\Cards\Trap\BadReaction.h>
-#include <Game\Cards\Trap\TrapUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Game\Cards\Magic\HealMagic.h>
+#include <Game/Cards/Trap/BadReaction.h>
+#include <Game/Cards/Trap/TrapUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Game/Cards/Magic/HealMagic.h>
 
 namespace Card{
 

@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <Screens\BaseScreen.h>
-#include <Game\ModelLoader.h>
+#include <Screens/BaseScreen.h>
+#include <Game/ModelLoader.h>
 namespace Screen{
 
 	class NameScreen : public BaseScreen

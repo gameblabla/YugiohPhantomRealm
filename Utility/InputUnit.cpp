@@ -1,12 +1,12 @@
 #define WIN32_LEAN_AND_MEAN
-#include <Windows.h>
-#include <qt\qapplication.h>
-#include <Game\YugiohUnit.h>
-#include <Utility\InputUnit.h>
-#include <Utility\StateUnit.h>
-#include <Base\RenderUnit.h>
+//gameblabla FIX
+#include <Qt/qapplication.h>
+#include <Game/YugiohUnit.h>
+#include <Utility/InputUnit.h>
+#include <Utility/StateUnit.h>
+#include <Base/RenderUnit.h>
 #include <iostream>
-#include <Utility\SoundUnit.h>
+#include <Utility/SoundUnit.h>
 #include <thread>         // std::this_thread::sleep_for
 #include <chrono>         // std::chrono::seconds
 
@@ -29,7 +29,7 @@ namespace Utility{
 	}
 
 	void InputUnit::readKeys(){
-		if(stateUnit.application->activeWindow() == 0)
+		/*if(stateUnit.application->activeWindow() == 0)
 			return;
 
 		setKeyBits = 0;
@@ -39,7 +39,7 @@ namespace Utility{
 				setKeyBits |= possibleAction;
 			}
 			possibleAction <<= 1;
-		}
+		}*/
 	}
 
 	void InputUnit::computerKeyPress(int key){
@@ -62,7 +62,7 @@ namespace Utility{
 	}
 
 	void InputUnit::callCurrentInputTaker(){
-		//std::cout<<"Calling current Inputer\n";
+		//std::cout<<"Calling current Inputer/n";
 		if(!isWaiting){
 			currentInput->input();
 		}else{
@@ -74,21 +74,21 @@ namespace Utility{
 
 	}
 	int InputUnit::listenForAnyKey(){
-		int count = 0;
-		std::cout<<"Input: Hold down new key binding\n";
+		/*int count = 0;
+		std::cout<<"Input: Hold down new key binding/n";
 		while(count++ < 30){
 			std::this_thread::sleep_for (std::chrono::milliseconds(300));
 			for (int i = 0; i < 256; i++)
 			{
 				if(GetAsyncKeyState(i) & 0x8000){
 					soundUnit.cursorSelect();
-					std::cout<<"Input: New key binding obtained\n";
+					std::cout<<"Input: New key binding obtained/n";
 					return i;
 				}
 			}
 		}
-		std::cout<<"Input: No new key binding obtained.\n";
-		soundUnit.cursorSelectionFail();
+		std::cout<<"Input: No new key binding obtained./n";
+		soundUnit.cursorSelectionFail();*/
 		return -1;
 	}
 	void InputUnit::resetKey(int key){
@@ -100,7 +100,7 @@ namespace Utility{
 		realKeyBindings[key] = res;
 	}
 	void InputUnit::resetAllKeys(){
-		realKeyBindings[YUG_KEY_UP] = VkKeyScan('w');
+		/*realKeyBindings[YUG_KEY_UP] = VkKeyScan('w');
 		realKeyBindings[YUG_KEY_DOWN] = VkKeyScan('s');
 		realKeyBindings[YUG_KEY_LEFT] = VkKeyScan('a');
 		realKeyBindings[YUG_KEY_RIGHT] = VkKeyScan('d');
@@ -112,7 +112,7 @@ namespace Utility{
 		realKeyBindings[YUG_KEY_SELECT] = VK_BACK;
 		realKeyBindings[YUG_KEY_R1] = VkKeyScan('r');
 		realKeyBindings[YUG_KEY_L1] = VkKeyScan('l');
-		realKeyBindings[YUG_KEY_SPECIAL] = VK_NUMPAD0;
+		realKeyBindings[YUG_KEY_SPECIAL] = VK_NUMPAD0;*/
 	}
 
 	void InputUnit::takePlayerInputsOnly(){

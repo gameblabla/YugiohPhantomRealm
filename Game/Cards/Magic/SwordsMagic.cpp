@@ -1,6 +1,6 @@
-#include <Game\Cards\Magic\SwordsMagic.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Game\Duel\Parts\SwordUnit.h>
+#include <Game/Cards/Magic/SwordsMagic.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Game/Duel/Parts/SwordUnit.h>
 
 namespace Card{
 

@@ -1,6 +1,6 @@
 #pragma once
-#include <Screens\BaseScreen.h>
-#include <Screens\Panels\LoadPanel.h>
+#include <Screens/BaseScreen.h>
+#include <Screens/Panels/LoadPanel.h>
 
 namespace Screen{
 

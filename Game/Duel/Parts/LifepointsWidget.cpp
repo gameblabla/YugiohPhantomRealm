@@ -1,10 +1,10 @@
-#include <Game\VectorUnit.h>
-#include <Utility\Clock.h>
-#include <Utility\TextPrinter.h>
-#include <Game\Duel\Parts\LifepointsWidget.h>
+#include <Game/VectorUnit.h>
+#include <Utility/Clock.h>
+#include <Utility/TextPrinter.h>
+#include <Game/Duel/Parts/LifepointsWidget.h>
 #include <DefinesAndTypedefs.h>
-#include <Game\Duel\Board.h>
-#include <Game\Animation\MovementUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Animation/MovementUnit.h>
 
 namespace Duel{
 

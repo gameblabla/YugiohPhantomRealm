@@ -1,8 +1,8 @@
-#include <Utility\InputUnit.h>
-#include <Utility\BlankUnit.h>
-#include <Utility\ErrorHandler.h>
-#include <Utility\Clock.h>
-#include <definesAndTypedefs.h>
+#include <Utility/InputUnit.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/ErrorHandler.h>
+#include <Utility/Clock.h>
+#include <DefinesAndTypedefs.h>
 #include <iostream>
 
 namespace Utility{
@@ -31,13 +31,13 @@ namespace Utility{
 	void BlankUnit::takeInput(Game::YugiohUnit* newInput){
 		//if(inputUnit.oldInput != YUG_NULL_ID)
 			//errorHandler.printError("Blank Unit: t2: InputUnit.oldInput not empty and being overwritten.");
-		//std::cout<<"New input unit ready to slot in\n";
+		//std::cout<<"New input unit ready to slot in/n";
 		heldInput = inputUnit.currentInput;
 		inputUnit.oldInput = newInput;
 		inputUnit.currentInput = this;
 	}
 	void BlankUnit::returnInput(){
-		//std::cout<<"Blank Unit returnInput: passing input back\n";
+		//std::cout<<"Blank Unit returnInput: passing input back/n";
 		Game::YugiohUnit* temp = inputUnit.currentInput;
 		inputUnit.currentInput = inputUnit.oldInput;
 		inputUnit.oldInput = heldInput;
@@ -49,7 +49,7 @@ namespace Utility{
 		isIdling = true;
 	}
 	void BlankUnit::transitionInput(Game::YugiohUnit* newInput, float duration){
-		//std::cout<<"Blank Unit: start transition\n";
+		//std::cout<<"Blank Unit: start transition/n";
 		takeInput(newInput);
 		timePaused = 0.0f;
 		fullDuration = duration;
@@ -59,7 +59,7 @@ namespace Utility{
 	void BlankUnit::update(){
 		if(isIdling){
 			timePaused += gameClock.lastLoopTime();
-			//std::cout<<"blank Unit update2\n";
+			//std::cout<<"blank Unit update2/n";
 			if( timePaused > fullDuration){
 				returnInput();
 				isIdling = false;

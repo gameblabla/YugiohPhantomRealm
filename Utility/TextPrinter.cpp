@@ -1,17 +1,18 @@
-#include <Utility\TextPrinter.h>//contains glew.h, glm.hpp
+#include <Utility/TextPrinter.h>//contains glew.h, glm.hpp
 #include <vector>
-#include <gtc\matrix_transform.hpp>
-#include <Game\Animation\Camera.h>
-#include <Utility\StateUnit.h>
-#include <Utility\TextureLoader.h>
-#include <Utility\ErrorHandler.h>
+#include <gtc/matrix_transform.hpp>
+#include <Game/Animation/Camera.h>
+#include <Utility/StateUnit.h>
+#include <Utility/TextureLoader.h>
+#include <Utility/ErrorHandler.h>
 #include <DefinesAndTypedefs.h>
 #include <string>
-#include <Utility\InputUnit.h>
-#include <Utility\DebugUnit.h>
+#include <Utility/InputUnit.h>
+#include <Utility/DebugUnit.h>
 #include <iostream>
+#include <cstring>
 
-#include <Utility\textOffsets.inl>
+#include <Utility/textOffsets.inl>
 
 #define YUG_TEXT_VERT_X 0.075f
 #define YUG_TEXT_VERT_Y 0.05f
@@ -120,7 +121,7 @@ namespace Utility{
 				case '/': return 71;
 				case '@': return 72;
 				case ' ': return 73;
-				case '\'': return 68;
+				 case '\'': return 68;
 				default:
 					//errorHandler.printError("TextPrinter.printText, unknown letter wanted.");
 					return 0;

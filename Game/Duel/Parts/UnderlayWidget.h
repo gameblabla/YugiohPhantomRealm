@@ -1,6 +1,6 @@
 #pragma once
-#include <Game\ModelLoader.h>
-#include <Game\WaitUnit.h>
+#include <Game/ModelLoader.h>
+#include <Game/WaitUnit.h>
 
 #define YUG_BOARD_UL_HAND 0
 #define YUG_BOARD_UL_HAND_BOARD 1

@@ -1,10 +1,10 @@
 #pragma once
 #include <vector>
-#include <Game\ModelLoader.h>
-#include <Game\Cards\CardData.h>
-#include <Game\YugiohUnit.h>
-#include <Game\WaitUnit.h>
-#include <Screens\BaseScreen.h>
+#include <Game/ModelLoader.h>
+#include <Game/Cards/CardData.h>
+#include <Game/YugiohUnit.h>
+#include <Game/WaitUnit.h>
+#include <Screens/BaseScreen.h>
 
 namespace Screen{
 

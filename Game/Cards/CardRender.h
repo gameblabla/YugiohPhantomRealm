@@ -1,9 +1,9 @@
 #pragma once
-#include <GL\glew.h>
+#include <GL/glew.h>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
-#include <Game\YugiohUnit.h>
-//#include <Game\Cards\CardData.h>
+#include <Game/YugiohUnit.h>
+//#include <Game/Cards/CardData.h>
 
 namespace Card{
 	class CardData;

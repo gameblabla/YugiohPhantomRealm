@@ -1,11 +1,11 @@
-#include <Game\Duel\Parts\UnderlayWidget.h>
+#include <Game/Duel/Parts/UnderlayWidget.h>
 #include <DefinesAndTypedefs.h>
-#include <Game\Duel\Board.h>
-#include <Game\Duel\Parts\SwordUnit.h>
-#include <Game\VectorUnit.h>
-#include <Game\Animation\MovementUnit.h>
-#include <Utility\TextureLoader.h>
-#include <Utility\TextPrinter.h>
+#include <Game/Duel/Board.h>
+#include <Game/Duel/Parts/SwordUnit.h>
+#include <Game/VectorUnit.h>
+#include <Game/Animation/MovementUnit.h>
+#include <Utility/TextureLoader.h>
+#include <Utility/TextPrinter.h>
 #include <iostream>
 
 namespace Duel{
@@ -100,7 +100,7 @@ namespace Duel{
 
 	}
 	void UnderlayWidget::hide(){
-		//std::cout<<"UL: hide() called\n";
+		//std::cout<<"UL: hide() called/n";
 		underlay1.interpolate(pos.bUnder1HiddenPos, 0.1f/*pos.wait[1]*/);
 		underlay2.interpolate(pos.bUnder2HiddenPos, 0.1f/*pos.wait[1]*/);
 		guardianWarning.interpolate(mov.addOffset(pos.bUnder2HiddenPos,pos.bUnderguardWarnOffset), 0.1f);
@@ -109,7 +109,7 @@ namespace Duel{
 	}
 	void UnderlayWidget::hideThen(int nextMode){
 		hide();
-		//std::cout<<"UL: hideThen() called\n";
+		//std::cout<<"UL: hideThen() called/n";
 		nextType = nextMode;
 		wait(pos.wait[3]);
 

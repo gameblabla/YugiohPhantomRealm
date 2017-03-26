@@ -1,8 +1,8 @@
 #pragma once
-#include <GL\glew.h>
+#include <GL/glew.h>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
-#include <Game\ModelLoader.h>
+#include <Game/ModelLoader.h>
 
 #define YUG_PARTICLE_BURN_NO_BURN 0
 #define YUG_PARTICLE_BURN_MON 1

@@ -1,3 +1,13 @@
+This is an attempt to port to Linux. Unfortunely, this game requires GLSL 4.3 and Nouveau (my gpu driver) doesn't support it yet. It should work on AMD or Nvidia gpus though but controls or sound are not supported. (should be easy to do)
+
+It also may crash. If it does crashes, then you are on your own as i can't debug it.
+
+Hopefully i can look at this again.
+
+Oh, and my makefile is also terrible and only works on Ubuntu/Debian. Change it if needed
+
+==============================
+
 ## Yu-Gi-Oh Forbidden Memories 2: the Phantom Realm
 
 ### Overview

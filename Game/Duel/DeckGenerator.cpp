@@ -1,9 +1,9 @@
 #include <stdlib.h>     /* srand, rand */
 #include <fstream>
 #include <string>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Game\Duel\Deck.h>
-#include <Utility\ErrorHandler.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Game/Duel/Deck.h>
+#include <Utility/ErrorHandler.h>
 #include <chrono>
 #include <iostream>
 

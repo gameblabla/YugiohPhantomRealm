@@ -1,8 +1,8 @@
 #pragma once
-#include <Qt\qobject.h>
-#include <qt\qtimer.h>
-#include <qtGUI\qapplication.h>
-#include <Base\RenderUnit.h>
+#include <Qt/qobject.h>
+#include <Qt/qtimer.h>
+#include <QtGui/qapplication.h>
+#include <Base/RenderUnit.h>
 class YugiohGame : public QObject
 {
 	Q_OBJECT

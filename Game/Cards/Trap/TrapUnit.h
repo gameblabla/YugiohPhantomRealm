@@ -1,7 +1,7 @@
 #pragma once
-#include <Game\Cards\Trap\TrapSource.h>
-#include <Game\Cards\CardData.h>
-#include <Game\WaitUnit.h>
+#include <Game/Cards/Trap/TrapSource.h>
+#include <Game/Cards/CardData.h>
+#include <Game/WaitUnit.h>
 
 #define YUG_TRAP_CH_START 0
 #define YUG_TRAP_CH_CAM_PULL 1

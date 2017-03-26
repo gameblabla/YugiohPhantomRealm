@@ -1,7 +1,7 @@
-#include <Game\Cards\Trap\GoblinFan.h>
-#include <Game\Cards\Trap\TrapUnit.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Game\Cards\Magic\DamageMagic.h>
+#include <Game/Cards/Trap/GoblinFan.h>
+#include <Game/Cards/Trap/TrapUnit.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Game/Cards/Magic/DamageMagic.h>
 
 namespace Card{
 

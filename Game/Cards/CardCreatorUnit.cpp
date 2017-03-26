@@ -1,7 +1,7 @@
-#include <GL\glew.h>//for GLuints 
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Game\Cards\Magic\MagicCard.h>
-#include <Game\Cards\Magic\ChangeOfHeart.h>
+#include <GL/glew.h>//for GLuints 
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Game/Cards/Magic/MagicCard.h>
+#include <Game/Cards/Magic/ChangeOfHeart.h>
 #include <iostream>
 
 namespace Card{

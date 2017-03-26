@@ -1,9 +1,10 @@
-#include <Utility\ErrorHandler.h>
+#include <Utility/ErrorHandler.h>
 #include <DefinesAndTypedefs.h>
-#include <Game\Cards\CardData.h>
-#include <Utility\TextPrinter.h>
-#include <Utility\TextureLoader.h>
+#include <Game/Cards/CardData.h>
+#include <Utility/TextPrinter.h>
+#include <Utility/TextureLoader.h>
 #include <iostream>
+#include <cstring> 
 
 #define YUG_NAME_TEXT_HEIGHT 1.0f
 #define YUG_NAME_TEXT_WIDTH 1.0f

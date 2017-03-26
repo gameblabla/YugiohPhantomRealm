@@ -1,15 +1,15 @@
-#include <Game\Duel\BattleUnit.h>
-#include <Game\Duel\Board.h>
-#include <Utility\Clock.h>
-#include <Utility\BlankUnit.h>
-#include <Utility\StateUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Game\Cursor.h>
-#include <Game\Cards\CardCreatorUnit.h>
-#include <Game\VectorUnit.h>
-#include <Game\Animation\FadeUnit.h>
-#include <Game\Duel\EndUnit.h>
-#include <Game\EnemyData.h>
+#include <Game/Duel/BattleUnit.h>
+#include <Game/Duel/Board.h>
+#include <Utility/Clock.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/StateUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Game/Cursor.h>
+#include <Game/Cards/CardCreatorUnit.h>
+#include <Game/VectorUnit.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Game/Duel/EndUnit.h>
+#include <Game/EnemyData.h>
 #include <iostream>
 
 namespace Duel{

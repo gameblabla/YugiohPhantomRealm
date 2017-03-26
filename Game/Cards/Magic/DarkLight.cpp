@@ -1,10 +1,10 @@
-#include <Game\Cards\Magic\DarkLight.h>
-#include <Utility\Clock.h>
-#include <Game\Cards\Magic\MagicUnit.h>
-#include <Game\Animation\ParticlesUnit.h>
-#include <Game\Duel\Board.h>
-#include <Game\Animation\FadeUnit.h>
-#include <Utility\SoundUnit.h>
+#include <Game/Cards/Magic/DarkLight.h>
+#include <Utility/Clock.h>
+#include <Game/Cards/Magic/MagicUnit.h>
+#include <Game/Animation/ParticlesUnit.h>
+#include <Game/Duel/Board.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Utility/SoundUnit.h>
 
 #define ZYUG_GO 0
 #define ZYUG_GLOW 1

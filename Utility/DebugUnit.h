@@ -1,9 +1,9 @@
 #pragma once
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
-#include <Game\Cards\DebugCard.h>
-#include <Game\Cards\CardData.h>
-#include <Game\ModelLoader.h>
+#include <Game/Cards/DebugCard.h>
+#include <Game/Cards/CardData.h>
+#include <Game/ModelLoader.h>
 namespace Utility{
 	class DebugUnit
 	{

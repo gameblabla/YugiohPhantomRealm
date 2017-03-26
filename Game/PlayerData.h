@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
 #include <fstream>
-#include <Game\Duel\Deck.h>
+#include <Game/Duel/Deck.h>
 #include <string>
-#include <definesAndTypedefs.h>
+#include <DefinesAndTypedefs.h>
 #define YUG_PLAYER_DATA_NO_ACTIVE_SAVE_FILE -1
 #define YUG_PLOT_POINT_START 0
 #define YUG_PLOT_POINT_NIGHT_BEFORE 10

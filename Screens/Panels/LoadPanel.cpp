@@ -1,8 +1,8 @@
-#include <Game\PlayerData.h>
-#include <Utility\InputUnit.h>
-#include <Utility\TextPrinter.h>
-#include <Screens\Panels\LoadPanel.h>
-#include <Utility\SoundUnit.h>
+#include <Game/PlayerData.h>
+#include <Utility/InputUnit.h>
+#include <Utility/TextPrinter.h>
+#include <Screens/Panels/LoadPanel.h>
+#include <Utility/SoundUnit.h>
 #include <DefinesAndTypedefs.h>
 
 #define ZYUG_CH_IDLE 0

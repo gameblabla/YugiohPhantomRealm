@@ -1,9 +1,9 @@
 #pragma once
 #include <fstream>
-#include <Game\YugiohUnit.h>
-#include <Game\WaitUnit.h>
-#include <Game\ModelLoader.h>
-#include <Game\Cards\CardData.h>
+#include <Game/YugiohUnit.h>
+#include <Game/WaitUnit.h>
+#include <Game/ModelLoader.h>
+#include <Game/Cards/CardData.h>
 
 #define YUG_END_CONTINUE_DUEL 0
 #define YUG_END_PLAYER_WIN 1

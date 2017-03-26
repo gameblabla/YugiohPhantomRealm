@@ -1,5 +1,5 @@
 #include <iostream>
-#include <Utility\DebugUnit.h>
+#include <Utility/DebugUnit.h>
 
 namespace Utility{
 
@@ -19,9 +19,9 @@ namespace Utility{
 	{
 		/*for( int i = 0; i <4; i++){
 			for(int j = 0; j <4; j++){
-				std::cout<<mat[j][i]<<"\t";
+				std::cout<<mat[j][i]<<"/t";
 			}
-			std::cout<<"\n";
+			std::cout<<"/n";
 		}*/
 	}
 

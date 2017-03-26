@@ -1,12 +1,12 @@
 #include <iostream>
 #include <sstream>
-#include <Utility\UpdateUnit.h>
-#include <Utility\BlankUnit.h>
-#include <Utility\StateUnit.h>
-#include <Base\RenderUnit.h>
-#include <Screens\DialogScreen.h>
-#include <Screens\ScreenUnit.h>
-#include <Game\Animation\FadeUnit.h>
+#include <Utility/UpdateUnit.h>
+#include <Utility/BlankUnit.h>
+#include <Utility/StateUnit.h>
+#include <Base/RenderUnit.h>
+#include <Screens/DialogScreen.h>
+#include <Screens/ScreenUnit.h>
+#include <Game/Animation/FadeUnit.h>
 #include <DefinesAndTypedefs.h>
 
 #define YUG_SCREEN_CH_TEXT_IN 2

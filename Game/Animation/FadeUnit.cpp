@@ -1,6 +1,6 @@
-#include <Game\Animation\FadeUnit.h>
-#include <Game\VectorUnit.h>
-#include <Utility\Clock.h>
+#include <Game/Animation/FadeUnit.h>
+#include <Game/VectorUnit.h>
+#include <Utility/Clock.h>
 #include <DefinesAndTypedefs.h>
 
 namespace Animation{

@@ -28,7 +28,7 @@ namespace Duel{
 		fieldName.push_back(' ');
 		fieldName.push_back('-');
 		fieldName.push_back(' ');
-		fieldName.push_back('/0');
+		fieldName.push_back('\0');
 		boostTypes.clear();
 		boostTypes.push_back(0);
 		weakenTypes.clear();

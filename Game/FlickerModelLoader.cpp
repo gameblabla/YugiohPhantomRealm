@@ -23,7 +23,9 @@ namespace Game{
 		//std::cout<<"fModel: uvs size: "<<uvs.size()<<std::endl;
 
 		vertexNumber = vertices.size();
+#ifndef NOVA
 		glBindVertexArray(0);
+#endif
 		glGenBuffers(1, &verticesBO);
 		glBindBuffer(GL_ARRAY_BUFFER, verticesBO);
 		glBufferData(GL_ARRAY_BUFFER,  vertices.size() * sizeof(glm::vec3), vertices.data(), GL_STATIC_DRAW);
@@ -37,9 +39,10 @@ namespace Game{
 		currentTexture = 0;
 		flickerSpeed = 0;
 		currentDuration = 0;
-
+#ifndef NOVA
 		glGenVertexArrays(1, &modelVAO);
 		glBindVertexArray(modelVAO);
+
 		glEnableVertexAttribArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, verticesBO);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
@@ -47,6 +50,7 @@ namespace Game{
 		glBindBuffer(GL_ARRAY_BUFFER, uvBO);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
 		glBindVertexArray(0);
+#endif
 		}
 		void FlickerModelLoader::cleanup(){
 			for(unsigned int i = 0; i <textures.size(); i++){
@@ -85,16 +89,28 @@ namespace Game{
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
 			glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
 			glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &amtran[0]);
+#ifdef NOVA
+			glEnableVertexAttribArray(0);
+	                glBindBuffer(GL_ARRAY_BUFFER, verticesBO);
+        	        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+                	glEnableVertexAttribArray(1);
+	                glBindBuffer(GL_ARRAY_BUFFER, uvBO);
+        	        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+#else
 			glBindVertexArray(0);
 			glBindVertexArray(modelVAO);
-
+#endif
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, textures[currentTexture]);
 
 	
 			glDrawArrays(GL_TRIANGLES, 0, vertexNumber );
-
+#ifdef NOVA
+			glDisableVertexAttribArray(0);
+			glDisableVertexAttribArray(1);
+#else
 			glBindVertexArray(0);
+#endif
 		}
 		void FlickerModelLoader::update(){
 			if(isFlickering){

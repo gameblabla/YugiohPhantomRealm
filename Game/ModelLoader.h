@@ -1,5 +1,9 @@
 #pragma once
+#ifdef USE_GLES
+#include <GLES2/gl2.h>
+#else
 #include <GL/glew.h>
+#endif
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
 #include <ThirdParty/objloader.hpp>
@@ -17,7 +21,9 @@ namespace Game{
 		GLuint verticesBO;
 		GLuint uvBO;
 		GLuint textureBO;
+#ifndef NOVA
 		GLuint modelVAO;
+#endif
 		bool doRender;
 
 		void interpolate(

@@ -26,7 +26,9 @@ namespace Utility{
 	}
 
 	void  TextureLoader::loadTexture(const char* fileName, GLuint* textureID){
+#ifndef NOVA
 		glBindVertexArray(YUG_UNBIND);
+#endif
 		if((*textureID) != YUG_NULL_ID )
 			deleteTexture(textureID);
 		//get image as png
@@ -37,7 +39,7 @@ namespace Utility{
 		if(error != 0 ){
 			errorHandler.printError("textureLoader: failed to load png: ");
 			errorHandler.printError(fileName);
-			errorHandler.printError("textureLoader: Going to crash now/n");
+			errorHandler.printError("textureLoader: Going to crash now\n");
 		}
 		
 		//send to openGL
@@ -66,8 +68,9 @@ namespace Utility{
 
 	void TextureLoader::deleteTexture(GLuint* textureID){
 		if( textureID == &badTexture ) return;
-		
+#ifndef NOVA
 		glBindVertexArray(YUG_UNBIND);
+#endif
 		/*auto it = find(currentIds.begin(), currentIds.end(), *textureID );
 		if(it == currentIds.end()){
 			std::cout<<"Texture Loader: couldn't find id in vector: "<<(*textureID)<<std::endl;

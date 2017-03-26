@@ -9,7 +9,7 @@ namespace Game{
 
 	bool Cursor::initialize(){
 		cursorModel.startup("GameData/models/MyFirstPuzzle01.obj",
-			"gameData/textures/board/cursorUV.png");
+			"GameData/textures/board/cursorUV.png");
 		cursorModel.position = glm::vec3(0.2f, -0.175f, -0.88f);
 		cursorModel.ignoreCamera = true;
 		cursorModel.scale = glm::vec3(0.025f,0.025f,0.025f);

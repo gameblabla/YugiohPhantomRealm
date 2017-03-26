@@ -51,10 +51,11 @@ namespace Card{
 	GLuint BigCardRender::monsterCardTBO;
 	GLuint BigCardRender::magicCardTBO;
 	GLuint BigCardRender::trapCardTBO;
+#ifndef NOVA
 	GLuint BigCardRender::frontCardVAO;
 	GLuint BigCardRender::backCardVAO;
 	GLuint BigCardRender::pictureVAO;
-
+#endif
 	namespace{
 		float cardVerts[] = {
 			-YUG_CARD_X, YUG_CARD_Y, 0.0f,//TOPLEFT VERTICE
@@ -86,8 +87,9 @@ namespace Card{
 		starchipsStartPosition = glm::vec3(0.36f, 0.508f, YUG_MON_Z*2);
 		magicchipsStartPosition= glm::vec3(0.25f, 0.51f, YUG_MON_Z*2);
 		//openGL initialization
+#ifndef NOVA
 		glBindVertexArray(YUG_UNBIND);
-
+#endif
 		glGenBuffers(1, &cardVertsVBO);
 		glBindBuffer(GL_ARRAY_BUFFER, cardVertsVBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(cardVerts), &cardVerts, GL_STATIC_DRAW);
@@ -96,12 +98,12 @@ namespace Card{
 		glBindBuffer(GL_ARRAY_BUFFER, pictureVertsVBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(pictureVerts), &pictureVerts, GL_STATIC_DRAW);
 
-		textureLoader.loadTexture("GameData/textures/Cards/bigMonsterCardSource.png", &monsterCardTBO);
-		textureLoader.loadTexture("GameData/textures/Cards/bigMagicCardSource.png", &magicCardTBO);
-		textureLoader.loadTexture("GameData/textures/Cards/bigTrapCardSource.png", &trapCardTBO);
-		textureLoader.loadTexture("GameData/textures/Cards/bigBackCardSource.png", &backCardTBO);
+		textureLoader.loadTexture("GameData/textures/cards/bigMonsterCardSource.png", &monsterCardTBO);
+		textureLoader.loadTexture("GameData/textures/cards/bigMagicCardSource.png", &magicCardTBO);
+		textureLoader.loadTexture("GameData/textures/cards/bigTrapCardSource.png", &trapCardTBO);
+		textureLoader.loadTexture("GameData/textures/cards/bigBackCardSource.png", &backCardTBO);
 
-
+#ifndef NOVA
 		glBindVertexArray(YUG_UNBIND);
 		glGenVertexArrays(1, &frontCardVAO);
 		glBindVertexArray(frontCardVAO);
@@ -132,7 +134,7 @@ namespace Card{
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float)*5, (void*)(sizeof(float)*3) );
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cardFrontIndicesIBO);
 		glBindVertexArray(YUG_UNBIND);
-
+#endif
 
 
 		return true;
@@ -144,10 +146,11 @@ namespace Card{
 		textureLoader.deleteTexture(&monsterCardTBO);
 		textureLoader.deleteTexture(&magicCardTBO);
 		textureLoader.deleteTexture(&trapCardTBO);
-		
+#ifndef NOVA
 		glDeleteVertexArrays(1, &frontCardVAO);
 		glDeleteVertexArrays(1, &backCardVAO);
 		glDeleteVertexArrays(1, &pictureVAO);
+#endif
 		return true;
 	}
 	bool BigCardRender::startup(){
@@ -201,7 +204,9 @@ namespace Card{
 	void BigCardRender::render(){
 		if(!doRender)
 			return;
+#ifndef NOVA
 		glBindVertexArray(YUG_UNBIND);
+#endif
 		if(!stateUnit.isActiveShaderProgram(YUG_TEXTURE_SHADER_PROGRAM))
 			stateUnit.useShaderProgram(YUG_TEXTURE_SHADER_PROGRAM);
 		
@@ -217,27 +222,60 @@ namespace Card{
 		glUniform1f(stateUnit.textureSamplerUniformLocation, 0.0f);
 		glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &amtran[0]);
 		//rendering the front frame of the card
+#ifdef NOVA
+                glBindBuffer(GL_ARRAY_BUFFER, cardVertsVBO);
+                glEnableVertexAttribArray(0);
+                glEnableVertexAttribArray(1);
+                glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*5, 0);
+                glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float)*5, (void*)(sizeof(float)*3) );
+                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cardFrontIndicesIBO);
+#else
 		glBindVertexArray(frontCardVAO);
+#endif
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, returnCorrectFrameID());
 		glEnable(GL_CULL_FACE);
 		glCullFace(GL_BACK);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
+#ifdef NOVA
+                glBindBuffer(GL_ARRAY_BUFFER, cardVertsVBO);
+                glEnableVertexAttribArray(0);
+                glEnableVertexAttribArray(1);
+                glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*5, 0);
+                glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float)*5, (void*)(sizeof(float)*3) );
+                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cardBackIndicesIBO);
+#else
 		glBindVertexArray(YUG_UNBIND);
 		//rendering the back of the card
 		glBindVertexArray(backCardVAO);
+#endif
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, backCardTBO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
+#ifndef NOVA
 		glBindVertexArray(YUG_UNBIND);
+#endif
 		glDisable(GL_CULL_FACE);
 		//rendering the picture of the card
+#ifdef NOVA
+                glBindBuffer(GL_ARRAY_BUFFER, pictureVertsVBO);
+                glEnableVertexAttribArray(0);
+                glEnableVertexAttribArray(1);
+                glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*5, 0);
+                glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float)*5, (void*)(sizeof(float)*3) );
+                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cardFrontIndicesIBO);
+#else
 		glBindVertexArray(pictureVAO);
+#endif
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, (parentCard->pictureTBO));
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
+#ifdef NOVA
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
-
+#endif
 		textPrinter.leftAlign = true;
 		glm::vec4 oldAmtran = textPrinter.amtran;
 		textPrinter.amtran = amtran;

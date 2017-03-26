@@ -133,6 +133,10 @@ namespace Utility{
 		success &= checkShaderCompile(fragmentShaderID);
 
 		textureProgramID = glCreateProgram();
+		// bind attribs, needed for glsl 1.20
+		glBindAttribLocation(textureProgramID, 0, "Position");
+		glBindAttribLocation(textureProgramID, 1, "TexCoord");
+
 		glAttachShader(textureProgramID, vertexShaderID);
 		glAttachShader(textureProgramID, fragmentShaderID);
 		glLinkProgram(textureProgramID);
@@ -162,6 +166,9 @@ namespace Utility{
 		checkShaderCompile(fragmentShaderID);
 
 		colourProgramID = glCreateProgram();
+		// bind attribs, needed for glsl 1.20
+		glBindAttribLocation(colourProgramID, 0, "Position");
+
 		glAttachShader(colourProgramID, vertexShaderID);
 		glAttachShader(colourProgramID, fragmentShaderID);
 		glLinkProgram(colourProgramID);
@@ -179,7 +186,7 @@ namespace Utility{
 		std::ifstream input;
 		input.open(fileName);
 		if(!input.good()){
-			errorHandler.printError("Shader File failed to load./r/n");
+			errorHandler.printError("Shader File failed to load.\r\n");
 			errorHandler.printError(fileName.c_str());
 			return NULL;
 		}

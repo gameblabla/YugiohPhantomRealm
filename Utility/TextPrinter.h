@@ -1,5 +1,9 @@
 #pragma once
+#ifdef USE_GLES
+#include <GLES2/gl2.h>
+#else
 #include <GL/glew.h>
+#endif
 #include <vector>
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
@@ -20,7 +24,9 @@ namespace Utility{
 		GLuint textMagTextureID;
 		GLuint textVertexID;
 		GLuint textUVID;
+#ifndef NOVA
 		GLuint textVAO;
+#endif
 		int currentFont;
 		bool onInfoFont();
 		bool onNameFont();

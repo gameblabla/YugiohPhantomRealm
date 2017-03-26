@@ -8,9 +8,11 @@ using namespace std;
 
 #include <stdlib.h>
 #include <string.h>
-
+#ifdef USE_GLES
+#include <GLES2/gl2.h>
+#else
 #include <GL/glew.h>
-
+#endif
 #include "shader.hpp"
 
 GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path){

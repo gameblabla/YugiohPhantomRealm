@@ -60,7 +60,7 @@ namespace Utility{
 		//making buffers for vertex, uv
 		glGenBuffers(1, &textVertexID);
 		glGenBuffers(1, &textUVID);
-		
+#ifndef NOVA
 		//making VAO
 		glBindVertexArray(YUG_UNBIND);
 		glGenVertexArrays(1, &textVAO);
@@ -75,12 +75,15 @@ namespace Utility{
 		glBindBuffer(GL_ARRAY_BUFFER, textUVID);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
 		glBindVertexArray(YUG_UNBIND);
+#endif
 		return true;
 	}
 	bool TextPrinter::shutdown(){
 		glDeleteBuffers(1, &textVertexID);
 		glDeleteBuffers(1, &textUVID);
+#ifndef NOVA
 		glDeleteVertexArrays(1, &textVAO);
+#endif
 		textureLoader.deleteTexture(&textNameTextureID);
 		textureLoader.deleteTexture(&textInfoTextureID);
 		textureLoader.deleteTexture(&textSymbolTextureID);
@@ -288,14 +291,24 @@ namespace Utility{
 			stateUnit.useShaderProgram(YUG_TEXTURE_SHADER_PROGRAM);
 		}
 		//putting data into OpenGL
+#ifndef NOVA
 		glBindVertexArray(YUG_UNBIND);
-
+#endif
 		glBindBuffer(GL_ARRAY_BUFFER, textVertexID);
 		glBufferData(GL_ARRAY_BUFFER, vertices->size() * sizeof(glm::vec3), vertices->data(),GL_STATIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, textUVID);
 		glBufferData(GL_ARRAY_BUFFER, uvArray->size() * sizeof(glm::vec2), uvArray->data(),GL_STATIC_DRAW);
-
+#ifdef NOVA
+                glBindBuffer(GL_ARRAY_BUFFER, textVertexID);
+                glEnableVertexAttribArray(0);
+                glBindBuffer(GL_ARRAY_BUFFER, textVertexID);
+                glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+                glEnableVertexAttribArray(1);
+                glBindBuffer(GL_ARRAY_BUFFER, textUVID);
+                glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+#else
 		glBindVertexArray(textVAO);//alpha and symbol might clash?
+#endif
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, textureID);
 
@@ -330,7 +343,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 	}
 
 	void TextPrinter::printText(const char* sentence, int font,
@@ -360,7 +378,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 	}
 
 	void TextPrinter::printText(const char* sentence, int font,
@@ -385,7 +408,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 	}
 
 	void TextPrinter::printText(const char* sentence, int font,
@@ -413,7 +441,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 
 	}
 
@@ -440,7 +473,12 @@ namespace Utility{
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 	}
 
 	std::vector<glm::vec3> TextPrinter::makeSymbolVertex(){
@@ -493,7 +531,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 
 	}
 
@@ -525,7 +568,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 
 	}
 
@@ -554,9 +602,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
-
-
+#endif
 	}
 
 	void TextPrinter::addInfoNumberToUVs(std::vector<glm::vec2>* uvArray, int number){
@@ -675,7 +726,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, (noOfDigits+length)*YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 	}
 
 	void TextPrinter::printTextAndNumber(const char* sentence, int number,
@@ -708,7 +764,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, (noOfDigits+length)*YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 	}
 
 	void TextPrinter::printNumber(int number,
@@ -739,7 +800,12 @@ namespace Utility{
 			glDrawArrays(GL_TRIANGLES, 0, (noOfDigits)*YUG_TEXT_VERTS_PER_GLYPH );
 
 			//glDisable(GL_BLEND);
+#ifdef NOVA
+	                glDisableVertexAttribArray(0);
+        	        glDisableVertexAttribArray(1);
+#else
 			glBindVertexArray(YUG_UNBIND);
+#endif
 	}
 
 	void TextPrinter::printNumber(int number,
@@ -766,7 +832,12 @@ namespace Utility{
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, (noOfDigits)*YUG_TEXT_VERTS_PER_GLYPH );
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 	}
 
 	void TextPrinter::printText(const char* sentence, int font,
@@ -791,7 +862,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 	}
 	void TextPrinter::printSymbol(int symbol,
 			glm::mat4 parentsMatrix,
@@ -814,8 +890,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
-
+#endif
 	}
 	void TextPrinter::printTextAndNumber(const char* sentence, 
 			int number, int font,
@@ -840,7 +920,12 @@ namespace Utility{
 		glDrawArrays(GL_TRIANGLES, 0, (noOfDigits+length)*YUG_TEXT_VERTS_PER_GLYPH );
 
 		//glDisable(GL_BLEND);
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
+#endif
 	}
 
 	
@@ -869,8 +954,12 @@ namespace Utility{
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, (length)*YUG_TEXT_VERTS_PER_GLYPH );
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
-		
+#endif
 	}
 
 	std::vector<glm::vec2> TextPrinter::makeDamageUVs(
@@ -935,8 +1024,12 @@ namespace Utility{
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, (length)*YUG_TEXT_VERTS_PER_GLYPH );
+#ifdef NOVA
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(YUG_UNBIND);
-		
+#endif
 	}
 
 	std::vector<glm::vec2> TextPrinter::makeMagicUVs(

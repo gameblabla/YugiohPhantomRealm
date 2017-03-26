@@ -36,6 +36,7 @@ void DebugCard::setup(){
 	statsTBO = 4564535;
 	textureLoader.loadTexture("GameData/textures/cards/bigTrapCardSource.png", &statsTBO);
 	//std::cout<<"debug Card: Texture ID: "<<statsTBO;
+#ifndef NOVA
 	glGenVertexArrays(1, &statsVAO);
 	glBindVertexArray(statsVAO);//all futrue calls saved to this VAO
 	glBindBuffer(GL_ARRAY_BUFFER, statsVBO);
@@ -45,6 +46,7 @@ void DebugCard::setup(){
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float)*5, (void*)(sizeof(float)*3) );
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, statsIBO);
 	glBindVertexArray(0);
+#endif
 }
 void DebugCard::draw(){
 	if(!stateUnit.isActiveShaderProgram(YUG_TEXTURE_SHADER_PROGRAM)){
@@ -61,13 +63,25 @@ void DebugCard::draw(){
 
 	//glEnable(GL_CULL_FACE);
 	//glCullFace(GL_BACK);
-
+#ifdef NOVA
+        glBindBuffer(GL_ARRAY_BUFFER, statsVBO);
+        glEnableVertexAttribArray(0);
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*5, 0);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float)*5, (void*)(sizeof(float)*3) );
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, statsIBO);
+#else
 	glBindVertexArray(statsVAO);
+#endif
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, statsTBO);
 	glDrawElements(GL_TRIANGLES, quadNoofIndices, GL_UNSIGNED_SHORT, 0);
 
 	//glDisable(GL_CULL_FACE);
+#ifdef NOVA
+	glDisableVertexAttribArray(0);
+	glDisableVertexAttribArray(1);
+#else
 	glBindVertexArray(0);
-
+#endif
 }

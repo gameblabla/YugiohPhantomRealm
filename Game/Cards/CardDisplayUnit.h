@@ -1,5 +1,9 @@
 #pragma once
+#ifdef USE_GLES
+#include <GLES2/gl2.h>
+#else
 #include <GL/glew.h>
+#endif
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
 #include <Game/ModelLoader.h>

@@ -26,14 +26,15 @@ namespace Duel{
 
 
 		vertexNumber = vertices.size();
+#ifndef NOVA
 		glBindVertexArray(0);
+#endif
 		glGenBuffers(1, &verticesBO);
 		glBindBuffer(GL_ARRAY_BUFFER, verticesBO);
 		glBufferData(GL_ARRAY_BUFFER,  vertices.size() * sizeof(glm::vec3), vertices.data(), GL_STATIC_DRAW);
 		glGenBuffers(1, &uvBO);
 		glBindBuffer(GL_ARRAY_BUFFER, uvBO);
 		glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), uvs.data(), GL_STATIC_DRAW);
-
 		GLuint texID1=0; emptyTextures.push_back(texID1 );
 		textureLoader.loadTexture("gameData/textures/board/cursors/emptyboardcursor0UV.png", &emptyTextures[0]);
 		GLuint texID2=0; emptyTextures.push_back(texID2 );
@@ -60,7 +61,7 @@ namespace Duel{
 		scale = pos.bBoardCursorScale;
 		doRender = false;
 		move();
-
+#ifndef NOVA
 		glGenVertexArrays(1, &modelVAO);
 		glBindVertexArray(modelVAO);
 		glEnableVertexAttribArray(0);
@@ -70,6 +71,7 @@ namespace Duel{
 		glBindBuffer(GL_ARRAY_BUFFER, uvBO);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
 		glBindVertexArray(0);
+#endif
 	}
 	void BattleCursor::cleanup(){
 		for(unsigned int i = 0; i <4 ; i++){
@@ -78,7 +80,9 @@ namespace Duel{
 		}
 		emptyTextures.clear();
 		fullTextures.clear();
+#ifndef NOVA
 		glDeleteVertexArrays(1, &modelVAO);
+#endif
 		glDeleteBuffers(1, &verticesBO);
 		glDeleteBuffers(1, &uvBO);
 	}
@@ -101,9 +105,17 @@ namespace Duel{
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
 			glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
 			glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &amtran[0]);
+#ifdef NOVA
+			glEnableVertexAttribArray(0);
+        	        glBindBuffer(GL_ARRAY_BUFFER, verticesBO);
+                	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+	                glEnableVertexAttribArray(1);
+        	        glBindBuffer(GL_ARRAY_BUFFER, uvBO);
+                	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+#else
 			glBindVertexArray(0);
 			glBindVertexArray(modelVAO);
-
+#endif
 			glActiveTexture(GL_TEXTURE0);
 			if(emptyMode)
 				glBindTexture(GL_TEXTURE_2D, emptyTextures[currentTexture]);
@@ -111,8 +123,12 @@ namespace Duel{
 				glBindTexture(GL_TEXTURE_2D, fullTextures[currentTexture]);
 	
 			glDrawArrays(GL_TRIANGLES, 0, vertexNumber );
-
+#ifdef NOVA
+			glDisableVertexAttribArray(0);
+			glDisableVertexAttribArray(1);
+#else
 			glBindVertexArray(0);
+#endif
 	}
 	void BattleCursor::move(){
 		interpolate(

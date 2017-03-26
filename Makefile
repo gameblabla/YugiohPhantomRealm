@@ -12,7 +12,7 @@ SDL_LIB     =
 SDL_INCLUDE = 
 
 # change compilation / linking flag options
-F_OPTS		= -DHOME_SUPPORT -IBase -IGame -IUtility -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtCore -I/usr/include/qt4 -I. -I/usr/include/glm
+F_OPTS		= -DHOME_SUPPORT -DNOVA -g -IBase -IGame -IUtility -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtCore -I/usr/include/qt4 -I. -I/usr/include/glm
 CC_OPTS		= -O2 -std=gnu++11 $(F_OPTS)
 CFLAGS		= -I$(SDL_INCLUDE) $(CC_OPTS)
 CXXFLAGS	=$(CFLAGS) 

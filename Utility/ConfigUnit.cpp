@@ -14,11 +14,11 @@ namespace Utility{
 		std::ofstream out("GameData/saves/options.txt");
 		for(int i = 0; i < YUG_NO_OF_KEYS; i++){
 			out<<inputUnit.realKeyBindings[i];
-			out<<"/n";
+			out<<"\n";
 		}
-		out<<soundUnit.soundOn; out<<"/n";
-		out<<soundUnit.effectsOn; out<<"/n";
-		out<<soundUnit.musicOn; out<<"/n";
+		out<<soundUnit.soundOn; out<<"\n";
+		out<<soundUnit.effectsOn; out<<"\n";
+		out<<soundUnit.musicOn; out<<"\n";
 	}
 
 	void ConfigUnit::loadConfig(){

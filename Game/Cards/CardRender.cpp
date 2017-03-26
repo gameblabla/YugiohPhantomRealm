@@ -31,8 +31,9 @@ namespace Card{
 		cardBackIndices[3] = 3;
 		cardBackIndices[4] = 2;
 		cardBackIndices[5] = 0;
-
+#ifndef NOVA
 		glBindVertexArray(YUG_UNBIND);
+#endif
 		glGenBuffers(1, &cardFrontIndicesIBO);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cardFrontIndicesIBO);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cardFrontIndices), 

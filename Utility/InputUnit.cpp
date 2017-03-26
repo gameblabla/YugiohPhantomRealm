@@ -29,6 +29,7 @@ namespace Utility{
 	}
 
 	void InputUnit::readKeys(){
+		setKeyBits = 1;
 		/*if(stateUnit.application->activeWindow() == 0)
 			return;
 
@@ -74,6 +75,7 @@ namespace Utility{
 
 	}
 	int InputUnit::listenForAnyKey(){
+		return 100;
 		/*int count = 0;
 		std::cout<<"Input: Hold down new key binding/n";
 		while(count++ < 30){
@@ -88,8 +90,8 @@ namespace Utility{
 			}
 		}
 		std::cout<<"Input: No new key binding obtained./n";
-		soundUnit.cursorSelectionFail();*/
-		return -1;
+		soundUnit.cursorSelectionFail();
+		return -1;*/
 	}
 	void InputUnit::resetKey(int key){
 		int res = listenForAnyKey();

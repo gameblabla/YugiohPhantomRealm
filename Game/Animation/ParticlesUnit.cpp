@@ -63,13 +63,16 @@ namespace Animation{
 			(vertices),(uvs),(normals));
 		vertexNumber = vertices.size();
 		//pushing down to openGL
+#ifndef NOVA
 		glBindVertexArray(0);
+#endif
 		glGenBuffers(1, &VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		glBufferData(GL_ARRAY_BUFFER,  vertices.size() * sizeof(glm::vec3), vertices.data(), GL_STATIC_DRAW);
 		glGenBuffers(1, &uvBO);
 		glBindBuffer(GL_ARRAY_BUFFER, uvBO);
 		glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), uvs.data(), GL_STATIC_DRAW);
+#ifndef NOVA
 		//setting up VAO
 		glBindVertexArray(0);
 		glGenVertexArrays(1, &VAO);
@@ -81,13 +84,15 @@ namespace Animation{
 		glBindBuffer(GL_ARRAY_BUFFER, uvBO);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
 		glBindVertexArray(0);
-
+#endif
 		return true;
 	}
 	bool ParticlesUnit::shutdown(){
 		glDeleteBuffers(1, &VBO);
 		glDeleteBuffers(1, &uvBO);
+#ifndef NOVA
 		glDeleteVertexArrays(1, &VAO);
+#endif
 		textureLoader.deleteTexture(&textureBangBO);
 		textureLoader.deleteTexture(&textureSuckBO);
 		textureLoader.deleteTexture(&textureBurnBO);
@@ -138,8 +143,17 @@ namespace Animation{
 	void ParticlesUnit::renderParticleBang(){
 		if(!doRender)
 			return;
+#ifdef NOVA
+                glEnableVertexAttribArray(0);
+                glBindBuffer(GL_ARRAY_BUFFER, VBO);
+                glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+                glEnableVertexAttribArray(1);
+                glBindBuffer(GL_ARRAY_BUFFER, uvBO);
+                glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+#else
 		glBindVertexArray(0);
 		glBindVertexArray(VAO);
+#endif
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, textureBangBO);
 
@@ -164,15 +178,29 @@ namespace Animation{
 			glDrawArrays(GL_TRIANGLES, 0, vertexNumber );
 			
 		}
+#ifdef NOVA
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(0);
+#endif
 	}
 
 	void ParticlesUnit::renderParticleRise(){
 		if(!doRender)
 			return;
 		int zLayering = (playerView?-1:1);
+#ifdef NOVA
+                glEnableVertexAttribArray(0);
+                glBindBuffer(GL_ARRAY_BUFFER, VBO);
+                glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+                glEnableVertexAttribArray(1);
+                glBindBuffer(GL_ARRAY_BUFFER, uvBO);
+                glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+#else
 		glBindVertexArray(0);
 		glBindVertexArray(VAO);
+#endif
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, textureBangBO);
 		glm::mat4 projectionMatrix = stateUnit.perspectiveMatrix;
@@ -199,14 +227,28 @@ namespace Animation{
 				}
 			}
 		}
+#ifdef NOVA
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(0);
+#endif
 	}
 
 	void ParticlesUnit::renderParticleSuck(){
 		if(!doRender)
 			return;
+#ifdef NOVA
+                glEnableVertexAttribArray(0);
+                glBindBuffer(GL_ARRAY_BUFFER, VBO);
+                glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+                glEnableVertexAttribArray(1);
+                glBindBuffer(GL_ARRAY_BUFFER, uvBO);
+                glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+#else
 		glBindVertexArray(0);
 		glBindVertexArray(VAO);
+#endif
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, textureSuckBO);
 
@@ -234,14 +276,28 @@ namespace Animation{
 			glDrawArrays(GL_TRIANGLES, 0, vertexNumber );
 			
 		}
+#ifdef NOVA
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(0);
+#endif
 	}
 
 	void ParticlesUnit::renderParticleCardHit(){
 		if(!doRender)
 			return;
+#ifdef NOVA
+                glEnableVertexAttribArray(0);
+                glBindBuffer(GL_ARRAY_BUFFER, VBO);
+                glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+                glEnableVertexAttribArray(1);
+                glBindBuffer(GL_ARRAY_BUFFER, uvBO);
+                glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+#else
 		glBindVertexArray(0);
 		glBindVertexArray(VAO);
+#endif
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, textureBangBO);
 		glm::mat4 projectionMatrix = stateUnit.perspectiveMatrix;
@@ -279,14 +335,28 @@ namespace Animation{
 				glDrawArrays(GL_TRIANGLES, 0, vertexNumber );
 			}
 		}
+#ifdef NOVA
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(0);
+#endif
 	}
 
 	void ParticlesUnit::renderTrapParticles(){
 		if(!doRender)
 			return;
+#ifdef NOVA
+                glEnableVertexAttribArray(0);
+                glBindBuffer(GL_ARRAY_BUFFER, VBO);
+                glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+                glEnableVertexAttribArray(1);
+                glBindBuffer(GL_ARRAY_BUFFER, uvBO);
+                glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+#else
 		glBindVertexArray(0);
 		glBindVertexArray(VAO);
+#endif
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, textureTrapBO);
 
@@ -330,7 +400,12 @@ namespace Animation{
 
 			
 		}
+#ifdef NOVA
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(0);
+#endif
 	}
 
 	void ParticlesUnit::particleBang(glm::vec3 gCentre, float duration){
@@ -471,8 +546,17 @@ namespace Animation{
 		if(!doRender)
 			return;
 		cardBlocker.render();
+#ifdef NOVA
+                glEnableVertexAttribArray(0);
+                glBindBuffer(GL_ARRAY_BUFFER, VBO);
+                glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+                glEnableVertexAttribArray(1);
+                glBindBuffer(GL_ARRAY_BUFFER, uvBO);
+                glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
+#else
 		glBindVertexArray(0);
 		glBindVertexArray(VAO);
+#endif
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, textureBurnBO);
 
@@ -498,8 +582,12 @@ namespace Animation{
 			glDrawArrays(GL_TRIANGLES, 0, vertexNumber );
 			
 		}
+#ifdef NOVA
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+#else
 		glBindVertexArray(0);
-
+#endif
 	}
 
 	void ParticlesUnit::swapFlames(){

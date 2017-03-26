@@ -1,6 +1,9 @@
 #include <Utility/Clock.h>
 #include <Utility/ErrorHandler.h>
 #include <time.h>
+#ifdef PANDORA
+#define CLOCK_MONOTONIC_RAW CLOCK_MONOTONIC
+#endif
 
 #define BILLION 1E9
 struct timespec requestStart, requestEnd;

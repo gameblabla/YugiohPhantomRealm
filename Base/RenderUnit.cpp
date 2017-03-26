@@ -1,4 +1,8 @@
+#ifdef USE_GLES
+#include <GLES2/gl2.h>
+#else
 #include <GL/glew.h>
+#endif
 #include <Utility/ErrorHandler.h>
 #include <Base/RenderUnit.h>
 #include <Game/Animation/Camera.h>
@@ -12,8 +16,14 @@
 #include <Game/Animation/ParticlesUnit.h>
 
 #define YUG_DEFAULT_SCREEN_WIDTH 800
+#ifdef PANDORA
+#define YUG_DEFAULT_SCREEN_HEIGHT 480
+#define YUG_WINDOW_ORIGIN_POINT 400,0
+#else
 #define YUG_DEFAULT_SCREEN_HEIGHT 600
 #define YUG_WINDOW_ORIGIN_POINT 500,0
+#endif
+
 int frameCount;
 float timeCount;
 bool RenderUnit::initialize(){
@@ -28,6 +38,7 @@ bool RenderUnit::initialize(){
 }
 
 void RenderUnit::initializeGL(){
+#ifndef USE_GLES
 	GLenum glewError = glewInit();
 	if(glewError != GLEW_OK)
 	{
@@ -36,6 +47,7 @@ void RenderUnit::initializeGL(){
 	}else{
 		errorHandler.printError("glew on");
 	}
+#endif
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

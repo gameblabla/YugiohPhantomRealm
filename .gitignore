@@ -6,3 +6,4 @@ GameData/
 *.a
 *.7z
 log.txt
+*.trace

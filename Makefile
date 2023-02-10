@@ -16,7 +16,7 @@ CFLAGS 		+= -DNOVA -DUSE_GLES
 endif
 
 CXXFLAGS	= $(CFLAGS)  -std=gnu++11
-LDFLAGS     = -lSDL2 -lstdc++ -lpthread -lm
+LDFLAGS     = -lSDL2 -lSDL2_mixer -lstdc++ -lpthread -lm
 
 ifeq ($(OPENGLES), TRUE)
 LDFLAGS 	+= -lGLESv2 -lGLU

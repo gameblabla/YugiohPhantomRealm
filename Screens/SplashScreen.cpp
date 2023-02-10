@@ -54,6 +54,7 @@ namespace Screen{
 	}
 	void SplashScreen::update(){
 		picture.update();
+
 		if(!isWaiting){
 			switch(chain){
 			case YUG_SCREEN_CH_START: firstUpdate(); wait(inTime); break;
@@ -100,7 +101,9 @@ namespace Screen{
 		if(chain == YUG_SCREEN_CH_IDLE){
 			if(inputUnit.isKeyActive(YUG_KEY_O) ||
 			   inputUnit.isKeyActive(YUG_KEY_START) ||
-			   inputUnit.isKeyActive(YUG_KEY_X)){
+			   inputUnit.isKeyActive(YUG_KEY_X))
+			   {
+					printf("Enter game\n");
 					chain = YUG_SPLASH_CH_OUT;
 			}
 		}

@@ -28,7 +28,6 @@
 
 SDL_Window* gWindow;
 SDL_Renderer* sdlrenderer;
-//OpenGL context
 SDL_GLContext gContext;
 
 int frameCount;
@@ -46,41 +45,53 @@ bool RenderUnit::initialize(){
     }
     else
     {
-#ifdef USE_GLES
-	   SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
-#endif
-	   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-	   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
-
         //Create window
         gWindow = SDL_CreateWindow( "Yugioh", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, YUG_DEFAULT_SCREEN_WIDTH, YUG_DEFAULT_SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN );
-        if( gWindow == NULL )
-        {
-            printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
-            success = false;
-        }
-        else
-        {
-			sdlrenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_PRESENTVSYNC);
-			SDL_RenderSetLogicalSize(sdlrenderer, YUG_DEFAULT_SCREEN_WIDTH, YUG_DEFAULT_SCREEN_HEIGHT);
+     
+		sdlrenderer = SDL_CreateRenderer(gWindow, -1, 0);
+     
+		SDL_RenderSetLogicalSize(sdlrenderer, YUG_DEFAULT_SCREEN_WIDTH, YUG_DEFAULT_SCREEN_HEIGHT);
 			
-            //Create context
-            gContext = SDL_GL_CreateContext( gWindow );
-            if( gContext == NULL )
-            {
-                printf( "OpenGL context could not be created! SDL Error: %s\n", SDL_GetError() );
-                success = false;
-            }
-            else
-            {
-                //Use Vsync
-                if( SDL_GL_SetSwapInterval( 1 ) < 0 )
-                {
-                    printf( "Warning: Unable to set VSync! SDL Error: %s\n", SDL_GetError() );
-                }
-            }
-        }
+		// Make sure background is black
+		SDL_SetRenderDrawColor(sdlrenderer, 255, 255, 255, 255);
+		SDL_RenderClear(sdlrenderer);
+		SDL_RenderPresent(sdlrenderer);
+		
+		gContext = SDL_GL_CreateContext(gWindow);
+		
+#ifdef USE_GLES
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+#else
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+#endif
+
+		SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 8 );
+		SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 8 );
+		SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 8 );
+		SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 32 );
+
     }
+    
+    // It has to be there otherwise it will crash hard when trying to call OpenGL functions right after render.initiliaze()
+#ifndef USE_GLES
+	printf("Initiliaze GLEW\n");
+	GLenum glewError = glewInit();
+	if(glewError != GLEW_OK)
+	{
+		errorHandler.printError( "glew Error: ");
+		std::cout<<glewGetErrorString(glewError)<<std::endl;
+	}else{
+		errorHandler.printError("glew on");
+	}
+#endif
+
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
 	//resize(YUG_DEFAULT_SCREEN_WIDTH,YUG_DEFAULT_SCREEN_HEIGHT);
 	//move(YUG_WINDOW_ORIGIN_POINT);
@@ -91,21 +102,6 @@ bool RenderUnit::initialize(){
 }
 
 void RenderUnit::initializeGL(){
-    GLenum error = GL_NO_ERROR;
-	
-#ifndef USE_GLES
-	GLenum glewError = glewInit();
-	if(glewError != GLEW_OK)
-	{
-		errorHandler.printError( "glew Error: ");
-		std::cout<<glewGetErrorString(glewError)<<std::endl;
-	}else{
-		errorHandler.printError("glew on");
-	}
-#endif
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 bool RenderUnit::shutdown(){
@@ -113,8 +109,10 @@ bool RenderUnit::shutdown(){
 }
 
 void RenderUnit::render(){
+
 	SDL_GL_SwapWindow(gWindow);
 	SDL_RenderPresent(sdlrenderer);
+	
 	//glDraw();
 }
 
@@ -123,7 +121,6 @@ void RenderUnit::paintEvent(){
 }
 
 void RenderUnit::paintGL(){
-	
 	frameCount ++;
 	timeCount += gameClock.lastLoopTime();
 	

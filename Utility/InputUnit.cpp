@@ -9,9 +9,9 @@
 #include <Utility/SoundUnit.h>
 #include <thread>         // std::this_thread::sleep_for
 #include <chrono>         // std::chrono::seconds
+#include <SDL2/SDL.h>         // std::chrono::seconds
 
 namespace Utility{
-
 
 
 	InputUnit InputUnit::inputUnitInstance;
@@ -29,18 +29,18 @@ namespace Utility{
 	}
 
 	void InputUnit::readKeys(){
-		setKeyBits = 1;
-		/*if(stateUnit.application->activeWindow() == 0)
-			return;
-
+		
 		setKeyBits = 0;
+		Uint8 *state = (Uint8*)SDL_GetKeyboardState(NULL);
+		SDL_PumpEvents();
+		
 		int possibleAction = 1;
 		for(int i = 0; i < YUG_NO_OF_KEYS; i++){
-			if( GetAsyncKeyState(realKeyBindings[i]) & 0x8000){
+			if( state[realKeyBindings[i]]){
 				setKeyBits |= possibleAction;
 			}
 			possibleAction <<= 1;
-		}*/
+		}
 	}
 
 	void InputUnit::computerKeyPress(int key){
@@ -75,7 +75,7 @@ namespace Utility{
 
 	}
 	int InputUnit::listenForAnyKey(){
-		return 100;
+		return -1;
 		/*int count = 0;
 		std::cout<<"Input: Hold down new key binding/n";
 		while(count++ < 30){
@@ -102,19 +102,19 @@ namespace Utility{
 		realKeyBindings[key] = res;
 	}
 	void InputUnit::resetAllKeys(){
-		/*realKeyBindings[YUG_KEY_UP] = VkKeyScan('w');
-		realKeyBindings[YUG_KEY_DOWN] = VkKeyScan('s');
-		realKeyBindings[YUG_KEY_LEFT] = VkKeyScan('a');
-		realKeyBindings[YUG_KEY_RIGHT] = VkKeyScan('d');
-		realKeyBindings[YUG_KEY_X] = VK_DOWN;
-		realKeyBindings[YUG_KEY_O] = VK_RIGHT;
-		realKeyBindings[YUG_KEY_TRI] = VK_UP;
-		realKeyBindings[YUG_KEY_SQU] = VK_LEFT;
-		realKeyBindings[YUG_KEY_START] = VK_SPACE;
-		realKeyBindings[YUG_KEY_SELECT] = VK_BACK;
-		realKeyBindings[YUG_KEY_R1] = VkKeyScan('r');
-		realKeyBindings[YUG_KEY_L1] = VkKeyScan('l');
-		realKeyBindings[YUG_KEY_SPECIAL] = VK_NUMPAD0;*/
+		realKeyBindings[YUG_KEY_UP] = SDL_SCANCODE_UP;
+		realKeyBindings[YUG_KEY_DOWN] = SDL_SCANCODE_DOWN;
+		realKeyBindings[YUG_KEY_LEFT] = SDL_SCANCODE_LEFT;
+		realKeyBindings[YUG_KEY_RIGHT] = SDL_SCANCODE_RIGHT;
+		realKeyBindings[YUG_KEY_X] = SDL_SCANCODE_LCTRL;
+		realKeyBindings[YUG_KEY_O] = SDL_SCANCODE_LALT;
+		realKeyBindings[YUG_KEY_TRI] = SDL_SCANCODE_LSHIFT;
+		realKeyBindings[YUG_KEY_SQU] = SDL_SCANCODE_SPACE;
+		realKeyBindings[YUG_KEY_START] = SDL_SCANCODE_RETURN;
+		realKeyBindings[YUG_KEY_SELECT] = SDL_SCANCODE_ESCAPE;
+		realKeyBindings[YUG_KEY_R1] = SDL_SCANCODE_R;
+		realKeyBindings[YUG_KEY_L1] = SDL_SCANCODE_L;
+		realKeyBindings[YUG_KEY_SPECIAL] = SDL_SCANCODE_O;
 	}
 
 	void InputUnit::takePlayerInputsOnly(){

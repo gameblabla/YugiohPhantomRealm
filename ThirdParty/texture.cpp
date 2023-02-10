@@ -452,11 +452,15 @@ BOOL LoadCompressedTGA(Texture * texture,const char * filename, FILE * fTGA)		/*
 	return True;																		/* return success */
 }
 
-void customLoadTexture2DTGA(const char * imagepath) {
+int customLoadTexture2DTGA(const char * imagepath) {
 	Texture mytex;
-	LoadTGA(&mytex, imagepath);
+	int ret = false;
+	ret = LoadTGA(&mytex, imagepath);
+	printf("customloadTGA %d\n", ret);
+	
 	glTexImage2D(GL_TEXTURE_2D, 0, mytex.type, mytex.width, mytex.height, 0, mytex.type, GL_UNSIGNED_BYTE, mytex.imageData);
 	free(mytex.imageData);
+	return ret;
 }
 #endif
 
@@ -468,15 +472,13 @@ GLuint loadTGA_glfw(const char * imagepath){
 
 	// "Bind" the newly created texture : all future texture functions will modify this texture
 	glBindTexture(GL_TEXTURE_2D, textureID);
+	
+	printf("imagepath %s\n", imagepath);
 
 	// Read the file, call glTexImage2D with the right parameters
-#ifdef USE_GLES
-	customLoadTexture2DTGA(imagepath);
-#else
-	//gameblabla
-	customLoadTexture2DTGA(imagepath);
 	//glfwLoadTexture2D(imagepath, 0);
-#endif
+	customLoadTexture2DTGA(imagepath);
+
 	// Nice trilinear filtering.
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);

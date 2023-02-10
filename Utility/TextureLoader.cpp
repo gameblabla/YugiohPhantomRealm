@@ -35,6 +35,8 @@ namespace Utility{
 		std::vector<unsigned char> image;
 		unsigned int iWidth, iHeight;
 		
+		printf("Load texture PNG : %s\n", fileName);
+		
 		unsigned int error = lodepng::decode(image, iWidth, iHeight, fileName);
 		if(error != 0 ){
 			errorHandler.printError("textureLoader: failed to load png: ");
@@ -45,12 +47,12 @@ namespace Utility{
 		//send to openGL
 		glGenTextures(1, textureID);
 
-		/*auto it = find(currentIds.begin(), currentIds.end(), *textureID );
+		auto it = find(currentIds.begin(), currentIds.end(), *textureID );
 		if(it != currentIds.end()){
 			std::cout<<"Texture Loader: dup ids: "<<(*it)<<std::endl;
 		}else{
 			std::cout<<"Texture Loader: genned id: "<<*textureID<<std::endl;
-		}*/
+		}
 		currentIds.push_back(*textureID);
 
 		glBindTexture(GL_TEXTURE_2D, (*textureID));
@@ -58,12 +60,10 @@ namespace Utility{
 		0, GL_RGBA, GL_UNSIGNED_BYTE, &image[0]);
 
 		image.clear();
-		
 
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glBindTexture(GL_TEXTURE_2D,0);
-		
 	}
 
 	void TextureLoader::deleteTexture(GLuint* textureID){

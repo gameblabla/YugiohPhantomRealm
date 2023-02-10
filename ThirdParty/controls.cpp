@@ -2,11 +2,13 @@
 #include <GLES2/gl2.h>
 #endif
 
-//#include <GLFW/glfw.h>
+#include <GLFW/glfw3.h>
 // Include GLM
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 using namespace glm;
+
+#include <SDL2/SDL.h>
 
 #include "controls.hpp"
 
@@ -33,6 +35,8 @@ float initialFoV = 45.0f;
 float speed = 3.0f; // 3 units / second
 float mouseSpeed = 0.005f;
 
+extern SDL_Window* gWindow;
+
 
 void computeMatricesFromInputs(){
 /*
@@ -41,14 +45,24 @@ void computeMatricesFromInputs(){
 
 	// Compute time difference between current and last frame
 	double currentTime = glfwGetTime();
+	
 	float deltaTime = float(currentTime - lastTime);
+
+*/
+	uint64_t lastTime = SDL_GetPerformanceCounter();
+	uint64_t currentTime = SDL_GetPerformanceCounter();
+	double deltaTime = static_cast<double>(
+	  (currentTime - lastTime) / static_cast<double>(SDL_GetPerformanceFrequency())
+	);
 
 	// Get mouse position
 	int xpos, ypos;
-	glfwGetMousePos(&xpos, &ypos);
+	//glfwGetMousePos(&xpos, &ypos);
+	SDL_GetGlobalMouseState(&xpos, &ypos);
 
 	// Reset mouse position for next frame
-	glfwSetMousePos(1024/2, 768/2);
+	//glfwSetMousePos(1024/2, 768/2);
+	SDL_WarpMouseInWindow(gWindow, 1024/2, 768/2);
 
 	// Compute new orientation
 	horizontalAngle += mouseSpeed * float(1024/2 - xpos );
@@ -72,7 +86,7 @@ void computeMatricesFromInputs(){
 	glm::vec3 up = glm::cross( right, direction );
 
 	// Move forward
-	if (glfwGetKey( GLFW_KEY_UP ) == GLFW_PRESS){
+	/*if (glfwGetKey( GLFW_KEY_UP ) == GLFW_PRESS){
 		position += direction * deltaTime * speed;
 	}
 	// Move backward
@@ -86,10 +100,11 @@ void computeMatricesFromInputs(){
 	// Strafe left
 	if (glfwGetKey( GLFW_KEY_LEFT ) == GLFW_PRESS){
 		position -= right * deltaTime * speed;
-	}
+	}*/
 
-	float FoV = initialFoV - 5 * glfwGetMouseWheel();
-
+	//float FoV = initialFoV - 5 * glfwGetMouseWheel();
+	float FoV = initialFoV - 5;
+	
 	// Projection matrix : 45� Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
 	ProjectionMatrix = glm::perspective(FoV, 4.0f / 3.0f, 0.1f, 100.0f);
 	// Camera matrix
@@ -100,5 +115,5 @@ void computeMatricesFromInputs(){
 						   );
 
 	// For the next frame, the "last time" will be "now"
-	lastTime = currentTime;*/
+	lastTime = currentTime;
 }

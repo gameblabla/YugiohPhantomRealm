@@ -32,11 +32,11 @@ namespace Card{
 		static GLuint monsterCardTBO;
 		static GLuint magicCardTBO;
 		static GLuint trapCardTBO;
-#ifdef NOVA
+
 		static GLuint frontCardVAO;
 		static GLuint backCardVAO;
 		static GLuint pictureVAO;
-#endif
+
 		GLuint returnCorrectFrameID();
 		void continueStatCountUp();
 		

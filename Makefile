@@ -1,22 +1,30 @@
-PRGNAME     = yugi
+PRGNAME     = YugiohGame_final/yugi.elf
 
-# define regarding OS, which compiler to use
-EXESUFFIX = 
-TOOLCHAIN = 
 CC          = gcc
 CXX         = g++
 LD          = gcc
-
-# add SDL dependencies
-SDL_LIB     = 
-SDL_INCLUDE = 
+OPENGLES	:= FALSE
 
 # change compilation / linking flag options
-F_OPTS		= -DHOME_SUPPORT -DNOVA -DUSE_GLES -g -IBase -IGame -IUtility -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtCore -I/usr/include/qt4 -I. -I/usr/include/glm -I.
-CC_OPTS		= -O0 -g3 $(F_OPTS)
-CFLAGS		= -I$(SDL_INCLUDE) $(CC_OPTS)
+F_OPTS		= -DHOME_SUPPORT -g -IBase -IGame -IUtility -I. -I/usr/include/glm -I.
+
+#Only define for OpenGL ES 2.x mode
+CFLAGS		= -O0 -g3 $(F_OPTS)
+
+ifeq ($(OPENGLES), TRUE)
+CFLAGS 		+= -DNOVA -DUSE_GLES
+endif
+
 CXXFLAGS	= $(CFLAGS)  -std=gnu++11
-LDFLAGS     = -lSDL2 -lstdc++ -lGL -lGLU -lGLEW -lpthread -lm
+LDFLAGS     = -lSDL2 -lstdc++ -lpthread -lm
+
+ifeq ($(OPENGLES), TRUE)
+LDFLAGS 	+= -lGLESv2 -lGLU
+endif
+
+ifeq ($(OPENGLES), FALSE)
+LDFLAGS 	+= -lGL -lGLU -lGLEW -lglfw
+endif
 
 # Files to be compiled
 SRCDIR    = ./ThirdParty ./Base ./Game ./Screens ./Screens/Panels ./Utility ./Game/AI ./Game/Animation ./Game/Cards ./Game/Cards/Magic ./Game/Cards/Trap ./Game/Duel ./Game/Duel/Parts
@@ -28,8 +36,8 @@ OBJ_CP   = $(notdir $(patsubst %.cpp, %.o, $(SRC_CP)))
 OBJS     = $(OBJ_C) $(OBJ_CP)
 
 # Rules to make executable
-$(PRGNAME)$(EXESUFFIX): $(OBJS)  
-	$(LD) $(CFLAGS) -o $(PRGNAME)$(EXESUFFIX) $^ $(LDFLAGS)
+$(PRGNAME): $(OBJS)  
+	$(CXX) $(CXXFLAGS) -o $(PRGNAME) $^ $(LDFLAGS)
 
 $(OBJ_C) : %.o : %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -38,4 +46,4 @@ $(OBJ_CP) : %.o : %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(PRGNAME)$(EXESUFFIX) *.o
+	rm -f $(PRGNAME) *.o

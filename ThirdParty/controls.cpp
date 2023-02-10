@@ -1,9 +1,8 @@
 #ifdef USE_GLES
 #include <GLES2/gl2.h>
-#else
-// Include GLFW
-#include <GL/glfw.h>
 #endif
+
+//#include <GLFW/glfw.h>
 // Include GLM
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -36,7 +35,7 @@ float mouseSpeed = 0.005f;
 
 
 void computeMatricesFromInputs(){
-
+/*
 	// glfwGetTime is called only once, the first time this function is called
 	static double lastTime = glfwGetTime();
 
@@ -101,5 +100,5 @@ void computeMatricesFromInputs(){
 						   );
 
 	// For the next frame, the "last time" will be "now"
-	lastTime = currentTime;
+	lastTime = currentTime;*/
 }

@@ -1,6 +1,6 @@
-#include <Qt/qapplication.h>
+//#include <Qt/qapplication.h>
 #include <iostream>
-#include <QtGui/qwidget.h>
+//#include <QtGui/qwidget.h>
 #include <Base/YugiohGame.h>
 
 
@@ -12,20 +12,21 @@ void printErrorThenWait(const char* error){
 
 int main(int argc, char* argv[]){
 
-	QApplication app(argc, argv);
+	//QApplication app(argc, argv);
 	YugiohGame game;
 	if(!game.initialize()){
 		printErrorThenWait("Yugioh Game initialization failed");
 		return -1;
 	}
-	game.takeAppPointer(&app);
+//	game.takeAppPointer(&app);
 	game.go();
+	
+	game.loop();
 
-	int errorCode =  app.exec();
+	//int errorCode =  app.exec();
 	if(!game.shutdown()){
 		printErrorThenWait("Yugioh Game shutdown failed");
 	}
-	return errorCode;
-
-
+	
+	return 0;
 }

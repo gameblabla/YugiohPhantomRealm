@@ -2,9 +2,10 @@
 #ifndef USE_GLES
 #include <GL/glew.h>
 #endif
-#include <QtOpenGL/QGLWidget>
+//#include <QtOpenGL/QGLWidget>
 #include <Game/YugiohUnit.h>
-class RenderUnit : public QGLWidget 
+
+class RenderUnit
 {
 protected:
 	void initializeGL();

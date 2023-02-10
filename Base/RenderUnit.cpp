@@ -3,6 +3,8 @@
 #else
 #include <GL/glew.h>
 #endif
+#include <SDL2/SDL.h>
+
 #include <Utility/ErrorHandler.h>
 #include <Base/RenderUnit.h>
 #include <Game/Animation/Camera.h>
@@ -24,20 +26,73 @@
 #define YUG_WINDOW_ORIGIN_POINT 500,0
 #endif
 
+SDL_Window* gWindow;
+SDL_Renderer* sdlrenderer;
+//OpenGL context
+SDL_GLContext gContext;
+
 int frameCount;
 float timeCount;
 bool RenderUnit::initialize(){
+	int success = true;
 	frameCount = 0;
 	timeCount = 0.0f;
-	resize(YUG_DEFAULT_SCREEN_WIDTH,YUG_DEFAULT_SCREEN_HEIGHT);
-	move(YUG_WINDOW_ORIGIN_POINT);
+	
+    //Initialize SDL
+    if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+    {
+        printf( "SDL could not initialize! SDL Error: %s\n", SDL_GetError() );
+        success = false;
+    }
+    else
+    {
+#ifdef USE_GLES
+	   SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+#endif
+	   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+	   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+
+        //Create window
+        gWindow = SDL_CreateWindow( "Yugioh", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, YUG_DEFAULT_SCREEN_WIDTH, YUG_DEFAULT_SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN );
+        if( gWindow == NULL )
+        {
+            printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
+            success = false;
+        }
+        else
+        {
+			sdlrenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_PRESENTVSYNC);
+			SDL_RenderSetLogicalSize(sdlrenderer, YUG_DEFAULT_SCREEN_WIDTH, YUG_DEFAULT_SCREEN_HEIGHT);
+			
+            //Create context
+            gContext = SDL_GL_CreateContext( gWindow );
+            if( gContext == NULL )
+            {
+                printf( "OpenGL context could not be created! SDL Error: %s\n", SDL_GetError() );
+                success = false;
+            }
+            else
+            {
+                //Use Vsync
+                if( SDL_GL_SetSwapInterval( 1 ) < 0 )
+                {
+                    printf( "Warning: Unable to set VSync! SDL Error: %s\n", SDL_GetError() );
+                }
+            }
+        }
+    }
+	
+	//resize(YUG_DEFAULT_SCREEN_WIDTH,YUG_DEFAULT_SCREEN_HEIGHT);
+	//move(YUG_WINDOW_ORIGIN_POINT);
 	oldRenderer = NULL;
 	currentRenderer = NULL;
-	show();
-	return true;
+	//show();
+	return success;
 }
 
 void RenderUnit::initializeGL(){
+    GLenum error = GL_NO_ERROR;
+	
 #ifndef USE_GLES
 	GLenum glewError = glewInit();
 	if(glewError != GLEW_OK)
@@ -58,7 +113,9 @@ bool RenderUnit::shutdown(){
 }
 
 void RenderUnit::render(){
-	glDraw();
+	SDL_GL_SwapWindow(gWindow);
+	SDL_RenderPresent(sdlrenderer);
+	//glDraw();
 }
 
 void RenderUnit::paintEvent(){
@@ -70,7 +127,7 @@ void RenderUnit::paintGL(){
 	frameCount ++;
 	timeCount += gameClock.lastLoopTime();
 	
-	glViewport(0,	0,	width(),	height() );
+	glViewport(0,	0,	YUG_DEFAULT_SCREEN_WIDTH,	YUG_DEFAULT_SCREEN_HEIGHT );
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClear(GL_DEPTH_BUFFER_BIT);
 	if(currentRenderer != NULL)

@@ -4,7 +4,7 @@ PRGNAME     = yugi
 EXESUFFIX = 
 TOOLCHAIN = 
 CC          = gcc
-CCP         = g++
+CXX         = g++
 LD          = gcc
 
 # add SDL dependencies
@@ -12,11 +12,11 @@ SDL_LIB     =
 SDL_INCLUDE = 
 
 # change compilation / linking flag options
-F_OPTS		= -DHOME_SUPPORT -DNOVA -g -IBase -IGame -IUtility -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtCore -I/usr/include/qt4 -I. -I/usr/include/glm
-CC_OPTS		= -O2 -std=gnu++11 $(F_OPTS)
+F_OPTS		= -DHOME_SUPPORT -DNOVA -DUSE_GLES -g -IBase -IGame -IUtility -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtCore -I/usr/include/qt4 -I. -I/usr/include/glm -I.
+CC_OPTS		= -O0 -g3 $(F_OPTS)
 CFLAGS		= -I$(SDL_INCLUDE) $(CC_OPTS)
-CXXFLAGS	=$(CFLAGS) 
-LDFLAGS     = -lSDLmain -lSDL -lstdc++ -lGL -lGLU -lGLEW -lglfw -lQtGui -lQtCore -lQtDBus -lpthread -lQtOpenGL -lm
+CXXFLAGS	= $(CFLAGS)  -std=gnu++11
+LDFLAGS     = -lSDL2 -lstdc++ -lGL -lGLU -lGLEW -lpthread -lm
 
 # Files to be compiled
 SRCDIR    = ./ThirdParty ./Base ./Game ./Screens ./Screens/Panels ./Utility ./Game/AI ./Game/Animation ./Game/Cards ./Game/Cards/Magic ./Game/Cards/Trap ./Game/Duel ./Game/Duel/Parts
@@ -35,7 +35,7 @@ $(OBJ_C) : %.o : %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(OBJ_CP) : %.o : %.cpp
-	$(CCP) $(CXXFLAGS) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
 	rm -f $(PRGNAME)$(EXESUFFIX) *.o

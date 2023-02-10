@@ -1,23 +1,25 @@
 #pragma once
-#include <Qt/qobject.h>
-#include <Qt/qtimer.h>
-#include <QtGui/qapplication.h>
+//#include <Qt/qobject.h>
+//#include <Qt/qtimer.h>
+//#include <QtGui/qapplication.h>
 #include <Base/RenderUnit.h>
-class YugiohGame : public QObject
+class YugiohGame
 {
-	Q_OBJECT
+	//QApplication* containingApp;
+	//QTimer myTimer;
 
-	QApplication* containingApp;
-	QTimer myTimer;
+public:
+
 	RenderUnit renderer;
 	bool prepareStartOfGame();
 	bool prepareGlobalPointers();
 	bool initializeCards();
 	bool shutdownCards();
-private slots:
 	void update();
-public:
-	void takeAppPointer(QApplication* app);
+
+	int loop();
+
+	void takeAppPointer();
 	void junkFunction();
 	bool initialize();
 	bool shutdown();

@@ -64,15 +64,23 @@ namespace Utility{
 		bool successfulInit = true;
 		//errorHandler.printError("State Unit: initializing");
 		//errorHandler.printError("State Unit: 1");
+		printf("createShaderPrograms successfulInit %d\n", successfulInit);
 		successfulInit &= createShaderPrograms();
 		//errorHandler.printError("State Unit: 2");
+		
+		printf("useShaderProgram\n");
 		useShaderProgram(YUG_COLOUR_SHADER_PROGRAM);
+		printf("locateColourUniforms successfulInit %d\n", successfulInit);
 		successfulInit &= locateColourUniforms();
 		//errorHandler.printError("State Unit: 3");
 		useShaderProgram(YUG_TEXTURE_SHADER_PROGRAM);
 		//errorHandler.printError("State Unit: 4");
+		
+		printf("locateTextureUniforms successfulInit %d\n", successfulInit);
 		successfulInit &= locateTextureUniforms();
 		//errorHandler.printError("State Unit: 5");
+		
+		printf("setDefaultPerspectiveMatrix successfulInit %d\n", successfulInit);
 		successfulInit &= setDefaultPerspectiveMatrix();
 		//errorHandler.printError("State Unit: 6");
 		setupRotationMatrices();

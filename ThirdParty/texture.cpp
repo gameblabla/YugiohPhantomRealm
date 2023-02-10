@@ -1,12 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "bool_game.h"
 #ifdef USE_GLES
 #include <GLES2/gl2.h>
 #else
 #include <GL/glew.h>
-#include <GL/glfw.h>
+//#include <GL/glfw.h>
+#endif
+
+#ifndef GL_EXT_texture_compression_s3tc
+#define GL_EXT_texture_compression_s3tc 1
+#define GL_COMPRESSED_RGB_S3TC_DXT1_EXT   0x83F0
+#define GL_COMPRESSED_RGBA_S3TC_DXT1_EXT  0x83F1
+#define GL_COMPRESSED_RGBA_S3TC_DXT3_EXT  0x83F2
+#define GL_COMPRESSED_RGBA_S3TC_DXT5_EXT  0x83F3
 #endif
 
 GLuint loadBMP_custom(const char * imagepath){
@@ -71,7 +79,7 @@ GLuint loadBMP_custom(const char * imagepath){
 	#ifdef USE_GLES
 	{
 		unsigned char* p = (unsigned char*)data;
-		for (i=0; i<width*height; i++) {
+		for (int i=0; i<width*height; i++) {
 			unsigned char tmp = *p;
 			*p = *(p+2);
 			*(p+2) = tmp;
@@ -100,7 +108,7 @@ GLuint loadBMP_custom(const char * imagepath){
 	return textureID;
 }
 
-#ifdef USE_GLES
+#if 1
 // taken from NeHe TGA lesson 33 http://nehe.gamedev.net/tutorial/loading_compressed_and_uncompressed_tga's/22001/
 
 typedef struct
@@ -217,7 +225,7 @@ BOOL LoadUncompressedTGA(Texture * texture, const char * filename, FILE * fTGA)	
 
 	tga.bytesPerPixel	= (tga.Bpp / 8);									/* Compute the number of BYTES per pixel */
 	tga.imageSize		= (tga.bytesPerPixel * tga.Width * tga.Height);		/* Compute the total amout ofmemory needed to store data */
-	texture->imageData	= malloc(tga.imageSize);							/* Allocate that much memory */
+	texture->imageData	= (GLubyte*)malloc(tga.imageSize);							/* Allocate that much memory */
 
 	if(texture->imageData == NULL)											/* If no space was allocated */
 	{
@@ -465,7 +473,9 @@ GLuint loadTGA_glfw(const char * imagepath){
 #ifdef USE_GLES
 	customLoadTexture2DTGA(imagepath);
 #else
-	glfwLoadTexture2D(imagepath, 0);
+	//gameblabla
+	customLoadTexture2DTGA(imagepath);
+	//glfwLoadTexture2D(imagepath, 0);
 #endif
 	// Nice trilinear filtering.
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

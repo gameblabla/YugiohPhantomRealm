@@ -36,24 +36,41 @@
 
 bool YugiohGame::initialize(){
 
+	printf("errorHandler\n");
 	if(!errorHandler.initialize())
 		return false;
+	
+	printf("gameClock\n");	
 	if(!gameClock.initialize())
 		return false;
+		
+	printf("musicClock\n");	
 	if(!musicClock.initialize())
 		return false;
+		
+	printf("renderer\n");	
 	if(!renderer.initialize())
 		return false;
+		
+	printf("stateUnit\n");	
 	if(! stateUnit.initialize())
 		return false;
+		
+	printf("soundUnit\n");	
 	if(! soundUnit.initialize())
 		return false;
+		
+	printf("textureLoader\n");	
 	if(! textureLoader.initialize())
 		return false;
+		
+	printf("textPrinter\n");	
 	if(! textPrinter.initialize())
 		return false;
 	if(! inputUnit.initialize())
 		return false;
+		
+	printf("updateUnit\n");	
 	if(! updateUnit.initialize())
 		return false;
 	if(! partsUnit.initialize())
@@ -66,6 +83,8 @@ bool YugiohGame::initialize(){
 		return false;
 	if(! pos.initialize())
 		return false;
+		
+	printf("mov\n");	
 	if(! mov.initialize())
 		return false;
 	if(! theBoard.initialize())
@@ -78,6 +97,8 @@ bool YugiohGame::initialize(){
 		return false;
 	if(! positionUnit.initialize())
 		return false;
+		
+	printf("battleUnit\n");	
 	if(! battleUnit.initialize())
 		return false;
 	if(! trunkUnit.initialize())
@@ -94,13 +115,25 @@ bool YugiohGame::initialize(){
 		return false;
 	if(! prepareStartOfGame())
 		return false;
-	if( ! connect( 
+	
+	/*if( ! connect( 
 		&myTimer, 
 		SIGNAL(timeout()),
 		this, 
 		SLOT(update()) ) )
 	{
 		return false;
+	}*/
+	
+	
+	return true;
+}
+
+int YugiohGame::loop()
+{
+	while(1)
+	{
+		update();
 	}
 	return true;
 }
@@ -187,13 +220,15 @@ void YugiohGame::update(){//infinite game loop, broken by something sending .qui
 	soundUnit.update();
 }
 
+/*
 void YugiohGame::takeAppPointer(QApplication* app){
 	containingApp = app;
 	stateUnit.takeAppPointer(app);
 }
+*/
 
 void YugiohGame::go(){
-	myTimer.start();
+	//myTimer.start();
 }
 
 void YugiohGame::junkFunction(){

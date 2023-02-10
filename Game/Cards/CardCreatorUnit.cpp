@@ -1,4 +1,8 @@
-#include <GL/glew.h>//for GLuints 
+#ifdef USE_GLES
+#include <GLES2/gl2.h>
+#else
+#include <GL/glew.h> //for GL units
+#endif
 #include <Game/Cards/CardCreatorUnit.h>
 #include <Game/Cards/Magic/MagicCard.h>
 #include <Game/Cards/Magic/ChangeOfHeart.h>

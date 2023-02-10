@@ -4,6 +4,7 @@
 #else
 #include <GL/glew.h>
 #endif
+
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>
 #include <Game/Cards/CardRender.h>

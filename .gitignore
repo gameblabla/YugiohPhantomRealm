@@ -1,0 +1,7 @@
+YugiohGame_final/
+*.o
+*.elf
+./yugi
+*.a
+*.7z
+log.txt

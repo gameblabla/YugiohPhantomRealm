@@ -1,4 +1,4 @@
-PRGNAME     = YugiohGame_final/yugi.elf
+PRGNAME     = yugi.elf
 
 CC          = gcc
 CXX         = g++

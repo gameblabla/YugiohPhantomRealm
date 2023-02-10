@@ -5,13 +5,12 @@
 #include <cassert>
 #include <chrono>
 
-std::chrono::high_resolution_clock timer;
-
 namespace Utility{
 
 	Clock Clock::clockInstance;
 	Clock Clock::musClockInstance;
 	
+	std::chrono::high_resolution_clock timer;
 	std::chrono::time_point<std::chrono::system_clock> start_timer;
 
 	bool Clock::initialize()

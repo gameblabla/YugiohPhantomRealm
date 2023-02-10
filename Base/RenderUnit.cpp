@@ -109,10 +109,7 @@ bool RenderUnit::shutdown(){
 }
 
 void RenderUnit::render(){
-
 	SDL_GL_SwapWindow(gWindow);
-	SDL_RenderPresent(sdlrenderer);
-	
 	//glDraw();
 }
 

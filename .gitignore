@@ -1,4 +1,5 @@
 YugiohGame_final/
+GameData/
 *.o
 *.elf
 ./yugi

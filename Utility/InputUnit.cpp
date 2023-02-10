@@ -34,6 +34,11 @@ namespace Utility{
 		Uint8 *state = (Uint8*)SDL_GetKeyboardState(NULL);
 		SDL_PumpEvents();
 		
+		if (state[SDL_SCANCODE_HOME] || state[SDL_SCANCODE_F4])
+		{
+			exit_game = 1;
+		}
+		
 		int possibleAction = 1;
 		for(int i = 0; i < YUG_NO_OF_KEYS; i++){
 			if( state[realKeyBindings[i]]){

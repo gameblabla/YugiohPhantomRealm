@@ -1,5 +1,8 @@
 #pragma once
 
+// From YugiohGame.cpp
+extern int exit_game;
+
 namespace Game{
 
 	class YugiohUnit

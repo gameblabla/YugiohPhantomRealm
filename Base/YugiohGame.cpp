@@ -34,6 +34,8 @@
 #include <Screens/SplashScreen.h>
 #include <Utility/ConfigUnit.h>
 
+int exit_game = 0;
+
 bool YugiohGame::initialize(){
 
 	printf("errorHandler\n");
@@ -131,7 +133,7 @@ bool YugiohGame::initialize(){
 
 int YugiohGame::loop()
 {
-	while(1)
+	while(exit_game == 0)
 	{
 		update();
 	}

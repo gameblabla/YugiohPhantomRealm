@@ -15,6 +15,7 @@
 #define YUG_KEY_L1 11
 #define YUG_KEY_SPECIAL 12
 #define YUG_NO_OF_KEYS 13
+
 namespace Game{ class YugiohUnit; }
 namespace Utility{
 	class InputUnit : public Game::WaitUnit

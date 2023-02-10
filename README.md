@@ -1,10 +1,27 @@
-This is an attempt to port to Linux. Unfortunely, this game requires GLSL 4.3 and Nouveau (my gpu driver) doesn't support it yet. It should work on AMD or Nvidia gpus though but controls or sound are not supported. (should be easy to do)
+This is an attempt to port to Linux. 
 
-It also may crash. If it does crashes, then you are on your own as i can't debug it.
+Ptitseb made an attempt at porting it to OpenGLES 2.0 but i think it had graphical glitches last time i tried.
 
-Hopefully i can look at this again.
+I made an attempt to port it to SDL2 but unfortunately it won't render any graphics to the SDL2 window.
 
-Oh, and my makefile is also terrible and only works on Ubuntu/Debian. Change it if needed
+(it does seem to create the shaders successfully so unsure...)
+
+You can get a copy of the original game here :
+[https://onedrive.live.com/?authkey=%21APsRCIxLh%2Dr6GF0&id=5C3C4C62855D41D6%21108&cid=5C3C4C62855D41D6&parId=root&parQt=sharedby&o=OneUp]
+
+Copy the GameData/ folder that's hosted on that repo and replace it over the original assets.
+
+# Building
+
+Building without OpenGLES (May require OpenGL 4.3)
+```
+make -j8 OPENGLES=FALSE
+```
+
+Building with OpenGLES 2.0 support (may not work properly)
+```
+make -j8 OPENGLES=TRUE
+```
 
 ==============================
 

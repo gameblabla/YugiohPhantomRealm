@@ -12,11 +12,11 @@ SDL_LIB     =
 SDL_INCLUDE = 
 
 # change compilation / linking flag options
-F_OPTS		= -DHOME_SUPPORT -DNOVA -g -IBase -IGame -IUtility -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtCore -I/usr/include/qt4 -I. -I/usr/include/glm
-CC_OPTS		= -O2 -std=gnu++11 $(F_OPTS)
+F_OPTS		= -DHOME_SUPPORT -DNOVA -g  -IBase -IGame -IUtility -I/usr/include/qt5/QtGui -I/usr/include/qt45/QtCore -I/usr/include/qt5 -I. -I/usr/include/glm
+CC_OPTS		= -O2 -std=gnu++11 $(F_OPTS) -fPIC
 CFLAGS		= -I$(SDL_INCLUDE) $(CC_OPTS)
 CXXFLAGS	=$(CFLAGS) 
-LDFLAGS     = -lSDLmain -lSDL -lstdc++ -lGL -lGLU -lGLEW -lglfw -lQtGui -lQtCore -lQtDBus -lpthread -lQtOpenGL -lm
+LDFLAGS     = -lSDLmain -lSDL -lstdc++ -lGL -lGLU -lGLEW -lglfw -lQt5Gui -lQt5Core -lQt5Widgets -lpthread -lQt5OpenGL -lm
 
 # Files to be compiled
 SRCDIR    = ./ThirdParty ./Base ./Game ./Screens ./Screens/Panels ./Utility ./Game/AI ./Game/Animation ./Game/Cards ./Game/Cards/Magic ./Game/Cards/Trap ./Game/Duel ./Game/Duel/Parts

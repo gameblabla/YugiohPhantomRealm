@@ -1,6 +1,6 @@
 #define WIN32_LEAN_AND_MEAN
 //gameblabla FIX
-#include <Qt/qapplication.h>
+#include <QtWidgets/qapplication.h>
 #include <Game/YugiohUnit.h>
 #include <Utility/InputUnit.h>
 #include <Utility/StateUnit.h>

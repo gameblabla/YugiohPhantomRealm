@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "bool_game.h"
 #ifdef USE_GLES
 #include <GLES2/gl2.h>
 #else
 #include <GL/glew.h>
-#include <GL/glfw.h>
 #endif
 
 GLuint loadBMP_custom(const char * imagepath){
@@ -100,7 +99,7 @@ GLuint loadBMP_custom(const char * imagepath){
 	return textureID;
 }
 
-#ifdef USE_GLES
+#if 1
 // taken from NeHe TGA lesson 33 http://nehe.gamedev.net/tutorial/loading_compressed_and_uncompressed_tga's/22001/
 
 typedef struct
@@ -217,7 +216,7 @@ BOOL LoadUncompressedTGA(Texture * texture, const char * filename, FILE * fTGA)	
 
 	tga.bytesPerPixel	= (tga.Bpp / 8);									/* Compute the number of BYTES per pixel */
 	tga.imageSize		= (tga.bytesPerPixel * tga.Width * tga.Height);		/* Compute the total amout ofmemory needed to store data */
-	texture->imageData	= malloc(tga.imageSize);							/* Allocate that much memory */
+	texture->imageData	= (GLubyte*)malloc(tga.imageSize);							/* Allocate that much memory */
 
 	if(texture->imageData == NULL)											/* If no space was allocated */
 	{
@@ -462,11 +461,8 @@ GLuint loadTGA_glfw(const char * imagepath){
 	glBindTexture(GL_TEXTURE_2D, textureID);
 
 	// Read the file, call glTexImage2D with the right parameters
-#ifdef USE_GLES
 	customLoadTexture2DTGA(imagepath);
-#else
-	glfwLoadTexture2D(imagepath, 0);
-#endif
+	
 	// Nice trilinear filtering.
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);

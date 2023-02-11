@@ -1,7 +1,7 @@
 #pragma once
-#include <Qt/qobject.h>
-#include <Qt/qtimer.h>
-#include <QtGui/qapplication.h>
+#include <QtCore/qobject.h>
+#include <QtCore/qtimer.h>
+#include <QtWidgets/qapplication.h>
 #include <Base/RenderUnit.h>
 class YugiohGame : public QObject
 {

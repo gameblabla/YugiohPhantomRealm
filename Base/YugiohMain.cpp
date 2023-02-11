@@ -1,6 +1,6 @@
-#include <Qt/qapplication.h>
+#include <QtWidgets/qapplication.h>
 #include <iostream>
-#include <QtGui/qwidget.h>
+#include <QtWidgets/qwidget.h>
 #include <Base/YugiohGame.h>
 
 

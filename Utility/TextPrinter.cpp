@@ -1,4 +1,4 @@
-#include <Utility/TextPrinter.h>//contains glew.h, glm.hpp
+#include <Utility/TextPrinter.h>//contains GLCompat/local glm headers
 #include <vector>
 #include <gtc/matrix_transform.hpp>
 #include <Game/Animation/Camera.h>

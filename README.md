@@ -51,6 +51,5 @@ A number of larger libraries were also used that must be obtained before the pro
 * Irrklang 1.5 
 * Qt 4.8.6 (Most likely any 4.8.* version would work also)
 * GLM (OpenGL Mathematics) 0.9.4.6
-* GLEW 1.12
 
-Irrklang and Qt were dynamically linked to, but this is not necessary. The top folder of each of these libraries "include" folder should be included in the build path (e.g. #include <GL\glew.h> #include <QtOpenGL\qglwidget> #include <irrKlang.h> #include <gtx\transform.hpp> should all work).
+The SDL2 port no longer requires Qt, GLEW, GLFW, or an external GLM install. Historically, external libraries were included by adding their include folders to the build path (e.g. the project-local GLCompat and glm shim headers are used by the SDL2 port).

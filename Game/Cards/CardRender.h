@@ -2,7 +2,7 @@
 #ifdef USE_GLES
 #include <GLES2/gl2.h>
 #else
-#include <GL/glew.h>
+#include <Utility/GLCompat.h>
 #endif
 #define GLM_FORCE_RADIANS
 #include <glm.hpp>

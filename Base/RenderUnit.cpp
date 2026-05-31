@@ -1,8 +1,3 @@
-#ifdef USE_GLES
-#include <GLES2/gl2.h>
-#else
-#include <GL/glew.h>
-#endif
 #include <SDL2/SDL.h>
 
 #include <Utility/ErrorHandler.h>
@@ -95,22 +90,6 @@ bool RenderUnit::initialize(){
 		}
     }
     
-#ifndef USE_GLES
-	if(success)
-	{
-		printf("Initiliaze GLEW\n");
-		glewExperimental = GL_TRUE;
-		GLenum glewError = glewInit();
-		if(glewError != GLEW_OK)
-		{
-			errorHandler.printError( "glew Error: ");
-			std::cout<<glewGetErrorString(glewError)<<std::endl;
-			success = false;
-		}else{
-			errorHandler.printError("glew on");
-		}
-	}
-#endif
 
 	if(success)
 	{

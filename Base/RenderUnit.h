@@ -1,7 +1,5 @@
 #pragma once
-#ifndef USE_GLES
-#include <GL/glew.h>
-#endif
+#include <Utility/GLCompat.h>
 #include <Game/YugiohUnit.h>
 
 class RenderUnit

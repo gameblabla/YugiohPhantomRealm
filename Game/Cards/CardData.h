@@ -1,5 +1,5 @@
 #pragma once
-#include <Game/Cards/BigCardRender.h>//contains glew.h
+#include <Game/Cards/BigCardRender.h>//contains GLCompat
 #include <Game/Cards/SmallCardRender.h>
 #include <vector>
 #include <DefinesAndTypedefs.h>

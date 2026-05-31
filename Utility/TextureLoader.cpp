@@ -1,5 +1,5 @@
 
-#include <Utility/TextureLoader.h>//contains glew.h
+#include <Utility/TextureLoader.h>//contains GLCompat
 #include <ThirdParty/lodepng.h>
 #include <DefinesAndTypedefs.h>
 #include <Utility/ErrorHandler.h>

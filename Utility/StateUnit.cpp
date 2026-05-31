@@ -1,4 +1,4 @@
-#include <Utility/StateUnit.h>//contains glew.h, glm.hpp
+#include <Utility/StateUnit.h>//contains GLCompat/local glm headers
 #include <fstream>
 #include <streambuf>
 #include <gtc/matrix_transform.hpp>

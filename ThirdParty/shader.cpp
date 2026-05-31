@@ -11,7 +11,7 @@ using namespace std;
 #ifdef USE_GLES
 #include <GLES2/gl2.h>
 #else
-#include <GL/glew.h>
+#include <Utility/GLCompat.h>
 #endif
 #include "shader.hpp"
 

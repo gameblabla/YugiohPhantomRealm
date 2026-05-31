@@ -6,7 +6,7 @@ LD          = gcc
 OPENGLES	:= FALSE
 
 # change compilation / linking flag options
-F_OPTS		= -DHOME_SUPPORT -g -IBase -IGame -IUtility -I. -I/usr/include/glm -I.
+F_OPTS		= -DHOME_SUPPORT -g -IBase -IGame -IUtility -I. -I.
 
 #Only define for OpenGL ES 2.x mode
 CFLAGS		= -O0 -g3 $(F_OPTS)
@@ -23,7 +23,7 @@ LDFLAGS 	+= -lGLESv2
 endif
 
 ifeq ($(OPENGLES), FALSE)
-LDFLAGS 	+= -lGL -lGLU -lGLEW
+LDFLAGS 	+= -lGL
 endif
 
 # Files to be compiled

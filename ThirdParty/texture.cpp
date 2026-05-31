@@ -5,7 +5,7 @@
 #ifdef USE_GLES
 #include <GLES2/gl2.h>
 #else
-#include <GL/glew.h>
+#include <Utility/GLCompat.h>
 #endif
 
 #ifndef GL_EXT_texture_compression_s3tc

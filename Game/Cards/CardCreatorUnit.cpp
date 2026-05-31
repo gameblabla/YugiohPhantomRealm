@@ -1,7 +1,7 @@
 #ifdef USE_GLES
 #include <GLES2/gl2.h>
 #else
-#include <GL/glew.h> //for GL units
+#include <Utility/GLCompat.h> //for GL units
 #endif
 #include <Game/Cards/CardCreatorUnit.h>
 #include <Game/Cards/Magic/MagicCard.h>

@@ -3,7 +3,7 @@
 #ifdef USE_GLES
 #include <GLES2/gl2.h>
 #else
-#include <GL/glew.h>
+#include <Utility/GLCompat.h>
 #endif
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

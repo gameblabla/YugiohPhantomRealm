@@ -1,4 +1,4 @@
-#include <Game/Duel/Board.h>//HAS glew.h, glm
+#include <Game/Duel/Board.h>//contains GLCompat/local glm headers
 #include <Game/Cards/CardCreatorUnit.h>
 #include <Game/Duel/FusionUnit.h>
 #include <Utility/TextPrinter.h>

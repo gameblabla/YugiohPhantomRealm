@@ -220,6 +220,8 @@ namespace Screen{
 
 	void Trunk::renderCard(TrunkCard& t, glm::vec3 startPos){
 		Card::CardData& tc = t.c;
+		if(tc.blankCard())
+			return;
 		textPrinter.ignoreCamera = true;
 		textPrinter.leftAlign = true;
 
@@ -704,14 +706,18 @@ namespace Screen{
 			playerData.trunk[i] = 0;
 		}
 		for(unsigned int i = 0; i < trunkCards.size(); i++){
-			playerData.trunk[trunkCards[i].c.cardNumber-100] 
-				= trunkCards[i].noInTrunk;
+			const int cardIndex = trunkCards[i].c.cardNumber - YUG_LOWEST_CARD_NO;
+			if(0 <= cardIndex && cardIndex < YUG_MAX_NO_OF_CARDS)
+				playerData.trunk[cardIndex] = trunkCards[i].noInTrunk;
 			trunkCards[i].c.cleanup();
 		}
 	}
 	void Trunk::writeDeckCards(){
+		playerData.deck.internalDeck.clear();
 		for(unsigned int i = 0; i < deckCards.size(); i++){
-			playerData.deck.internalDeck[i] = deckCards[i].c.cardNumber;
+			if(deckCards[i].c.cardNumber >= YUG_LOWEST_CARD_NO
+			&& deckCards[i].c.cardNumber <= YUG_HIGHEST_CARD_NO)
+				playerData.deck.internalDeck.push_back(deckCards[i].c.cardNumber);
 			deckCards[i].c.cleanup();
 		}
 	}
@@ -734,11 +740,14 @@ namespace Screen{
 		}
 	}
 	void Trunk::loadDeck(){
-		for(unsigned int i = 0; i < 40; i++){
+		for(unsigned int i = 0; i < YUG_DECK_MAX_CARDS; i++){
+			const int cardNo = playerData.deck.getNoAt(i);
+			if(cardNo == YUG_NO_CARD)
+				continue;
 			TrunkCard t;
 			deckCards.push_back(t);
 			Card::CardData& ct = deckCards[deckCards.size()-1].c;
-			ct = cardCreator.createCard(playerData.deck.getNoAt(i));
+			ct = cardCreator.createCard(cardNo);
 			ct.smallRender.parentCard = YUG_UNBIND;
 			ct.smallRender.doRender = false;
 			ct.bigRender.parentCard = YUG_UNBIND;

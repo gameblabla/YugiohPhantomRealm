@@ -13,6 +13,10 @@ namespace Duel{
 		return true;
 	}
 	Card::CardData Deck::drawCard(){
+		if(cardsDrawn < 0 || cardsDrawn >= static_cast<int>(internalDeck.size())){
+			cardsLeft = 0;
+			return cardCreator.blankCard();
+		}
 		Card::CardData card = cardCreator.createCard(internalDeck[cardsDrawn]);
 		cardsDrawn++;
 		cardsLeft--;
@@ -21,7 +25,7 @@ namespace Duel{
 	void Deck::newDuel(){
 		shuffleDeck();
 		cardsDrawn = 0;
-		cardsLeft = 40;
+		cardsLeft = internalDeck.size();
 	}
 	bool Deck::deckEmpty(){
 		return cardsLeft <= 0;
@@ -54,6 +58,8 @@ namespace Duel{
 		internalDeck.erase(internalDeck.begin() + deckPlacement);
 	}
 	void Deck::shuffleDeck(){
+		if(internalDeck.empty())
+			return;
 		int temp;
 		std::srand(time(NULL));
 		for(unsigned int c = 0 ; c < 3; c++){
@@ -71,7 +77,9 @@ namespace Duel{
 	}
 
 	int Deck::getNoAt(int index){
-		return internalDeck[index];
+		if(index < 0 || index >= static_cast<int>(internalDeck.size()))
+			return YUG_NO_CARD;
+		return static_cast<int>(internalDeck[index]);
 	}
 
 

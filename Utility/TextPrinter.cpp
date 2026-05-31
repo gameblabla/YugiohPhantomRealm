@@ -322,6 +322,7 @@ namespace Utility{
 			glm::vec3 rotationLine, float angle)
 	{
 		currentFont = font;
+		if(!sentence) sentence = "";
 		unsigned int length = strlen(sentence);
 		std::vector<glm::vec3>vertices = makeVertices(length, sentence, length);
 		std::vector<glm::vec2>uvArray = makeAlphabetUVs(sentence, font,length);
@@ -357,6 +358,7 @@ namespace Utility{
 			glm::mat4 rotationMatrix)
 	{
 		currentFont = font;
+		if(!sentence) sentence = "";
 		unsigned int length = strlen(sentence);
 		std::vector<glm::vec3>vertices = makeVertices(length, sentence,length);
 		std::vector<glm::vec2>uvArray = makeAlphabetUVs(sentence, font,length);
@@ -391,6 +393,7 @@ namespace Utility{
 			glm::mat4 projectionWorldMatrix)
 	{
 		currentFont = font;
+		if(!sentence) sentence = "";
 		unsigned int length = strlen(sentence);
 		std::vector<glm::vec3>vertices = makeVertices(length, sentence,length);
 		std::vector<glm::vec2>uvArray = makeAlphabetUVs(sentence, font,length);
@@ -423,6 +426,7 @@ namespace Utility{
 			glm::mat4 rotationMatrix)
 	{
 		currentFont = font;
+		if(!sentence) sentence = "";
 		unsigned int length = strlen(sentence);
 		std::vector<glm::vec3>vertices = makeVertices(length, sentence,length);
 		std::vector<glm::vec2>uvArray = makeAlphabetUVs(sentence, font,length);
@@ -454,6 +458,7 @@ namespace Utility{
 		glm::vec3 scale, glm::vec3 posi, glm::mat4 rot)
 	{
 		currentFont = font;
+		if(!sentence) sentence = "";
 		unsigned int length = strlen(sentence);
 		std::vector<glm::vec3>vertices = makeVertices(length, sentence,length);
 		std::vector<glm::vec2>uvArray = makeAlphabetUVs(sentence, font,length);
@@ -703,6 +708,7 @@ namespace Utility{
 			glm::mat4 rotationMatrix)
 	{
 		currentFont = font;
+		if(!sentence) sentence = "";
 		unsigned int length = strlen(sentence);
 		unsigned int noOfDigits = 4;//findNoOfDigits(number);
 		std::vector<glm::vec3>vertices = makeVertices(length+noOfDigits, sentence,length);
@@ -741,6 +747,7 @@ namespace Utility{
 			glm::mat4 rotationMatrix){
 		currentFont = font;
 
+		if(!sentence) sentence = "";
 		unsigned int length = strlen(sentence);
 		unsigned int noOfDigits = 4;//findNoOfDigits(number);
 		std::vector<glm::vec3>vertices = makeVertices(length+noOfDigits,sentence,length);
@@ -845,6 +852,7 @@ namespace Utility{
 			glm::mat4 furtherMatrix)
 	{
 		currentFont = font;
+		if(!sentence) sentence = "";
 		unsigned int length = strlen(sentence);
 		std::vector<glm::vec3>vertices = makeVertices(length, sentence,length);
 		std::vector<glm::vec2>uvArray = makeAlphabetUVs(sentence, font,length);
@@ -903,6 +911,7 @@ namespace Utility{
 			glm::mat4 furtherMatrix)
 	{
 		currentFont = font;
+		if(!sentence) sentence = "";
 		unsigned int length = strlen(sentence);
 		unsigned int noOfDigits = 4;//findNoOfDigits(number);
 		std::vector<glm::vec3>vertices = makeVertices(length+noOfDigits, sentence,length);

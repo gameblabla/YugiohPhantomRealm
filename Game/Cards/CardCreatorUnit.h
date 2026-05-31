@@ -14,7 +14,7 @@ namespace Card{
 	public:
 		CardData createCard(int cardNo);
 		void setupParents(CardData* parent);
-		CardData blankCard();
+		CardData blankCard(int cardNo = YUG_NO_CARD);
 		static CardCreatorUnit cardCreatorUnitInstance;
 	};
 #define cardCreator Card::CardCreatorUnit::cardCreatorUnitInstance

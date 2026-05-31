@@ -1,5 +1,6 @@
 #include <Utility/ErrorHandler.h>
 #include <Game/PlayerData.h>
+#include <Utility/FileUtil.h>
 #include <iostream>
 
 namespace Game{
@@ -15,7 +16,8 @@ namespace Game{
 
 	void PlayerData::loadGame(int fileNo){
 		//std::cout<<"Loading Game\n";
-		std::ifstream input(fileLocals[fileNo-1]);
+		std::ifstream input;
+		Utility::openInputFile(input, fileLocals[fileNo-1]);
 		currentSaveFile = fileNo;
 		waitForHashTilde(&input);
 		//player name
@@ -73,7 +75,11 @@ namespace Game{
 			waitForHashTilde(&input) )
 		{
 			input>>cardNo;
-			deck.internalDeck.push_back(cardNo);
+			if(cardNo >= YUG_LOWEST_CARD_NO && cardNo <= YUG_HIGHEST_CARD_NO){
+				deck.internalDeck.push_back(static_cast<unsigned int>(cardNo));
+			}else if(cardNo != YUG_NO_CARD){
+				std::cout<<"PlayerData: ignoring invalid deck card number: "<<cardNo<<"\n";
+			}
 			deckIndex++;
 		}
 		//std::cout<<"end deck"<<std::endl;
@@ -135,7 +141,8 @@ namespace Game{
 
 	std::string PlayerData::saveDescription(int fileNo){
 		std::vector<char> pName; 
-		std::ifstream input(fileLocals[fileNo-1]);
+		std::ifstream input;
+		Utility::openInputFile(input, fileLocals[fileNo-1]);
 		waitForHashTilde(&input);
 		//player name
 		do{
@@ -158,7 +165,8 @@ namespace Game{
 	}
 
 	bool PlayerData::isEmpty(int fileNo){
-		std::ifstream input(fileLocals[fileNo-1]);
+		std::ifstream input;
+		Utility::openInputFile(input, fileLocals[fileNo-1]);
 		waitForHashTilde(&input);
 		return(input.get()=='~');
 	}

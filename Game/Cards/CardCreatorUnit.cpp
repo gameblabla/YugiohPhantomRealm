@@ -4,25 +4,35 @@
 #include <Utility/GLCompat.h> //for GL units
 #endif
 #include <Game/Cards/CardCreatorUnit.h>
+#include <Utility/FileUtil.h>
 #include <Game/Cards/Magic/MagicCard.h>
 #include <Game/Cards/Magic/ChangeOfHeart.h>
 #include <iostream>
+#include <string>
 
 namespace Card{
 
 	CardCreatorUnit CardCreatorUnit::cardCreatorUnitInstance;
 
 	CardData CardCreatorUnit::createCard(int cardNo){
+		if(cardNo < YUG_LOWEST_CARD_NO || cardNo > YUG_HIGHEST_CARD_NO){
+			if(cardNo != YUG_NO_CARD)
+				std::cout<<"Card Creator: invalid card number: "<<cardNo<<"\n";
+			return blankCard();
+		}
+
 		if((337 < cardNo && cardNo < 350)||(777 < cardNo && cardNo < 900)){
 			createFileName(cardNo,"GameData/cardData/magics/",25);
 		}else{
 			createFileName(cardNo,"GameData/cardData/monsters/",27);
 		}
 		//std::cout<<fileName.data()<<std::endl;
-		std::ifstream input(fileName.data());
-		if(!input){
-			std::cout<<"Card Creator: can't open file with card number: "<<cardNo<<"\n";
-			return blankCard();
+		std::ifstream input;
+		std::string resolvedPath;
+		if(!Utility::openInputFile(input, fileName.data(), &resolvedPath)){
+			std::cout<<"Card Creator: can't open file with card number: "<<cardNo
+				<<" path: "<<fileName.data()<<"\n";
+			return blankCard(cardNo);
 		}
 		//std::cout<<"Card Creator: loading Card\n";
 		CardData card;
@@ -97,9 +107,56 @@ namespace Card{
 		parent->smallRender.parentCard = parent;
 	}
 
-	CardData CardCreatorUnit::blankCard(){
+	namespace{
+		void assignCString(std::vector<char>& out, const char* text){
+			out.clear();
+			if(!text)
+				text = "";
+			while(*text){
+				out.push_back(*text);
+				++text;
+			}
+			out.push_back('\0');
+		}
+	}
+
+	CardData CardCreatorUnit::blankCard(int cardNo){
 		CardData card;
-		card.cardNumber = YUG_NO_CARD;
+		card.cardNumber = cardNo;
+		assignCString(card.name, cardNo == YUG_NO_CARD ? "Empty" : "Missing Card");
+		assignCString(card.renderFileName, "GameData/textures/models/badTexture.png");
+		assignCString(card.blurb, cardNo == YUG_NO_CARD ? "Empty card slot." : "Missing card data file.");
+		card.monMagTrap = YUG_MONSTER_CARD;
+		card.attack = 0;
+		card.defense = 0;
+		card.altAttack = 0;
+		card.altDefense = 0;
+		card.origAttack = 0;
+		card.origDefense = 0;
+		card.fieldlessAttack = 0;
+		card.fieldlessDefense = 0;
+		card.atkStatBoost = 0;
+		card.defStatBoost = 0;
+		card.atkStatDrop = 0;
+		card.defStatDrop = 0;
+		card.starchips = 0;
+		card.actualType = YUG_INFORMAL_NONE;
+		card.fusionTypes.clear();
+		card.element = YUG_EARTH_ELEMENT;
+		card.constellations[0] = YUG_SUN;
+		card.constellations[1] = YUG_MOON;
+		card.currentConstellation = YUG_CARD_NO_CURRENT_CON;
+		card.faceUp = true;
+		card.attackMode = true;
+		card.hasAttacked = false;
+		card.isVisible = true;
+		card.hidden = false;
+		card.pictureTBO = YUG_UNBIND;
+		card.chain = YUG_CARD_CH_IDLE;
+		card.smallRender.parentCard = YUG_UNBIND;
+		card.smallRender.doRender = false;
+		card.bigRender.parentCard = YUG_UNBIND;
+		card.bigRender.doRender = false;
 		return card;
 	}
 

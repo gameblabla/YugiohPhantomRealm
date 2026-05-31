@@ -12,6 +12,7 @@
 #include <Utility/SoundUnit.h>
 
 #include <iostream>
+#include <SDL2/SDL.h>
 
 #define ZYUG_CH_IDLE 0
 #define ZYUG_CH_START 1
@@ -24,6 +25,16 @@
 #define ZYUG_ES_X -0.39f
 #define ZYUG_KEYS_POS glm::vec3(0.0f, 0.12f, -1.999f)
 #define ZYUG_KEYS_Y -0.067f;
+
+namespace{
+	const char* keyNameForScancode(int scancode){
+		if(scancode < 0 || scancode >= SDL_NUM_SCANCODES){
+			return "Unknown";
+		}
+		const char* name = SDL_GetScancodeName(static_cast<SDL_Scancode>(scancode));
+		return (name != 0 && name[0] != '\0') ? name : "Unknown";
+	}
+}
 
 namespace Screen{
  
@@ -189,7 +200,7 @@ namespace Screen{
 		glm::vec3 currentPos = ZYUG_KEYS_POS;
 		for(int i = 0; i < 7; i++){
 			textPrinter.printText(
-				kn[inputUnit.realKeyBindings[i]],
+				keyNameForScancode(inputUnit.realKeyBindings[i]),
 				YUG_TEXT_INFO_FONT,
 				glm::vec3(0.3f,0.5f,1.0f),
 				currentPos, glm::mat4()
@@ -197,21 +208,21 @@ namespace Screen{
 			currentPos.y += ZYUG_KEYS_Y;
 		}
 		textPrinter.printText(
-			kn[inputUnit.realKeyBindings[YUG_KEY_START]],
+			keyNameForScancode(inputUnit.realKeyBindings[YUG_KEY_START]),
 				YUG_TEXT_INFO_FONT,
 				glm::vec3(0.3f,0.5f,1.0f),
 				currentPos, glm::mat4()
 			);
 			currentPos.y += ZYUG_KEYS_Y;
 		textPrinter.printText(
-			kn[inputUnit.realKeyBindings[YUG_KEY_R1]],
+			keyNameForScancode(inputUnit.realKeyBindings[YUG_KEY_R1]),
 				YUG_TEXT_INFO_FONT,
 				glm::vec3(0.3f,0.5f,1.0f),
 				currentPos, glm::mat4()
 			);
 			currentPos.y += ZYUG_KEYS_Y;
 		textPrinter.printText(
-			kn[inputUnit.realKeyBindings[YUG_KEY_L1]],
+			keyNameForScancode(inputUnit.realKeyBindings[YUG_KEY_L1]),
 				YUG_TEXT_INFO_FONT,
 				glm::vec3(0.3f,0.5f,1.0f),
 				currentPos, glm::mat4()

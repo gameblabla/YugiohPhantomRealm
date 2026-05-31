@@ -3,6 +3,7 @@
 #endif
 
 #include <cstdint>
+#include <cmath>
 
 // Include GLM
 #include <glm/glm.hpp>
@@ -36,76 +37,70 @@ float initialFoV = 45.0f;
 float speed = 3.0f; // 3 units / second
 float mouseSpeed = 0.005f;
 
-extern SDL_Window* gWindow;
-
-
 void computeMatricesFromInputs(){
-/*
-	// glfwGetTime is called only once, the first time this function is called
-	static double lastTime = glfwGetTime();
-
-	// Compute time difference between current and last frame
-	double currentTime = glfwGetTime();
-	
-	float deltaTime = float(currentTime - lastTime);
-
-*/
 	static uint64_t lastTime = SDL_GetPerformanceCounter();
 	uint64_t currentTime = SDL_GetPerformanceCounter();
-	double deltaTime = static_cast<double>(currentTime - lastTime)
-		/ static_cast<double>(SDL_GetPerformanceFrequency());
+	float deltaTime = static_cast<float>(static_cast<double>(currentTime - lastTime)
+		/ static_cast<double>(SDL_GetPerformanceFrequency()));
+	lastTime = currentTime;
 
-	// Get mouse position
-	int xpos, ypos;
-	//glfwGetMousePos(&xpos, &ypos);
-	SDL_GetGlobalMouseState(&xpos, &ypos);
+	SDL_PumpEvents();
 
-	// Reset mouse position for next frame
-	//glfwSetMousePos(1024/2, 768/2);
-	SDL_WarpMouseInWindow(gWindow, 1024/2, 768/2);
+	// SDL relative mouse mode gives movement deltas without manually warping the cursor.
+	static bool relativeMouseEnabled = false;
+	if(!relativeMouseEnabled){
+		if(SDL_SetRelativeMouseMode(SDL_TRUE) == 0){
+			relativeMouseEnabled = true;
+		}
+	}
+
+	int mouseDeltaX = 0;
+	int mouseDeltaY = 0;
+	SDL_GetRelativeMouseState(&mouseDeltaX, &mouseDeltaY);
 
 	// Compute new orientation
-	horizontalAngle += mouseSpeed * float(1024/2 - xpos );
-	verticalAngle   += mouseSpeed * float( 768/2 - ypos );
+	horizontalAngle += mouseSpeed * static_cast<float>(-mouseDeltaX);
+	verticalAngle   += mouseSpeed * static_cast<float>(-mouseDeltaY);
 
 	// Direction : Spherical coordinates to Cartesian coordinates conversion
 	glm::vec3 direction(
-		cos(verticalAngle) * sin(horizontalAngle), 
-		sin(verticalAngle),
-		cos(verticalAngle) * cos(horizontalAngle)
+		std::cos(verticalAngle) * std::sin(horizontalAngle), 
+		std::sin(verticalAngle),
+		std::cos(verticalAngle) * std::cos(horizontalAngle)
 	);
 	
 	// Right vector
 	glm::vec3 right = glm::vec3(
-		sin(horizontalAngle - 3.14f/2.0f), 
+		std::sin(horizontalAngle - 3.14f/2.0f), 
 		0,
-		cos(horizontalAngle - 3.14f/2.0f)
+		std::cos(horizontalAngle - 3.14f/2.0f)
 	);
 	
 	// Up vector
 	glm::vec3 up = glm::cross( right, direction );
 
+	const Uint8 *keyboardState = SDL_GetKeyboardState(NULL);
+
 	// Move forward
-	/*if (glfwGetKey( GLFW_KEY_UP ) == GLFW_PRESS){
+	if (keyboardState[SDL_SCANCODE_UP] || keyboardState[SDL_SCANCODE_W]){
 		position += direction * deltaTime * speed;
 	}
 	// Move backward
-	if (glfwGetKey( GLFW_KEY_DOWN ) == GLFW_PRESS){
+	if (keyboardState[SDL_SCANCODE_DOWN] || keyboardState[SDL_SCANCODE_S]){
 		position -= direction * deltaTime * speed;
 	}
 	// Strafe right
-	if (glfwGetKey( GLFW_KEY_RIGHT ) == GLFW_PRESS){
+	if (keyboardState[SDL_SCANCODE_RIGHT] || keyboardState[SDL_SCANCODE_D]){
 		position += right * deltaTime * speed;
 	}
 	// Strafe left
-	if (glfwGetKey( GLFW_KEY_LEFT ) == GLFW_PRESS){
+	if (keyboardState[SDL_SCANCODE_LEFT] || keyboardState[SDL_SCANCODE_A]){
 		position -= right * deltaTime * speed;
-	}*/
+	}
 
-	//float FoV = initialFoV - 5 * glfwGetMouseWheel();
 	float FoV = initialFoV - 5;
 	
-	// Projection matrix : 45� Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
+	// Projection matrix : 45 degree Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
 	ProjectionMatrix = glm::perspective(FoV, 4.0f / 3.0f, 0.1f, 100.0f);
 	// Camera matrix
 	ViewMatrix       = glm::lookAt(
@@ -113,7 +108,4 @@ void computeMatricesFromInputs(){
 								position+direction, // and looks here : at the same position, plus "direction"
 								up                  // Head is up (set to 0,-1,0 to look upside-down)
 						   );
-
-	// For the next frame, the "last time" will be "now"
-	lastTime = currentTime;
 }

@@ -6,7 +6,6 @@
 #include <GLES2/gl2.h>
 #else
 #include <GL/glew.h>
-//#include <GL/glfw.h>
 #endif
 
 #ifndef GL_EXT_texture_compression_s3tc
@@ -464,7 +463,7 @@ int customLoadTexture2DTGA(const char * imagepath) {
 }
 #endif
 
-GLuint loadTGA_glfw(const char * imagepath){
+GLuint loadTGA_custom(const char * imagepath){
 
 	// Create one OpenGL texture
 	GLuint textureID;
@@ -476,7 +475,6 @@ GLuint loadTGA_glfw(const char * imagepath){
 	printf("imagepath %s\n", imagepath);
 
 	// Read the file, call glTexImage2D with the right parameters
-	//glfwLoadTexture2D(imagepath, 0);
 	customLoadTexture2DTGA(imagepath);
 
 	// Nice trilinear filtering.

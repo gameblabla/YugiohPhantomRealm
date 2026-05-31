@@ -23,7 +23,7 @@ unsigned int Text2DUniformID;
 void initText2D(const char * texturePath){
 
 	// Initialize texture
-	Text2DTextureID = loadTGA_glfw(texturePath);
+	Text2DTextureID = loadTGA_custom(texturePath);
 
 	// Initialize VBO
 	glGenBuffers(1, &Text2DVertexBufferID);

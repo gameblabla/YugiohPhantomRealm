@@ -107,7 +107,7 @@ namespace Game{
 
 		glUniformMatrix4fv( 
 		stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 		glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &amtran[0]);
 #ifdef NOVA
                 glEnableVertexAttribArray(0);

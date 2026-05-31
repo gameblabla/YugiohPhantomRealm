@@ -337,7 +337,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
@@ -372,7 +372,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
@@ -402,7 +402,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
@@ -435,7 +435,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
@@ -469,7 +469,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
@@ -525,7 +525,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, YUG_TEXT_VERTS_PER_GLYPH );
@@ -562,7 +562,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, YUG_TEXT_VERTS_PER_GLYPH );
@@ -596,7 +596,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, YUG_TEXT_VERTS_PER_GLYPH );
@@ -720,7 +720,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, (noOfDigits+length)*YUG_TEXT_VERTS_PER_GLYPH );
@@ -758,7 +758,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, (noOfDigits+length)*YUG_TEXT_VERTS_PER_GLYPH );
@@ -794,7 +794,7 @@ namespace Utility{
 
 			glUniformMatrix4fv( 
 				stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-			glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+			glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 			// Draw call
 			glDrawArrays(GL_TRIANGLES, 0, (noOfDigits)*YUG_TEXT_VERTS_PER_GLYPH );
@@ -828,7 +828,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, (noOfDigits)*YUG_TEXT_VERTS_PER_GLYPH );
@@ -856,7 +856,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, length*YUG_TEXT_VERTS_PER_GLYPH );
@@ -884,7 +884,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, YUG_TEXT_VERTS_PER_GLYPH );
@@ -914,7 +914,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, (noOfDigits+length)*YUG_TEXT_VERTS_PER_GLYPH );
@@ -950,7 +950,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, (length)*YUG_TEXT_VERTS_PER_GLYPH );
@@ -1020,7 +1020,7 @@ namespace Utility{
 
 		glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-		glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 		// Draw call
 		glDrawArrays(GL_TRIANGLES, 0, (length)*YUG_TEXT_VERTS_PER_GLYPH );

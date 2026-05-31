@@ -59,7 +59,7 @@ void DebugCard::draw(){
 	glm::mat4 fullTransfromMatrix = glm::rotate(translationMatrix, .01f, glm::vec3(0.0f,1.0f,0.0f));
 	glm::mat4 mvp = fullTransfromMatrix;
 	glUniformMatrix4fv( stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &mvp[0][0]);
-	glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+	glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 
 	//glEnable(GL_CULL_FACE);
 	//glCullFace(GL_BACK);

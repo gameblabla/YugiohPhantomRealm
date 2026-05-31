@@ -2,7 +2,6 @@
 #ifndef USE_GLES
 #include <GL/glew.h>
 #endif
-//#include <QtOpenGL/QGLWidget>
 #include <Game/YugiohUnit.h>
 
 class RenderUnit

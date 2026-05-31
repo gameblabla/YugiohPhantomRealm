@@ -36,22 +36,22 @@ namespace Duel{
 		glBindBuffer(GL_ARRAY_BUFFER, uvBO);
 		glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), uvs.data(), GL_STATIC_DRAW);
 		GLuint texID1=0; emptyTextures.push_back(texID1 );
-		textureLoader.loadTexture("gameData/textures/board/cursors/emptyboardcursor0UV.png", &emptyTextures[0]);
+		textureLoader.loadTexture("GameData/textures/board/cursors/emptyboardcursor0UV.png", &emptyTextures[0]);
 		GLuint texID2=0; emptyTextures.push_back(texID2 );
-		textureLoader.loadTexture("gameData/textures/board/cursors/emptyboardcursor1UV.png", &emptyTextures[1]);
+		textureLoader.loadTexture("GameData/textures/board/cursors/emptyboardcursor1UV.png", &emptyTextures[1]);
 		GLuint texID3=0; emptyTextures.push_back(texID3 );
-		textureLoader.loadTexture("gameData/textures/board/cursors/emptyboardcursor2UV.png", &emptyTextures[2]);
+		textureLoader.loadTexture("GameData/textures/board/cursors/emptyboardcursor2UV.png", &emptyTextures[2]);
 		GLuint texID7=0; emptyTextures.push_back(texID7 );
-		textureLoader.loadTexture("gameData/textures/board/cursors/emptyboardcursor3UV.png", &emptyTextures[3]);
+		textureLoader.loadTexture("GameData/textures/board/cursors/emptyboardcursor3UV.png", &emptyTextures[3]);
 
 		GLuint texID4=0; fullTextures.push_back(texID4 );
-		textureLoader.loadTexture("gameData/textures/board/cursors/fullboardcursor0UV.png", &fullTextures[0]);
+		textureLoader.loadTexture("GameData/textures/board/cursors/fullboardcursor0UV.png", &fullTextures[0]);
 		GLuint texID5=0; fullTextures.push_back(texID5 );
-		textureLoader.loadTexture("gameData/textures/board/cursors/fullboardcursor1UV.png", &fullTextures[1]);
+		textureLoader.loadTexture("GameData/textures/board/cursors/fullboardcursor1UV.png", &fullTextures[1]);
 		GLuint texID6=0; fullTextures.push_back(texID6 );
-		textureLoader.loadTexture("gameData/textures/board/cursors/fullboardcursor2UV.png", &fullTextures[2]);
+		textureLoader.loadTexture("GameData/textures/board/cursors/fullboardcursor2UV.png", &fullTextures[2]);
 		GLuint texID8=0; fullTextures.push_back(texID8 );
-		textureLoader.loadTexture("gameData/textures/board/cursors/fullboardcursor3UV.png", &fullTextures[3]);
+		textureLoader.loadTexture("GameData/textures/board/cursors/fullboardcursor3UV.png", &fullTextures[3]);
 
 		isFlickering = true;
 		currentTexture = 0;
@@ -103,7 +103,7 @@ namespace Duel{
 
 			glUniformMatrix4fv( 
 			stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &finalMatrix[0][0]);
-			glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+			glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 			glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &amtran[0]);
 #ifdef NOVA
 			glEnableVertexAttribArray(0);

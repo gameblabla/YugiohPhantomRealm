@@ -205,7 +205,7 @@ namespace Card{
 		finalMat = glm::scale(finalMat, scale);
 		glUniformMatrix4fv(stateUnit.textureMatrixUniformLocation,
 			1, GL_FALSE, &finalMat[0][0]);
-		glUniform1f(stateUnit.textureSamplerUniformLocation, 0.0f);
+		glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 		glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &amtran[0]);
 
 #ifdef NOVA

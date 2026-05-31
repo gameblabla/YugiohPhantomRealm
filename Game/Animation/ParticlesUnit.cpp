@@ -171,7 +171,7 @@ namespace Animation{
 
 			glUniformMatrix4fv( 
 				stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &tm[0][0]);
-			glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+			glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 			glm::vec4 amtran = glm::vec4(1.0f,1.0f,1.0f,sin(currentCount*3.1415));
 			glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &amtran[0]);
 			
@@ -220,7 +220,7 @@ namespace Animation{
 					tm = glm::scale(tm, glm::vec3(0.05f,0.1f,1.0f));
 					glUniformMatrix4fv( 
 						stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &tm[0][0]);
-					glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+					glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 					glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &amtran[0]);
 			
 					glDrawArrays(GL_TRIANGLES, 0, vertexNumber );
@@ -266,7 +266,7 @@ namespace Animation{
 
 			glUniformMatrix4fv( 
 				stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &tm[0][0]);
-			glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+			glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 			float tran = sin(currentCount*3.1415f);
 			if(tran < 0.8)
 				tran += tran*0.2f;
@@ -322,7 +322,7 @@ namespace Animation{
 				tm = glm::scale(tm, scaleVec);
 				glUniformMatrix4fv( 
 					stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &tm[0][0]);
-				glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+				glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 				glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &amtran[0]);		
 				glDrawArrays(GL_TRIANGLES, 0, vertexNumber );
 
@@ -374,7 +374,7 @@ namespace Animation{
 			tm = glm::scale(tm, glm::vec3(scales[i+40]*30,scales[i+40]*30,1.0f));
 			glUniformMatrix4fv( 
 				stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &tm[0][0]);
-			glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+			glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 			glm::vec4 amtran = particleAmtran;
 			amtran.w = sin(currentCount*YUG_PI);
 			glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &amtran[0]);
@@ -392,7 +392,7 @@ namespace Animation{
 			tm = glm::scale(tm, glm::vec3(scales[i]*30,scales[i]*30,1.0f));
 			glUniformMatrix4fv( 
 				stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &tm[0][0]);
-			glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+			glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 			glm::vec4 amtran = particleAmtran;
 			amtran.w = sin(currentCount*YUG_PI);
 			glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &amtran[0]);
@@ -575,7 +575,7 @@ namespace Animation{
 
 			glUniformMatrix4fv( 
 				stateUnit.textureMatrixUniformLocation, 1, GL_FALSE, &tm[0][0]);
-			glUniform1f( stateUnit.textureSamplerUniformLocation, 0.2f);
+			glUniform1i(stateUnit.textureSamplerUniformLocation, 0);
 			//glm::vec4 amtran = glm::vec4(1.0f,1.0f,1.0f,burnLifespans[i])*particleAmtran;
 			particleAmtran.w = burnLifespans[i];
 			glUniform4fv(stateUnit.textureAmtranUniformLocation, 1, &particleAmtran[0]);

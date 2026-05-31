@@ -16,6 +16,40 @@
 #define GL_COMPRESSED_RGBA_S3TC_DXT5_EXT  0x83F3
 #endif
 
+namespace {
+
+static bool isPowerOfTwo(unsigned int value)
+{
+	return value != 0 && (value & (value - 1)) == 0;
+}
+
+static void setTexture2DParameters(unsigned int width, unsigned int height)
+{
+#ifdef USE_GLES
+	const bool canUseMipmapsAndRepeat = isPowerOfTwo(width) && isPowerOfTwo(height);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, canUseMipmapsAndRepeat ? GL_REPEAT : GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, canUseMipmapsAndRepeat ? GL_REPEAT : GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	if(canUseMipmapsAndRepeat)
+	{
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+	{
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	}
+#else
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glGenerateMipmap(GL_TEXTURE_2D);
+#endif
+}
+
+}
+
 GLuint loadBMP_custom(const char * imagepath){
 
 	printf("Reading image %s\n", imagepath);
@@ -35,7 +69,7 @@ GLuint loadBMP_custom(const char * imagepath){
 	// Read the header, i.e. the 54 first bytes
 
 	// If less than 54 byes are read, problem
-	if ( fread(header, 1, 54, file)!=54 ){ 
+	if ( fread(header, 1, 54, file)!=54 ){
 		printf("Not a correct BMP file\n");
 		return false;
 	}
@@ -70,11 +104,12 @@ GLuint loadBMP_custom(const char * imagepath){
 	// Create one OpenGL texture
 	GLuint textureID;
 	glGenTextures(1, &textureID);
-	
+
 	// "Bind" the newly created texture : all future texture functions will modify this texture
 	glBindTexture(GL_TEXTURE_2D, textureID);
 
 	// Give the image to OpenGL
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 	#ifdef USE_GLES
 	{
 		unsigned char* p = (unsigned char*)data;
@@ -92,14 +127,10 @@ GLuint loadBMP_custom(const char * imagepath){
 
 	// Poor filtering, or ...
 	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); 
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-	// ... nice trilinear filtering.
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
-	glGenerateMipmap(GL_TEXTURE_2D);
+	// GLES2 cannot use mipmap filtering or repeat wrap on NPOT textures.
+	setTexture2DParameters(width, height);
 
 	delete[] data;
 
@@ -118,7 +149,7 @@ typedef struct
 	GLuint	height;											/* Image Height */
 	GLuint	texID;											/* Texture ID Used To Select A Texture */
 	GLuint	type;											/* Image Type (GL_RGB, GL_RGBA) */
-} Texture;	
+} Texture;
 
 typedef struct
 {
@@ -244,11 +275,11 @@ BOOL LoadUncompressedTGA(Texture * texture, const char * filename, FILE * fTGA)	
 		return False;														/* Return failed */
 	}
 
-	/* Byte Swapping Optimized By Steve Thomas */
 	for(cswap = 0; cswap < (int)tga.imageSize; cswap += tga.bytesPerPixel)
 	{
-		texture->imageData[cswap] ^= texture->imageData[cswap+2] ^=
-		texture->imageData[cswap] ^= texture->imageData[cswap+2];
+		GLubyte tmp = texture->imageData[cswap];
+		texture->imageData[cswap] = texture->imageData[cswap + 2];
+		texture->imageData[cswap + 2] = tmp;
 	}
 
 	fclose(fTGA);															/* Close file */
@@ -452,12 +483,17 @@ BOOL LoadCompressedTGA(Texture * texture,const char * filename, FILE * fTGA)		/*
 }
 
 int customLoadTexture2DTGA(const char * imagepath) {
-	Texture mytex;
-	int ret = false;
-	ret = LoadTGA(&mytex, imagepath);
+	Texture mytex = {};
+	int ret = LoadTGA(&mytex, imagepath);
 	printf("customloadTGA %d\n", ret);
-	
+	if(!ret || mytex.imageData == NULL)
+	{
+		return false;
+	}
+
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 	glTexImage2D(GL_TEXTURE_2D, 0, mytex.type, mytex.width, mytex.height, 0, mytex.type, GL_UNSIGNED_BYTE, mytex.imageData);
+	setTexture2DParameters(mytex.width, mytex.height);
 	free(mytex.imageData);
 	return ret;
 }
@@ -471,18 +507,15 @@ GLuint loadTGA_custom(const char * imagepath){
 
 	// "Bind" the newly created texture : all future texture functions will modify this texture
 	glBindTexture(GL_TEXTURE_2D, textureID);
-	
+
 	printf("imagepath %s\n", imagepath);
 
 	// Read the file, call glTexImage2D with the right parameters
-	customLoadTexture2DTGA(imagepath);
-
-	// Nice trilinear filtering.
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
-	glGenerateMipmap(GL_TEXTURE_2D);
+	if(!customLoadTexture2DTGA(imagepath))
+	{
+		glDeleteTextures(1, &textureID);
+		return 0;
+	}
 
 	// Return the ID of the texture we just created
 	return textureID;
@@ -498,23 +531,23 @@ GLuint loadDDS(const char * imagepath){
 
 	unsigned char header[124];
 
-	FILE *fp; 
- 
-	/* try to open the file */ 
-	fp = fopen(imagepath, "rb"); 
-	if (fp == NULL) 
-		return 0; 
-   
-	/* verify the type of file */ 
-	char filecode[4]; 
-	fread(filecode, 1, 4, fp); 
-	if (strncmp(filecode, "DDS ", 4) != 0) { 
-		fclose(fp); 
-		return 0; 
+	FILE *fp;
+
+	/* try to open the file */
+	fp = fopen(imagepath, "rb");
+	if (fp == NULL)
+		return 0;
+
+	/* verify the type of file */
+	char filecode[4];
+	fread(filecode, 1, 4, fp);
+	if (strncmp(filecode, "DDS ", 4) != 0) {
+		fclose(fp);
+		return 0;
 	}
-	
-	/* get the surface desc */ 
-	fread(&header, 124, 1, fp); 
+
+	/* get the surface desc */
+	fread(&header, 124, 1, fp);
 
 	unsigned int height      = *(unsigned int*)&(header[8 ]);
 	unsigned int width	     = *(unsigned int*)&(header[12]);
@@ -522,32 +555,32 @@ GLuint loadDDS(const char * imagepath){
 	unsigned int mipMapCount = *(unsigned int*)&(header[24]);
 	unsigned int fourCC      = *(unsigned int*)&(header[80]);
 
- 
+
 	unsigned char * buffer;
 	unsigned int bufsize;
-	/* how big is it going to be including all mipmaps? */ 
-	bufsize = mipMapCount > 1 ? linearSize * 2 : linearSize; 
-	buffer = (unsigned char*)malloc(bufsize * sizeof(unsigned char)); 
-	fread(buffer, 1, bufsize, fp); 
-	/* close the file pointer */ 
+	/* how big is it going to be including all mipmaps? */
+	bufsize = mipMapCount > 1 ? linearSize * 2 : linearSize;
+	buffer = (unsigned char*)malloc(bufsize * sizeof(unsigned char));
+	fread(buffer, 1, bufsize, fp);
+	/* close the file pointer */
 	fclose(fp);
 
-	unsigned int components  = (fourCC == FOURCC_DXT1) ? 3 : 4; 
+	unsigned int components  = (fourCC == FOURCC_DXT1) ? 3 : 4;
 	unsigned int format;
-	switch(fourCC) 
-	{ 
-	case FOURCC_DXT1: 
-		format = GL_COMPRESSED_RGBA_S3TC_DXT1_EXT; 
-		break; 
-	case FOURCC_DXT3: 
-		format = GL_COMPRESSED_RGBA_S3TC_DXT3_EXT; 
-		break; 
-	case FOURCC_DXT5: 
-		format = GL_COMPRESSED_RGBA_S3TC_DXT5_EXT; 
-		break; 
-	default: 
-		free(buffer); 
-		return 0; 
+	switch(fourCC)
+	{
+	case FOURCC_DXT1:
+		format = GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
+		break;
+	case FOURCC_DXT3:
+		format = GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
+		break;
+	case FOURCC_DXT5:
+		format = GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
+		break;
+	default:
+		free(buffer);
+		return 0;
 	}
 
 	// Create one OpenGL texture
@@ -556,24 +589,24 @@ GLuint loadDDS(const char * imagepath){
 
 	// "Bind" the newly created texture : all future texture functions will modify this texture
 	glBindTexture(GL_TEXTURE_2D, textureID);
-	glPixelStorei(GL_UNPACK_ALIGNMENT,1);	
-	
-	unsigned int blockSize = (format == GL_COMPRESSED_RGBA_S3TC_DXT1_EXT) ? 8 : 16; 
+	glPixelStorei(GL_UNPACK_ALIGNMENT,1);
+
+	unsigned int blockSize = (format == GL_COMPRESSED_RGBA_S3TC_DXT1_EXT) ? 8 : 16;
 	unsigned int offset = 0;
 
-	/* load the mipmaps */ 
-	for (unsigned int level = 0; level < mipMapCount && (width || height); ++level) 
-	{ 
-		unsigned int size = ((width+3)/4)*((height+3)/4)*blockSize; 
-		glCompressedTexImage2D(GL_TEXTURE_2D, level, format, width, height,  
-			0, size, buffer + offset); 
-	 
-		offset += size; 
-		width  /= 2; 
-		height /= 2; 
-	} 
+	/* load the mipmaps */
+	for (unsigned int level = 0; level < mipMapCount && (width || height); ++level)
+	{
+		unsigned int size = ((width+3)/4)*((height+3)/4)*blockSize;
+		glCompressedTexImage2D(GL_TEXTURE_2D, level, format, width, height,
+			0, size, buffer + offset);
 
-	free(buffer); 
+		offset += size;
+		width  /= 2;
+		height /= 2;
+	}
+
+	free(buffer);
 
 	return textureID;
 

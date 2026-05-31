@@ -169,9 +169,9 @@ namespace Utility{
 		glShaderSource(fragmentShaderID, 1, adapter, 0);
 
 		glCompileShader(vertexShaderID);
-		checkShaderCompile(vertexShaderID);
+		success &= checkShaderCompile(vertexShaderID);
 		glCompileShader(fragmentShaderID);
-		checkShaderCompile(fragmentShaderID);
+		success &= checkShaderCompile(fragmentShaderID);
 
 		colourProgramID = glCreateProgram();
 		// bind attribs, needed for glsl 1.20
@@ -196,7 +196,7 @@ namespace Utility{
 		if(!input.good()){
 			errorHandler.printError("Shader File failed to load.\r\n");
 			errorHandler.printError(fileName.c_str());
-			return NULL;
+			return std::string();
 		}
 		return std::string(
 			std::istreambuf_iterator<char>(input),

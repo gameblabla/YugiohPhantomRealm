@@ -8,18 +8,25 @@
 
 namespace {
 
+	bool isPowerOfTwo(unsigned int value)
+	{
+		return value != 0 && (value & (value - 1)) == 0;
+	}
+
 	void setTexture2DParameters(unsigned int width, unsigned int height)
 	{
+		// The original renderer left wrap mode at OpenGL's default GL_REPEAT.
+		// Many of the OBJ assets rely on repeated/negative UVs after objloader's
+		// V-coordinate flip; forcing CLAMP_TO_EDGE stretches a single edge row and
+		// produces the vertical barcode-looking garbage seen on the menu/screens.
 #ifdef USE_GLES
-		// GLES2 requires NPOT textures to use CLAMP_TO_EDGE and non-mipmapped
-		// filtering unless full NPOT support is available. The safe path is used
-		// here for all PNG assets because this loader never relied on repeating.
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		const bool canUseSamplerRepeat = isPowerOfTwo(width) && isPowerOfTwo(height);
+		const GLint wrapMode = canUseSamplerRepeat ? GL_REPEAT : GL_CLAMP_TO_EDGE;
 #else
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		const GLint wrapMode = GL_REPEAT;
 #endif
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapMode);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	}
@@ -98,14 +105,10 @@ namespace Utility{
 #ifndef NOVA
 		glBindVertexArray(YUG_UNBIND);
 #endif
-		/*auto it = find(currentIds.begin(), currentIds.end(), *textureID );
-		if(it == currentIds.end()){
-			std::cout<<"Texture Loader: couldn't find id in vector: "<<(*textureID)<<std::endl;
-			std::cout<<"Texture loader size: "<<currentIds.size()<<std::endl;
-		}else{
-			std::cout<<"Texture Loader: deleted id: "<<*textureID<<std::endl;
+		auto it = find(currentIds.begin(), currentIds.end(), *textureID );
+		if(it != currentIds.end()){
 			currentIds.erase(it);
-		}*/
+		}
 		//std::cout<<"texture Loader: delete ID: "<<*textureID<<std::endl;
 		glDeleteTextures(1, textureID);
 		glFlush(); glFinish();

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <string>
+#include <Utility/FileUtil.h>
 #include "bool_game.h"
 #ifdef USE_GLES
 #include <GLES2/gl2.h>
@@ -17,6 +19,20 @@
 #endif
 
 namespace {
+
+static FILE* openReadFileCaseInsensitive(const char* path, const char* mode, std::string* resolvedPath)
+{
+	std::string requested = path ? path : "";
+	std::string resolved = requested;
+	if(Utility::resolveExistingPath(requested, resolved)){
+		if(resolvedPath)
+			*resolvedPath = resolved;
+		return fopen(resolved.c_str(), mode);
+	}
+	if(resolvedPath)
+		*resolvedPath = requested;
+	return fopen(requested.c_str(), mode);
+}
 
 static bool isPowerOfTwo(unsigned int value)
 {
@@ -62,9 +78,12 @@ GLuint loadBMP_custom(const char * imagepath){
 	// Actual RGB data
 	unsigned char * data;
 
-	// Open the file
-	FILE * file = fopen(imagepath,"rb");
+	// Open the file, tolerating Windows-authored asset path casing.
+	std::string resolvedImagePath;
+	FILE * file = openReadFileCaseInsensitive(imagepath,"rb", &resolvedImagePath);
 	if (!file)							    {printf("Image could not be opened\n"); return 0;}
+	if(resolvedImagePath != (imagepath ? imagepath : ""))
+		printf("Resolved image path %s\n", resolvedImagePath.c_str());
 
 	// Read the header, i.e. the 54 first bytes
 
@@ -179,7 +198,10 @@ BOOL LoadCompressedTGA(Texture *,const char *,FILE *);		/* Load a Compressed fil
 BOOL LoadTGA(Texture * texture,const char * filename)				/* Load a TGA file */
 {
 	FILE * fTGA;													/* File pointer to texture file */
-	fTGA = fopen(filename, "rb");									/* Open file for reading */
+	std::string resolvedFilename;
+	fTGA = openReadFileCaseInsensitive(filename, "rb", &resolvedFilename);	/* Open file for reading */
+	if(resolvedFilename != (filename ? filename : ""))
+		printf("Resolved TGA path %s\n", resolvedFilename.c_str());
 
 	if(fTGA == NULL)												/* If it didn't open.... */
 	{
@@ -534,9 +556,12 @@ GLuint loadDDS(const char * imagepath){
 	FILE *fp;
 
 	/* try to open the file */
-	fp = fopen(imagepath, "rb");
+	std::string resolvedImagePath;
+	fp = openReadFileCaseInsensitive(imagepath, "rb", &resolvedImagePath);
 	if (fp == NULL)
 		return 0;
+	if(resolvedImagePath != (imagepath ? imagepath : ""))
+		printf("Resolved DDS path %s\n", resolvedImagePath.c_str());
 
 	/* verify the type of file */
 	char filecode[4];

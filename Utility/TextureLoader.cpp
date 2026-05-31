@@ -3,8 +3,10 @@
 #include <ThirdParty/lodepng.h>
 #include <DefinesAndTypedefs.h>
 #include <Utility/ErrorHandler.h>
+#include <Utility/FileUtil.h>
 #include <iostream>
 #include <algorithm>
+#include <string>
 
 namespace {
 
@@ -60,18 +62,29 @@ namespace Utility{
 		//get image as png
 		std::vector<unsigned char> image;
 		unsigned int iWidth, iHeight;
-		
-		printf("Load texture PNG : %s\n", fileName);
-		
-		unsigned int error = lodepng::decode(image, iWidth, iHeight, fileName);
+
+		const std::string requestedPath = fileName ? fileName : "";
+		printf("Load texture PNG : %s\n", requestedPath.c_str());
+
+		std::string resolvedPath = requestedPath;
+		if(Utility::resolveExistingPath(requestedPath, resolvedPath)){
+			if(resolvedPath != requestedPath)
+				std::cout<<"Texture Loader: resolved path: "<<resolvedPath<<std::endl;
+		}
+
+		unsigned int error = lodepng::decode(image, iWidth, iHeight, resolvedPath);
 		if(error != 0 || image.empty()){
 			errorHandler.printError("textureLoader: failed to load png: ");
-			errorHandler.printError(fileName);
+			errorHandler.printError(requestedPath.c_str());
+			if(resolvedPath != requestedPath){
+				errorHandler.printError("textureLoader: resolved png path also failed: ");
+				errorHandler.printError(resolvedPath.c_str());
+			}
 			errorHandler.printError("textureLoader: using bad texture fallback\n");
 			*textureID = badTexture;
 			return;
 		}
-		
+
 		//send to openGL
 		glGenTextures(1, textureID);
 

@@ -102,24 +102,29 @@ namespace{
 	}
 }
 
+	bool resolveExistingPath(const std::string& path, std::string& resolvedPath)
+	{
+		if(path.empty())
+			return false;
+
+		if(pathExists(path)){
+			resolvedPath = path;
+			return true;
+		}
+
+		return resolveCaseInsensitivePath(path, resolvedPath);
+	}
+
 	bool openInputFile(std::ifstream& input, const std::string& path,
 		std::string* resolvedPath)
 	{
 		input.close();
 		input.clear();
-		input.open(path.c_str());
-		if(input){
-			if(resolvedPath)
-				*resolvedPath = path;
-			return true;
-		}
 
 		std::string resolved;
-		if(!resolveCaseInsensitivePath(path, resolved))
+		if(!resolveExistingPath(path, resolved))
 			return false;
 
-		input.close();
-		input.clear();
 		input.open(resolved.c_str());
 		if(!input)
 			return false;

@@ -23,7 +23,7 @@ LDFLAGS 	+= -lGLESv2 -lGLU
 endif
 
 ifeq ($(OPENGLES), FALSE)
-LDFLAGS 	+= -lGL -lGLU -lGLEW -lglfw
+LDFLAGS 	+= -lGL -lGLU -lGLEW
 endif
 
 # Files to be compiled

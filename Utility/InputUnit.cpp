@@ -31,8 +31,6 @@ namespace Utility{
 	void InputUnit::readKeys()
 	{
 		setKeyBits = 0;
-		Uint8 *state = (Uint8*)SDL_GetKeyboardState(NULL);
-		//SDL_PumpEvents();
 		
         SDL_Event event;
         while (SDL_PollEvent(&event))
@@ -46,6 +44,9 @@ namespace Utility{
                 }  
 			}
         }
+
+		// SDL_PollEvent pumps the event queue; read the keyboard state after it.
+		const Uint8 *state = SDL_GetKeyboardState(NULL);
 		
 		if (state[SDL_SCANCODE_HOME] || state[SDL_SCANCODE_F4])
 		{
@@ -93,25 +94,23 @@ namespace Utility{
 
 	}
 	int InputUnit::listenForAnyKey(){
-		//return -1;
-		
 		int count = 0;
-		Uint8 *state = (Uint8*)SDL_GetKeyboardState(NULL);
-		std::cout<<"Input: Hold down new key binding/n";
+		int numKeys = 0;
+		std::cout<<"Input: Hold down new key binding\n";
 		while(count++ < 30){
-			state = (Uint8*)SDL_GetKeyboardState(NULL);
 			SDL_PumpEvents();
+			const Uint8 *state = SDL_GetKeyboardState(&numKeys);
 			std::this_thread::sleep_for (std::chrono::milliseconds(300));
-			for (int i = 0; i < 256; i++)
+			for (int scanCode = 0; scanCode < numKeys; scanCode++)
 			{
-				if(state[realKeyBindings[i]]){
+				if(state[scanCode]){
 					soundUnit.cursorSelect();
-					std::cout<<"Input: New key binding obtained/n";
-					return i;
+					std::cout<<"Input: New key binding obtained\n";
+					return scanCode;
 				}
 			}
 		}
-		std::cout<<"Input: No new key binding obtained./n";
+		std::cout<<"Input: No new key binding obtained.\n";
 		soundUnit.cursorSelectionFail();
 		return -1;
 	}

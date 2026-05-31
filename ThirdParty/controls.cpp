@@ -2,7 +2,8 @@
 #include <GLES2/gl2.h>
 #endif
 
-#include <GLFW/glfw3.h>
+#include <cstdint>
+
 // Include GLM
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -49,11 +50,10 @@ void computeMatricesFromInputs(){
 	float deltaTime = float(currentTime - lastTime);
 
 */
-	uint64_t lastTime = SDL_GetPerformanceCounter();
+	static uint64_t lastTime = SDL_GetPerformanceCounter();
 	uint64_t currentTime = SDL_GetPerformanceCounter();
-	double deltaTime = static_cast<double>(
-	  (currentTime - lastTime) / static_cast<double>(SDL_GetPerformanceFrequency())
-	);
+	double deltaTime = static_cast<double>(currentTime - lastTime)
+		/ static_cast<double>(SDL_GetPerformanceFrequency());
 
 	// Get mouse position
 	int xpos, ypos;

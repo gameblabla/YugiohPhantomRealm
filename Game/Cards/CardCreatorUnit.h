@@ -6,7 +6,7 @@ namespace Card{
 	class CardCreatorUnit
 	{
 		std::vector<char> fileName;
-		void createFileName(int cardNo, const char* prefix, int length);
+		void createFileName(int cardNo, const char* prefix);
 		void setupStream(std::ifstream* input);
 		void untilLBracket(std::ifstream* input);
 		void untilRBracket(std::ifstream* input);

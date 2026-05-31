@@ -4,19 +4,25 @@
 #include <Game/Cards/CardCreatorUnit.h>
 #include <Game/Duel/Deck.h>
 #include <Utility/ErrorHandler.h>
+#include <Utility/FileUtil.h>
 #include <chrono>
 #include <iostream>
 
 namespace Duel{
 
 	void Deck::fillList(std::vector< std::vector<unsigned int>>& v, std::string path){
-		std::ifstream in(path);
+		std::ifstream in;
+		std::string resolvedPath;
+		if(!Utility::openInputFile(in, path, &resolvedPath)){
+			std::cout<<"DeckGenerator: can't open deck generator list: "<<path<<std::endl;
+			return;
+		}
 		char ch = 'A';
 		int outerIndex = 0;
 
 		while(true){
 			ch = toNextSymbol(in);
-			if(ch == '%') break;
+			if(ch == '%' || ch == '\0') break;
 
 			if(ch == '#'){
 				std::vector<unsigned int> t;
@@ -81,10 +87,14 @@ namespace Duel{
 		std::vector<unsigned int> newDeck;
 		std::vector< std::vector<unsigned int> >lowList;
 		std::vector< std::vector<unsigned int> >highList;
-		std::string lowPath = "GameData/cardData/deck/lowDeckGeneratorList.txt";
-		std::string highPath = "GameData/cardData/deck/highDeckGeneratorList.txt";
+		std::string lowPath = "GameData/cardData/Deck/lowDeckGeneratorList.txt";
+		std::string highPath = "GameData/cardData/Deck/highDeckGeneratorList.txt";
 		fillList(lowList, lowPath);
 		fillList(highList, highPath);
+		if(lowList.size() < 20 || highList.size() < 20){
+			std::cout<<"DeckGenerator: generator list data is incomplete"<<std::endl;
+			return;
+		}
 		
 		srand(time(NULL));
 		addMagicCards(newDeck);
@@ -191,9 +201,11 @@ namespace Duel{
 	}
 
 	char Deck::toNextSymbol(std::ifstream& in){
-		char ch;
 		while(true){
-			ch = in.get();
+			int next = in.get();
+			if(next == std::char_traits<char>::eof())
+				return '\0';
+			char ch = static_cast<char>(next);
 			if(ch == '#')
 				return ch;
 			if( ch == '=')

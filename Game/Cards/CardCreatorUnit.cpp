@@ -22,9 +22,9 @@ namespace Card{
 		}
 
 		if((337 < cardNo && cardNo < 350)||(777 < cardNo && cardNo < 900)){
-			createFileName(cardNo,"GameData/cardData/magics/",25);
+			createFileName(cardNo,"GameData/cardData/Magics/");
 		}else{
-			createFileName(cardNo,"GameData/cardData/monsters/",27);
+			createFileName(cardNo,"GameData/cardData/Monsters/");
 		}
 		//std::cout<<fileName.data()<<std::endl;
 		std::ifstream input;
@@ -160,15 +160,11 @@ namespace Card{
 		return card;
 	}
 
-	void CardCreatorUnit::createFileName(int cardNo, const char* prefix, int length){
+	void CardCreatorUnit::createFileName(int cardNo, const char* prefix){
 		//----//std::cout<<"Creating card "<<cardNo<<std::endl;
-		const char* directory = prefix;
-		//int directoryLength = (sizeof(directory)/sizeof(char))-1;
-		int directoryLength = length;
 		fileName = std::vector<char>();
-		int index = 0;
-		for( ;index < directoryLength; index++)
-			fileName.push_back( directory[index] );
+		for(const char* ch = prefix; ch && *ch; ++ch)
+			fileName.push_back(*ch);
 		
 		int hDigit = cardNo / 100;
 		int tDigit = ((cardNo/10)%10);

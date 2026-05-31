@@ -37,6 +37,19 @@ namespace{
 		return parts;
 	}
 
+
+	std::string joinPath(const std::string& base, const std::string& part){
+		if(base.empty())
+			return part;
+		if(base == ".")
+			return std::string("./") + part;
+		if(base == "/")
+			return std::string("/") + part;
+		if(base[base.size()-1] == '/')
+			return base + part;
+		return base + "/" + part;
+	}
+
 	bool findCaseInsensitiveEntry(const std::string& directory,
 		const std::string& wanted, std::string& matched)
 	{
@@ -68,10 +81,7 @@ namespace{
 		std::string current = absolute ? "/" : ".";
 		std::vector<std::string> parts = splitPath(path);
 		for(const std::string& part : parts){
-			std::string direct = current;
-			if(direct.size() > 1 && direct[direct.size()-1] != '/')
-				direct += '/';
-			direct += part;
+			std::string direct = joinPath(current, part);
 
 			if(pathExists(direct)){
 				current = direct;
@@ -82,9 +92,7 @@ namespace{
 			if(!findCaseInsensitiveEntry(current, part, matched))
 				return false;
 
-			if(current.size() > 1 && current[current.size()-1] != '/')
-				current += '/';
-			current += matched;
+			current = joinPath(current, matched);
 		}
 
 		resolved = current;
